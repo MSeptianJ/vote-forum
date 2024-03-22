@@ -13,7 +13,7 @@ const TopBar = () => {
   const location = useLocation();
 
   return (
-    <div className=" flex h-20 w-full items-center justify-between bg-primary px-1 md:h-16 lg:px-3">
+    <div className=" flex h-20 w-full items-center justify-between bg-primary px-3 md:h-16">
       <div className=" h-full">
         <img
           src={LOGOTEXT}

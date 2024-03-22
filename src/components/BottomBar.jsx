@@ -12,7 +12,7 @@ const BottomBar = () => {
   const location = useLocation();
 
   return (
-    <div className=" transparent absolute bottom-0 m-auto w-full bg-primary text-white md:hidden">
+    <div className=" absolute bottom-0 m-auto w-full bg-primary text-white md:hidden">
       <div className=" m-auto grid w-3/4 grid-cols-3 justify-center justify-items-center">
         <Link to={"/"} className="w-full">
           <BtnPrimary

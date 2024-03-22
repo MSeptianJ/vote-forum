@@ -1,4 +1,5 @@
 import { Outlet } from "react-router-dom";
+import BottomBar from "./components/BottomBar";
 import TopBar from "./components/TopBar";
 
 function App() {
@@ -7,6 +8,8 @@ function App() {
       <TopBar />
 
       <Outlet />
+
+      <BottomBar />
     </div>
   );
 }

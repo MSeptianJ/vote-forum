@@ -1,18 +1,16 @@
 import { Link, useLocation } from "react-router-dom";
-import {
-  MdHome,
-  MdOutlineHome,
-  MdLeaderboard,
-  MdOutlineLeaderboard,
-} from "react-icons/md";
 import LOGOTEXT from "../assets/imgs/logo_text.svg";
+import {
+  IconHome,
+  IconHomeOutline,
+  IconLeaderboard,
+  IconLeaderboardOutline,
+} from "../libs/icons";
 import AccountBtn from "./AccountBtn";
 import BtnPrimary from "./BtnPrimary";
 
 const TopBar = () => {
   const location = useLocation();
-
-  console.log(location);
 
   return (
     <div className=" flex h-20 w-full items-center justify-between bg-primary px-1 md:h-16 lg:px-3">
@@ -33,7 +31,7 @@ const TopBar = () => {
                 "w-full p-4 text-lg flex items-center gap-2 hover:bg-secondary"
               }
               btnIcon={
-                location.pathname === "/" ? <MdHome /> : <MdOutlineHome />
+                location.pathname === "/" ? <IconHome /> : <IconHomeOutline />
               }
             />
           </Link>
@@ -45,9 +43,9 @@ const TopBar = () => {
               }
               btnIcon={
                 location.pathname === "/leaderboard" ? (
-                  <MdLeaderboard />
+                  <IconLeaderboard />
                 ) : (
-                  <MdOutlineLeaderboard />
+                  <IconLeaderboardOutline />
                 )
               }
             />

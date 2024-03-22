@@ -1,10 +1,10 @@
 import { Outlet } from "react-router-dom";
-import Navigation from "./components/Navigation";
+import TopBar from "./components/TopBar";
 
 function App() {
   return (
     <div className=" h-screen w-full">
-      <Navigation />
+      <TopBar />
 
       <Outlet />
     </div>

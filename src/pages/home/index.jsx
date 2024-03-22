@@ -1,7 +1,11 @@
-import PropTypes from "prop-types";
+import HomeTopBar from "./components/HomeTopBar";
 
 const HomePage = () => {
-  return <div>HomePage</div>;
+  return (
+    <div className="mt-8 w-full">
+      <HomeTopBar />
+    </div>
+  );
 };
 
 HomePage.propTypes = {};

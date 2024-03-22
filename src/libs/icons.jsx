@@ -1,3 +1,4 @@
+import { FaPlus } from "react-icons/fa6";
 import {
   MdHome,
   MdLeaderboard,
@@ -24,4 +25,8 @@ export const IconLeaderboardOutline = () => {
 
 export const IconSearch = () => {
   return <MdSearch />;
+};
+
+export const IconPlus = () => {
+  return <FaPlus />;
 };

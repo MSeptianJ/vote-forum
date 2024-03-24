@@ -12,11 +12,7 @@ function App() {
         <Outlet />
       </div>
 
-      <div className="absolute bottom-44 w-full md:hidden">
-        <div className=" relative flex w-full justify-center">
-          <CategoryBox />
-        </div>
-      </div>
+      <CategoryBox />
 
       <BottomBar />
     </div>

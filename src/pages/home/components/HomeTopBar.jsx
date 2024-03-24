@@ -3,7 +3,7 @@ import { IconPlus } from "../../../libs/icons";
 
 const HomeTopBar = () => {
   return (
-    <div className="md flex w-full gap-5 px-4 text-white">
+    <div className="md flex w-full gap-5 px-5 text-white">
       <div className=" m-auto hidden w-10/12 rounded-md bg-primary p-4 px-6 text-white md:block">
         <h3 className=" mb-2 text-xl font-bold">Categories</h3>
         <div className=" flex gap-3 overflow-x-auto">

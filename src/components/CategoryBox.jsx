@@ -2,7 +2,7 @@ import BtnPrimary from "./BtnPrimary";
 
 const CategoryBox = () => {
   return (
-    <div className=" absolute top-0 m-auto w-10/12 rounded-md bg-primary p-4 px-6 text-white">
+    <div className=" sticky bottom-20 m-auto w-10/12 rounded-md bg-primary p-4 px-6 text-white shadow-lg md:hidden">
       <h3 className=" mb-2 text-xl font-bold">Categories</h3>
       <div className=" flex gap-3 overflow-x-auto py-2">
         <BtnPrimary

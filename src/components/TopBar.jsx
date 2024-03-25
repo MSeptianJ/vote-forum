@@ -15,11 +15,13 @@ const TopBar = () => {
   return (
     <div className=" flex h-20 w-full items-center justify-between bg-primary px-3 md:h-16">
       <div className=" h-full">
-        <img
-          src={LOGOTEXT}
-          alt="Logo Votrum"
-          className=" h-full p-2 hover:cursor-pointer hover:bg-secondary"
-        />
+        <Link to={"/"}>
+          <img
+            src={LOGOTEXT}
+            alt="Logo Votrum"
+            className=" h-full p-2 hover:cursor-pointer hover:bg-secondary"
+          />
+        </Link>
       </div>
 
       <div className=" flex h-full items-center justify-center text-white">

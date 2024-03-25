@@ -9,7 +9,7 @@ const ThreadItem = ({ data }) => {
     <>
       <ThreadAccount ownerId={data.ownerId} createdAt={data.createdAt} />
 
-      <ThreadTitle category={data.category} title={data.title} />
+      <ThreadTitle category={data.category} title={data.title} id={data.id} />
 
       <ThreadBody body={data.body} />
 

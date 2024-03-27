@@ -1,9 +1,11 @@
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 import BottomBar from "./components/BottomBar";
 import TopBar from "./components/TopBar";
 import CategoryBox from "./components/CategoryBox";
 
 function App() {
+  const location = useLocation();
+
   return (
     <div className=" h-screen w-full">
       <TopBar />
@@ -12,7 +14,7 @@ function App() {
         <Outlet />
       </div>
 
-      <CategoryBox />
+      {location.pathname === "/" && <CategoryBox />}
 
       <BottomBar />
     </div>

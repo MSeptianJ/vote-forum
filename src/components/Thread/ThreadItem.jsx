@@ -11,9 +11,14 @@ const ThreadItem = ({ data }) => {
 
       <ThreadTitle category={data.category} title={data.title} id={data.id} />
 
-      <ThreadBody body={data.body} />
+      <ThreadBody body={data.body} isLimit />
 
-      <ThreadBtn id={data.id} total={data.totalComments} />
+      <ThreadBtn
+        id={data.id}
+        totalUpVotes={data.upVotesBy.length}
+        totalDownVotes={data.downVotesBy.length}
+        totalComments={data.totalComments}
+      />
     </>
   );
 };

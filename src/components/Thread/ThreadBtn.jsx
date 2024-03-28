@@ -23,7 +23,7 @@ const ThreadBtn = ({
           btnIcon={<IconVoteOutline />}
           btnFunction={onUpVote}
           btnStyles={
-            "flex items-center gap-3 justify-center border border-secondary text-lg py-2 px-4 rounded-md text-accent hover:bg-secondary"
+            "flex items-center gap-3 justify-center border border-secondary text-lg py-1 px-4 rounded-md text-accent hover:bg-secondary"
           }
         />
 
@@ -32,7 +32,7 @@ const ThreadBtn = ({
           btnIcon={<IconUnvoteOutline />}
           btnFunction={onDownVote}
           btnStyles={
-            "flex items-center gap-3 justify-center border border-secondary text-lg py-2 px-4 rounded-md text-accent hover:bg-secondary"
+            "flex items-center gap-3 justify-center border border-secondary text-lg py-1 px-4 rounded-md text-accent hover:bg-secondary"
           }
         />
       </div>
@@ -43,7 +43,7 @@ const ThreadBtn = ({
             btnText={String(totalComments)}
             btnIcon={<IconComment />}
             btnStyles={
-              "flex items-center gap-3 justify-center border border-secondary text-lg py-2 px-4 rounded-md text-accent hover:bg-secondary"
+              "flex items-center gap-3 justify-center border border-secondary text-lg py-1 px-4 rounded-md text-accent hover:bg-secondary"
             }
           />
         </Link>

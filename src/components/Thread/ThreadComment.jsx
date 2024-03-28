@@ -13,7 +13,7 @@ const ThreadComment = ({ func }) => {
         <BtnPrimary
           btnText={"Reply"}
           btnStyles={
-            "font-bold py-2 px-4 bg-secondary mt-3 rounded-md hover:bg-primary border border-secondary "
+            "font-bold py-1 px-4 bg-secondary mt-3 rounded-md hover:bg-primary border border-secondary "
           }
         />
       </div>

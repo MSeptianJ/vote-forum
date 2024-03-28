@@ -26,6 +26,9 @@ export default {
         primary: "#326273",
         accent: "#36F760",
       },
+      height: {
+        content: `calc(100vh - 6rem)`,
+      },
     },
   },
   plugins: [FLOWBITE],

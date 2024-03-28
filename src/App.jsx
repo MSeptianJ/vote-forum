@@ -7,10 +7,10 @@ function App() {
   const location = useLocation();
 
   return (
-    <div className=" h-screen w-full">
+    <div className=" min-h-screen w-full">
       <TopBar />
 
-      <div className="m-auto w-full lg:max-w-screen-lg">
+      <div className=" h-content m-auto w-full lg:max-w-screen-lg">
         <Outlet />
       </div>
 

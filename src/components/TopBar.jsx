@@ -28,7 +28,7 @@ const TopBar = () => {
 
       <div className=" flex h-full items-center justify-center gap-4 text-white">
         <nav className=" hidden h-full w-full items-center gap-4 md:flex">
-          <Link to={"/"}>
+          <Link to={"/"} className="h-full">
             <BtnPrimary
               btnText={"Home"}
               btnStyles={
@@ -39,7 +39,7 @@ const TopBar = () => {
               }
             />
           </Link>
-          <Link to={"/leaderboard"}>
+          <Link to={"/leaderboard"} className="h-full">
             <BtnPrimary
               btnText={"Leaderboard"}
               btnStyles={
@@ -60,7 +60,7 @@ const TopBar = () => {
           <AccountBtn />
         ) : (
           <div className="h-full">
-            <Link to={"/login"}>
+            <Link to={"/login"} className="h-full">
               <BtnPrimary
                 btnStyles={
                   "text-xl h-full p-2 md:text-base transition-colors duration-300 hover:bg-secondary"

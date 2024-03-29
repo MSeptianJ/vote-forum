@@ -19,7 +19,7 @@ const LoginInput = () => {
           Password
         </label>
         <input
-          type="text"
+          type="password"
           id="passLogin"
           className="w-full rounded-[4px] border border-secondary bg-transparent"
         />

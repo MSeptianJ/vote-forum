@@ -10,7 +10,7 @@ function App() {
     <div className=" min-h-screen w-full">
       <TopBar />
 
-      <div className=" h-content m-auto w-full lg:max-w-screen-lg">
+      <div className=" m-auto min-h-screen w-full lg:max-w-screen-lg">
         <Outlet />
       </div>
 

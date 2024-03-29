@@ -3,11 +3,17 @@ import { Avatar } from "flowbite-react";
 import { postedAt, showFormattedDate } from "../../utils/dateConverter";
 
 const CommentAccount = ({ createdAt }) => {
+  const data = {
+    id: "john_doe",
+    name: "John Doe",
+    email: "john@example.com",
+    avatar: "https://ui-avatars.com/api/?name=Kaka&background=random",
+  };
   return (
     <div className=" flex w-full">
-      <Avatar rounded size={"sm"}>
+      <Avatar rounded size={"sm"} img={data.avatar}>
         <div className="w-full space-y-1 text-gray-300">
-          <div className="font-bold">Jese Leos</div>
+          <div className="font-bold">{data.name}</div>
           <div className=" flex justify-between gap-2">
             <div className="text-sm">{showFormattedDate(createdAt)}</div>
             <div className="text-sm">{postedAt(createdAt)}</div>

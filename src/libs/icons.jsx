@@ -12,6 +12,7 @@ import {
   MdOutlineHome,
   MdOutlineLeaderboard,
   MdSearch,
+  MdLogin,
 } from "react-icons/md";
 
 export const IconHome = () => {
@@ -56,4 +57,8 @@ export const IconUnvoteOutline = () => {
 
 export const IconComment = () => {
   return <MdOutlineComment />;
+};
+
+export const IconLogin = () => {
+  return <MdLogin />;
 };

@@ -5,12 +5,14 @@ import {
   IconHomeOutline,
   IconLeaderboard,
   IconLeaderboardOutline,
+  IconLogin,
 } from "../libs/icons";
 import AccountBtn from "./AccountBtn";
 import BtnPrimary from "./BtnPrimary";
 
 const TopBar = () => {
   const location = useLocation();
+  const user = false;
 
   return (
     <div className=" flex h-20 w-full items-center justify-between bg-primary px-3 md:h-16">
@@ -24,13 +26,13 @@ const TopBar = () => {
         </Link>
       </div>
 
-      <div className=" flex h-full items-center justify-center text-white">
-        <nav className=" hidden h-full w-full items-center md:flex">
+      <div className=" flex h-full items-center justify-center gap-4 text-white">
+        <nav className=" hidden h-full w-full items-center gap-4 md:flex">
           <Link to={"/"}>
             <BtnPrimary
               btnText={"Home"}
               btnStyles={
-                "w-full p-4 text-lg flex items-center gap-2 hover:bg-secondary"
+                "w-full p-4 flex items-center gap-2 hover:bg-secondary"
               }
               btnIcon={
                 location.pathname === "/" ? <IconHome /> : <IconHomeOutline />
@@ -41,7 +43,7 @@ const TopBar = () => {
             <BtnPrimary
               btnText={"Leaderboard"}
               btnStyles={
-                "w-full p-4 flex text-lg items-center gap-2 hover:bg-secondary"
+                "w-full flex p-4 items-center gap-2 hover:bg-secondary"
               }
               btnIcon={
                 location.pathname === "/leaderboard" ? (
@@ -54,7 +56,20 @@ const TopBar = () => {
           </Link>
         </nav>
 
-        <AccountBtn />
+        {user ? (
+          <AccountBtn />
+        ) : (
+          <div>
+            <Link to={"/login"}>
+              <BtnPrimary
+                btnStyles={
+                  "p-4 text-xl md:text-base transition-colors duration-300 hover:bg-secondary"
+                }
+                btnIcon={<IconLogin />}
+              />
+            </Link>
+          </div>
+        )}
       </div>
     </div>
   );

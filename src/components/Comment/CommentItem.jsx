@@ -1,9 +1,11 @@
-import PropTypes from "prop-types";
-import CommentAccount from "./CommentAccount";
-import CommentBody from "./CommentBody";
-import CommentBtn from "./CommentBtn";
+import PropTypes from 'prop-types';
+import React from 'react';
+import { commentValidator } from '../../utils/propValidator';
+import CommentAccount from './CommentAccount';
+import CommentBody from './CommentBody';
+import CommentBtn from './CommentBtn';
 
-const CommentItem = ({ data }) => {
+function CommentItem({ data, onUpVote, onDownVote }) {
   return (
     <>
       <CommentAccount createdAt={data.createdAt} />
@@ -11,13 +13,17 @@ const CommentItem = ({ data }) => {
       <CommentBtn
         totalDownVotes={data.downVotesBy.length}
         totalUpVotes={data.upVotesBy.length}
+        onUpVote={onUpVote}
+        onDownVote={onDownVote}
       />
     </>
   );
-};
+}
 
 CommentItem.propTypes = {
-  data: PropTypes.object.isRequired,
+  data: PropTypes.shape(commentValidator).isRequired,
+  onUpVote: PropTypes.func.isRequired,
+  onDownVote: PropTypes.func.isRequired,
 };
 
 export default CommentItem;

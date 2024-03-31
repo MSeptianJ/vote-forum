@@ -1,7 +1,12 @@
-import PropTypes from "prop-types";
-import BtnPrimary from "../BtnPrimary";
+import PropTypes from 'prop-types';
+import React from 'react';
+import BtnPrimary from '../BtnPrimary';
 
-const ThreadComment = ({ func }) => {
+function ThreadComment({ onComment }) {
+  const handleComment = () => {
+    onComment();
+  };
+
   return (
     <div className=" mt-6 flex flex-col text-white">
       <h4 className=" font-bold">Make a Comment</h4>
@@ -11,18 +16,17 @@ const ThreadComment = ({ func }) => {
       />
       <div className="flex justify-end">
         <BtnPrimary
-          btnText={"Reply"}
-          btnStyles={
-            "font-bold py-1 px-4 bg-secondary mt-3 rounded-md hover:bg-primary border border-secondary "
-          }
+          btnText="Reply"
+          btnFunction={handleComment}
+          btnStyles="font-bold py-1 px-4 bg-secondary mt-3 rounded-md hover:bg-primary border border-secondary "
         />
       </div>
     </div>
   );
-};
+}
 
 ThreadComment.propTypes = {
-  func: PropTypes.func,
+  onComment: PropTypes.func.isRequired,
 };
 
 export default ThreadComment;

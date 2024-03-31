@@ -1,7 +1,8 @@
-import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
+import PropTypes from 'prop-types';
+import React from 'react';
+import { Link } from 'react-router-dom';
 
-const ThreadTitle = ({ category, title, id }) => {
+function ThreadTitle({ category, title, id }) {
   return (
     <div className=" mt-2">
       <p className=" font-bold lowercase text-secondary">{`#${category}`}</p>
@@ -12,7 +13,7 @@ const ThreadTitle = ({ category, title, id }) => {
       </Link>
     </div>
   );
-};
+}
 
 ThreadTitle.propTypes = {
   category: PropTypes.string.isRequired,

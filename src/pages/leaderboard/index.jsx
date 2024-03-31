@@ -1,31 +1,32 @@
-import UserList from "./components/UserList";
+import React from 'react';
+import UserList from './components/UserList';
 
-const LeaderBoardPage = () => {
+function LeaderBoardPage() {
   const leaderboards = [
     {
       user: {
-        id: "users-1",
-        name: "John Doe",
-        email: "john@example.com",
-        avatar: "https://ui-avatars.com/api/?name=random&background=random",
+        id: 'test-1',
+        name: 'John Doe',
+        email: 'john@example.com',
+        avatar: 'https://ui-avatars.com/api/?name=random&background=random',
       },
       score: 10,
     },
     {
       user: {
-        id: "users-2",
-        name: "Jane Doe",
-        email: "jane@example.com",
-        avatar: "https://ui-avatars.com/api/?name=Mamah&background=random",
+        id: 'test-2',
+        name: 'Jane Doe',
+        email: 'jane@example.com',
+        avatar: 'https://ui-avatars.com/api/?name=Mamah&background=random',
       },
       score: 5,
     },
     {
       user: {
-        id: "users-2",
-        name: "Jane Doe",
-        email: "jane@example.com",
-        avatar: "https://ui-avatars.com/api/?name=Kaka&background=random",
+        id: 'test-3',
+        name: 'Jane Doe',
+        email: 'jane@example.com',
+        avatar: 'https://ui-avatars.com/api/?name=Kaka&background=random',
       },
       score: 5,
     },
@@ -45,7 +46,7 @@ const LeaderBoardPage = () => {
       </div>
     </div>
   );
-};
+}
 
 LeaderBoardPage.propTypes = {};
 

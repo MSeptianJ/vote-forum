@@ -1,18 +1,20 @@
-import PropTypes from "prop-types";
-import UserItem from "./UserItem";
+import PropTypes from 'prop-types';
+import React from 'react';
+import { leaderBoardValidator } from '../../../utils/propValidator';
+import UserItem from './UserItem';
 
-const UserList = ({ userData }) => {
+function UserList({ userData }) {
   return (
     <div className="flex w-full flex-col">
-      {userData.map((data, i) => (
-        <UserItem key={i} data={data} />
+      {userData.map((data) => (
+        <UserItem key={data.user.id} data={data} />
       ))}
     </div>
   );
-};
+}
 
 UserList.propTypes = {
-  userData: PropTypes.array.isRequired,
+  userData: PropTypes.arrayOf(PropTypes.shape(leaderBoardValidator)).isRequired,
 };
 
 export default UserList;

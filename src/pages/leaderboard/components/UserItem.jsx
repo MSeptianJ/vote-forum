@@ -1,7 +1,9 @@
-import PropTypes from "prop-types";
-import { Avatar } from "flowbite-react";
+import { Avatar } from 'flowbite-react';
+import PropTypes from 'prop-types';
+import React from 'react';
+import { leaderBoardValidator } from '../../../utils/propValidator';
 
-const UserItem = ({ data }) => {
+function UserItem({ data }) {
   return (
     <div className="flex w-full items-center justify-between border-b border-secondary py-2">
       <div>
@@ -15,10 +17,10 @@ const UserItem = ({ data }) => {
       </div>
     </div>
   );
-};
+}
 
 UserItem.propTypes = {
-  data: PropTypes.object.isRequired,
+  data: PropTypes.shape(leaderBoardValidator).isRequired,
 };
 
 export default UserItem;

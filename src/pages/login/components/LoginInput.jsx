@@ -1,12 +1,17 @@
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
+import React from 'react';
 
-const LoginInput = () => {
+function LoginInput({ onLogin }) {
+  const handleSubmit = () => {
+    onLogin();
+  };
+
   return (
-    <form className="mt-3 flex w-full flex-col gap-4">
+    <form className="mt-3 flex w-full flex-col gap-4" onSubmit={handleSubmit}>
       <div className="grid w-full space-y-1">
-        <label htmlFor="emailLogin" className="w-full text-sm text-gray-300">
+        <p htmlFor="emailLogin" className="w-full text-sm text-gray-300">
           Email
-        </label>
+        </p>
         <input
           type="text"
           id="emailLogin"
@@ -15,9 +20,9 @@ const LoginInput = () => {
       </div>
 
       <div className="grid w-full space-y-1">
-        <label htmlFor="passLogin" className="w-full text-sm text-gray-300">
+        <p htmlFor="passLogin" className="w-full text-sm text-gray-300">
           Password
-        </label>
+        </p>
         <input
           type="password"
           id="passLogin"
@@ -34,8 +39,10 @@ const LoginInput = () => {
       </div>
     </form>
   );
-};
+}
 
-LoginInput.propTypes = {};
+LoginInput.propTypes = {
+  onLogin: PropTypes.func.isRequired,
+};
 
 export default LoginInput;

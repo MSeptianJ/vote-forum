@@ -1,6 +1,6 @@
 import React from 'react';
 import CommentList from '../../components/Comment/CommentList';
-import ThreadWithComment from '../../components/Thread/ThreadWithComment';
+import ThreadDetail from './components/ThreadDetail';
 
 function ThreadPage() {
   const data = {
@@ -70,7 +70,7 @@ function ThreadPage() {
 
   return (
     <div className="mb-5 mt-8 w-full px-5">
-      <ThreadWithComment
+      <ThreadDetail
         data={data}
         onUpVote={onUpVote}
         onDownVote={onDownVote}

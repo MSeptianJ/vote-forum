@@ -1,13 +1,13 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { threadDetailValidator } from '../../utils/propValidator';
-import ThreadAccount from './ThreadAccount';
-import ThreadBody from './ThreadBody';
-import ThreadBtn from './ThreadBtn';
-import ThreadComment from './ThreadComment';
-import ThreadTitle from './ThreadTitle';
+import ThreadAccount from '../../../components/Thread/ThreadAccount';
+import ThreadBody from '../../../components/Thread/ThreadBody';
+import ThreadBtn from '../../../components/Thread/ThreadBtn';
+import ThreadComment from '../../../components/Thread/ThreadComment';
+import ThreadTitle from '../../../components/Thread/ThreadTitle';
+import { threadDetailValidator } from '../../../utils/propValidator';
 
-function ThreadWithComment({
+function ThreadDetail({
   data, onUpVote, onDownVote, onComment,
 }) {
   return (
@@ -32,11 +32,11 @@ function ThreadWithComment({
   );
 }
 
-ThreadWithComment.propTypes = {
+ThreadDetail.propTypes = {
   data: PropTypes.shape(threadDetailValidator).isRequired,
   onUpVote: PropTypes.func.isRequired,
   onDownVote: PropTypes.func.isRequired,
   onComment: PropTypes.func.isRequired,
 };
 
-export default ThreadWithComment;
+export default ThreadDetail;

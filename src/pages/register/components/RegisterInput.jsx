@@ -1,12 +1,17 @@
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
+import React from 'react';
 
-const RegisterInput = () => {
+function RegisterInput({ onRegister }) {
+  const handleRegister = () => {
+    onRegister();
+  };
+
   return (
-    <form className="mt-3 flex w-full flex-col gap-4">
+    <form className="mt-3 flex w-full flex-col gap-4" onSubmit={handleRegister}>
       <div className="grid w-full space-y-1">
-        <label htmlFor="titleThread" className="w-full text-sm text-gray-300">
+        <p htmlFor="titleThread" className="w-full text-sm text-gray-300">
           Name
-        </label>
+        </p>
         <input
           type="text"
           id="nameRegister"
@@ -15,12 +20,12 @@ const RegisterInput = () => {
       </div>
 
       <div className="grid w-full space-y-1">
-        <label
+        <p
           htmlFor="categoryThread"
           className="w-full text-sm text-gray-300"
         >
           Email
-        </label>
+        </p>
         <input
           type="email"
           id="emailRegister"
@@ -29,12 +34,12 @@ const RegisterInput = () => {
       </div>
 
       <div className="grid w-full space-y-1">
-        <label
+        <p
           htmlFor="categoryThread"
           className="w-full text-sm text-gray-300"
         >
           Password
-        </label>
+        </p>
         <input
           type="password"
           id="passwordRegister"
@@ -51,8 +56,10 @@ const RegisterInput = () => {
       </div>
     </form>
   );
-};
+}
 
-RegisterInput.propTypes = {};
+RegisterInput.propTypes = {
+  onRegister: PropTypes.func.isRequired,
+};
 
 export default RegisterInput;

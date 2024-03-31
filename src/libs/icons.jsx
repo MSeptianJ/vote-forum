@@ -1,64 +1,65 @@
+import React from 'react';
 import {
   BsArrowDownSquare,
   BsArrowUpSquare,
   BsFillArrowDownSquareFill,
   BsFillArrowUpSquareFill,
-} from "react-icons/bs";
-import { FaPlus } from "react-icons/fa6";
+} from 'react-icons/bs';
+import { FaPlus } from 'react-icons/fa6';
 import {
   MdHome,
   MdLeaderboard,
+  MdLogin,
   MdOutlineComment,
   MdOutlineHome,
   MdOutlineLeaderboard,
   MdSearch,
-  MdLogin,
-} from "react-icons/md";
+} from 'react-icons/md';
 
-export const IconHome = () => {
+export function IconHome() {
   return <MdHome />;
-};
+}
 
-export const IconHomeOutline = () => {
+export function IconHomeOutline() {
   return <MdOutlineHome />;
-};
+}
 
-export const IconLeaderboard = () => {
+export function IconLeaderboard() {
   return <MdLeaderboard />;
-};
+}
 
-export const IconLeaderboardOutline = () => {
+export function IconLeaderboardOutline() {
   return <MdOutlineLeaderboard />;
-};
+}
 
-export const IconSearch = () => {
+export function IconSearch() {
   return <MdSearch />;
-};
+}
 
-export const IconPlus = () => {
+export function IconPlus() {
   return <FaPlus />;
-};
+}
 
-export const IconVote = () => {
+export function IconVote() {
   return <BsFillArrowUpSquareFill />;
-};
+}
 
-export const IconVoteOutline = () => {
+export function IconVoteOutline() {
   return <BsArrowUpSquare />;
-};
+}
 
-export const IconUnvote = () => {
+export function IconUnvote() {
   return <BsFillArrowDownSquareFill />;
-};
+}
 
-export const IconUnvoteOutline = () => {
+export function IconUnvoteOutline() {
   return <BsArrowDownSquare />;
-};
+}
 
-export const IconComment = () => {
+export function IconComment() {
   return <MdOutlineComment />;
-};
+}
 
-export const IconLogin = () => {
+export function IconLogin() {
   return <MdLogin />;
-};
+}

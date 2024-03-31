@@ -1,18 +1,19 @@
+import React from 'react';
 import {
   Route,
   createBrowserRouter,
   createRoutesFromElements,
-} from "react-router-dom";
-import App from "../App";
-import ErrorPage from "../pages/error";
-import HomePage from "../pages/home";
-import RegisterPage from "../pages/register";
-import LoginPage from "../pages/login";
-import LeaderBoardPage from "../pages/leaderboard";
-import SubmitPage from "../pages/submit";
-import ThreadPage from "../pages/thread";
+} from 'react-router-dom';
+import App from '../App';
+import ErrorPage from '../pages/error';
+import HomePage from '../pages/home';
+import LeaderBoardPage from '../pages/leaderboard';
+import LoginPage from '../pages/login';
+import RegisterPage from '../pages/register';
+import SubmitPage from '../pages/submit';
+import ThreadPage from '../pages/thread';
 
-export const router = createBrowserRouter(
+const router = createBrowserRouter(
   createRoutesFromElements(
     <Route element={<App />} errorElement={<ErrorPage />}>
       <Route index element={<HomePage />} />
@@ -26,3 +27,5 @@ export const router = createBrowserRouter(
     </Route>,
   ),
 );
+
+export default router;

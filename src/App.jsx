@@ -1,7 +1,8 @@
-import { Outlet, useLocation } from "react-router-dom";
-import BottomBar from "./components/BottomBar";
-import TopBar from "./components/TopBar";
-import CategoryBox from "./components/CategoryBox";
+import React from 'react';
+import { Outlet, useLocation } from 'react-router-dom';
+import BottomBar from './components/BottomBar';
+import CategoryBox from './components/CategoryBox';
+import TopBar from './components/TopBar';
 
 function App() {
   const location = useLocation();
@@ -14,7 +15,7 @@ function App() {
         <Outlet />
       </div>
 
-      {location.pathname === "/" && <CategoryBox />}
+      {location.pathname === '/' && <CategoryBox />}
 
       <BottomBar />
     </div>

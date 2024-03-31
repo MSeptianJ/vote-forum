@@ -1,10 +1,17 @@
-const SubmitInput = () => {
+import PropTypes from 'prop-types';
+import React from 'react';
+
+function SubmitInput({ onSubmitThread }) {
+  const handleSubmitThread = () => {
+    onSubmitThread();
+  };
+
   return (
-    <form className="mt-3 flex w-full flex-col gap-4">
+    <form className="mt-3 flex w-full flex-col gap-4" onSubmit={handleSubmitThread}>
       <div className="grid w-full space-y-1">
-        <label htmlFor="titleThread" className="w-full text-sm text-gray-300">
+        <p htmlFor="titleThread" className="w-full text-sm text-gray-300">
           Title
-        </label>
+        </p>
         <input
           type="text"
           id="titleThread"
@@ -13,12 +20,12 @@ const SubmitInput = () => {
       </div>
 
       <div className="grid w-full space-y-1">
-        <label
+        <p
           htmlFor="categoryThread"
           className="w-full text-sm text-gray-300"
         >
           Category
-        </label>
+        </p>
         <input
           type="text"
           id="categoryThread"
@@ -27,14 +34,14 @@ const SubmitInput = () => {
       </div>
 
       <div className="grid w-full space-y-1">
-        <label htmlFor="bodyThread" className="w-full text-sm text-gray-300">
+        <p className="w-full text-sm text-gray-300">
           Body Text
-        </label>
+        </p>
         <div
           id="bodyThread"
           contentEditable
           className=" min-h-32 w-full rounded-[4px] border border-secondary p-2"
-        ></div>
+        />
       </div>
 
       <div className="mt-3 flex w-full justify-center">
@@ -46,8 +53,10 @@ const SubmitInput = () => {
       </div>
     </form>
   );
-};
+}
 
-SubmitInput.propTypes = {};
+SubmitInput.propTypes = {
+  onSubmitThread: PropTypes.func.isRequired,
+};
 
 export default SubmitInput;

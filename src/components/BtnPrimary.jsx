@@ -1,12 +1,13 @@
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
+import React from 'react';
 
-const BtnPrimary = ({
+function BtnPrimary({
   btnDisabled,
   btnStyles,
   btnFunction,
   btnIcon,
   btnText,
-}) => {
+}) {
   const handleBtnClick = () => {
     if (btnFunction) {
       btnFunction();
@@ -15,23 +16,32 @@ const BtnPrimary = ({
 
   return (
     <button
+      type="button"
       className={` block cursor-pointer font-bold transition-colors duration-300 ${btnStyles}`}
       onClick={handleBtnClick}
       title={btnText}
       disabled={btnDisabled}
     >
       {btnIcon}
-      {btnText || ""}
+      {btnText || ''}
     </button>
   );
-};
+}
 
 BtnPrimary.propTypes = {
   btnStyles: PropTypes.string,
   btnText: PropTypes.string,
   btnFunction: PropTypes.func,
   btnDisabled: PropTypes.bool,
-  btnIcon: PropTypes.object,
+  btnIcon: PropTypes.node,
+};
+
+BtnPrimary.defaultProps = {
+  btnStyles: '',
+  btnText: '',
+  btnFunction: null,
+  btnDisabled: false,
+  btnIcon: null,
 };
 
 export default BtnPrimary;

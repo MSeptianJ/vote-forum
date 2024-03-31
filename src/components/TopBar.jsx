@@ -1,23 +1,24 @@
-import { Link, useLocation } from "react-router-dom";
-import LOGOTEXT from "../assets/imgs/logo_text.svg";
+import React from 'react';
+import { Link, useLocation } from 'react-router-dom';
+import LOGOTEXT from '../assets/imgs/logo_text.svg';
 import {
   IconHome,
   IconHomeOutline,
   IconLeaderboard,
   IconLeaderboardOutline,
   IconLogin,
-} from "../libs/icons";
-import AccountBtn from "./AccountBtn";
-import BtnPrimary from "./BtnPrimary";
+} from '../libs/icons';
+import AccountBtn from './AccountBtn';
+import BtnPrimary from './BtnPrimary';
 
-const TopBar = () => {
+function TopBar() {
   const location = useLocation();
   const user = false;
 
   return (
     <div className=" flex w-full items-center justify-between bg-primary px-3 md:h-16">
       <div className="h-full">
-        <Link to={"/"}>
+        <Link to="/">
           <img
             src={LOGOTEXT}
             alt="Logo Votrum"
@@ -28,25 +29,21 @@ const TopBar = () => {
 
       <div className=" flex h-full items-center justify-center gap-4 text-white">
         <nav className=" hidden h-full w-full items-center gap-4 md:flex">
-          <Link to={"/"} className="h-full">
+          <Link to="/" className="h-full">
             <BtnPrimary
-              btnText={"Home"}
-              btnStyles={
-                "w-full p-4 h-full flex items-center gap-2 hover:bg-secondary"
-              }
+              btnText="Home"
+              btnStyles="w-full p-4 h-full flex items-center gap-2 hover:bg-secondary"
               btnIcon={
-                location.pathname === "/" ? <IconHome /> : <IconHomeOutline />
+                location.pathname === '/' ? <IconHome /> : <IconHomeOutline />
               }
             />
           </Link>
-          <Link to={"/leaderboard"} className="h-full">
+          <Link to="/leaderboard" className="h-full">
             <BtnPrimary
-              btnText={"Leaderboard"}
-              btnStyles={
-                "w-full flex p-4 h-full items-center gap-2 hover:bg-secondary"
-              }
+              btnText="Leaderboard"
+              btnStyles="w-full flex p-4 h-full items-center gap-2 hover:bg-secondary"
               btnIcon={
-                location.pathname === "/leaderboard" ? (
+                location.pathname === '/leaderboard' ? (
                   <IconLeaderboard />
                 ) : (
                   <IconLeaderboardOutline />
@@ -60,11 +57,9 @@ const TopBar = () => {
           <AccountBtn />
         ) : (
           <div className="h-full">
-            <Link to={"/login"} className="h-full">
+            <Link to="/login" className="h-full">
               <BtnPrimary
-                btnStyles={
-                  "text-xl h-full p-2 md:text-base transition-colors duration-300 hover:bg-secondary"
-                }
+                btnStyles="text-xl h-full p-2 md:text-base transition-colors duration-300 hover:bg-secondary"
                 btnIcon={<IconLogin />}
               />
             </Link>
@@ -73,6 +68,6 @@ const TopBar = () => {
       </div>
     </div>
   );
-};
+}
 
 export default TopBar;

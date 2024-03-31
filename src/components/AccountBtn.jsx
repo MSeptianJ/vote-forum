@@ -1,24 +1,25 @@
-import { Avatar, Dropdown } from "flowbite-react";
-import { FaTrophy } from "react-icons/fa6";
-import { PiSignOutBold } from "react-icons/pi";
+import { Avatar, Dropdown } from 'flowbite-react';
+import React from 'react';
+import { FaTrophy } from 'react-icons/fa6';
+import { PiSignOutBold } from 'react-icons/pi';
 
-const AccountBtn = () => {
+function AccountBtn() {
   const data = {
-    id: "john_doe",
-    name: "John Doe",
-    email: "john@example.com",
-    avatar: "https://ui-avatars.com/api/?name=Kaka&background=random",
+    id: 'john_doe',
+    name: 'John Doe',
+    email: 'john@example.com',
+    avatar: 'https://ui-avatars.com/api/?name=Kaka&background=random',
   };
 
   return (
     <Dropdown
-      label={
+      label={(
         <Avatar
           rounded
           img={data.avatar}
           className="p-2 transition-colors duration-300 hover:bg-secondary"
         />
-      }
+      )}
       arrowIcon={false}
       inline
       className=" border-none bg-primary text-white"
@@ -41,6 +42,6 @@ const AccountBtn = () => {
       </Dropdown.Item>
     </Dropdown>
   );
-};
+}
 
 export default AccountBtn;

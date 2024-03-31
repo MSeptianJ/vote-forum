@@ -19,15 +19,15 @@ export const postedAt = (date) => {
   if (diffSeconds > 0) {
     return `${diffSeconds} seconds ago`;
   }
-  return "just now";
+  return 'just now';
 };
 
 export const showFormattedDate = (date) => {
   const options = {
-    weekday: "long",
-    year: "numeric",
-    month: "long",
-    day: "numeric",
+    weekday: 'long',
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
   };
-  return new Date(date).toLocaleDateString("id-ID", options);
+  return new Date(date).toLocaleDateString('id-ID', options);
 };

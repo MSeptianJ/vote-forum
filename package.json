@@ -13,6 +13,7 @@
     "@reduxjs/toolkit": "^2.2.1",
     "flowbite": "^2.3.0",
     "flowbite-react": "^0.7.5",
+    "prop-types": "^15.8.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^5.0.1",
@@ -25,8 +26,11 @@
     "@types/react-dom": "^18.2.15",
     "@vitejs/plugin-react": "^4.2.0",
     "autoprefixer": "^10.4.18",
-    "eslint": "^8.53.0",
-    "eslint-plugin-react": "^7.33.2",
+    "eslint": "^8.57.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-jsx-a11y": "^6.8.0",
+    "eslint-plugin-react": "^7.34.1",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.4",
     "postcss": "^8.4.35",
@@ -38,6 +42,9 @@
   "prettier": {
     "plugins": [
       "prettier-plugin-tailwindcss"
-    ]
+    ],
+    "singleQuote": true,
+    "trailingComma": "all",
+    "semi": true
   }
 }

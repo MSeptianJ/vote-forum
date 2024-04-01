@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom';
 import RegisterInput from './components/RegisterInput';
 
 function RegisterPage() {
-  const onRegister = () => {
-    console.log('Registered');
+  const onRegister = async ({ name, email, password }) => {
+    console.log({ name, email, password });
   };
 
   return (
@@ -28,6 +28,7 @@ function RegisterPage() {
           </Link>
         </div>
       </div>
+
     </div>
   );
 }

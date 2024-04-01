@@ -1,9 +1,19 @@
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { useState } from 'react';
+import useInput from '../../../hooks/useInput';
 
 function SubmitInput({ onSubmitThread }) {
-  const handleSubmitThread = () => {
-    onSubmitThread();
+  const [title, onTitleChange] = useInput('');
+  const [category, onCategoryChange] = useInput('');
+  const [body, setBody] = useState('');
+
+  const bodyHandler = (e) => {
+    setBody(e.target.innerHTML);
+  };
+
+  const handleSubmitThread = (event) => {
+    event.preventDefault();
+    onSubmitThread({ title, category, body });
   };
 
   return (
@@ -15,6 +25,8 @@ function SubmitInput({ onSubmitThread }) {
         <input
           type="text"
           id="titleThread"
+          value={title}
+          onChange={onTitleChange}
           className="w-full rounded-[4px] border border-secondary bg-transparent"
         />
       </div>
@@ -29,6 +41,8 @@ function SubmitInput({ onSubmitThread }) {
         <input
           type="text"
           id="categoryThread"
+          value={category}
+          onChange={onCategoryChange}
           className="w-full rounded-[4px] border border-secondary bg-transparent"
         />
       </div>
@@ -40,6 +54,7 @@ function SubmitInput({ onSubmitThread }) {
         <div
           id="bodyThread"
           contentEditable
+          onInput={bodyHandler}
           className=" min-h-32 w-full rounded-[4px] border border-secondary p-2"
         />
       </div>

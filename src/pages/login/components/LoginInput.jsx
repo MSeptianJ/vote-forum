@@ -1,9 +1,14 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import useInput from '../../../hooks/useInput';
 
 function LoginInput({ onLogin }) {
-  const handleSubmit = () => {
-    onLogin();
+  const [email, onEmailChange] = useInput('');
+  const [pass, onPassChange] = useInput('');
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    onLogin({ email, pass });
   };
 
   return (
@@ -15,6 +20,8 @@ function LoginInput({ onLogin }) {
         <input
           type="text"
           id="emailLogin"
+          value={email}
+          onChange={onEmailChange}
           className="w-full rounded-[4px] border border-secondary bg-transparent"
         />
       </div>
@@ -26,6 +33,8 @@ function LoginInput({ onLogin }) {
         <input
           type="password"
           id="passLogin"
+          value={pass}
+          onChange={onPassChange}
           className="w-full rounded-[4px] border border-secondary bg-transparent"
         />
       </div>

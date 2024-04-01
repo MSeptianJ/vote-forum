@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom';
 import LoginInput from './components/LoginInput';
 
 function LoginPage() {
-  const onSubmit = () => {
-    console.log('Submitted');
+  const onSubmit = ({ email, pass }) => {
+    console.log({ email, pass });
   };
 
   return (

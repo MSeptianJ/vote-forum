@@ -2,8 +2,8 @@ import React from 'react';
 import SubmitInput from './components/SubmitInput';
 
 function SubmitPage() {
-  const onSubmitThread = () => {
-    console.log('Submitted');
+  const onSubmitThread = ({ title, category, body }) => {
+    console.log({ title, category, body });
   };
   return (
     <div className="mt-8 w-full px-5">

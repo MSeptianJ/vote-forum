@@ -1,9 +1,15 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import useInput from '../../../hooks/useInput';
 
 function RegisterInput({ onRegister }) {
-  const handleRegister = () => {
-    onRegister();
+  const [name, onNameChange] = useInput('');
+  const [email, onEmailChange] = useInput('');
+  const [password, onPassChange] = useInput('');
+
+  const handleRegister = (event) => {
+    event.preventDefault();
+    onRegister({ name, email, password });
   };
 
   return (
@@ -15,6 +21,8 @@ function RegisterInput({ onRegister }) {
         <input
           type="text"
           id="nameRegister"
+          value={name}
+          onChange={onNameChange}
           className="w-full rounded-[4px] border border-secondary bg-transparent"
         />
       </div>
@@ -29,6 +37,8 @@ function RegisterInput({ onRegister }) {
         <input
           type="email"
           id="emailRegister"
+          value={email}
+          onChange={onEmailChange}
           className="w-full rounded-[4px] border border-secondary bg-transparent"
         />
       </div>
@@ -43,6 +53,8 @@ function RegisterInput({ onRegister }) {
         <input
           type="password"
           id="passwordRegister"
+          value={password}
+          onChange={onPassChange}
           className="w-full rounded-[4px] border border-secondary bg-transparent"
         />
       </div>

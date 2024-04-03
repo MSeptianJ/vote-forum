@@ -1,5 +1,7 @@
 import { hideLoading, showLoading } from 'react-redux-loading-bar';
-import { getOwnProfile, login, putAccessToken } from '../../utils/api';
+import {
+  getOwnProfile, login, putAccessToken, register,
+} from '../../utils/api';
 
 export const AUTH_USER_ACTION_TYPE = {
   SET: 'SET_AUTH_USER',
@@ -17,6 +19,14 @@ export const unsetAuthUserAction = () => ({
   type: AUTH_USER_ACTION_TYPE.UNSET,
   payload: {},
 });
+
+export const asyncRegisterUser = ({ name, email, password }) => async () => {
+  try {
+    await register({ name, email, password });
+  } catch (error) {
+    throw new Error(error);
+  }
+};
 
 export const asyncLoginUser = ({ email, password }) => async (dispatch) => {
   dispatch(showLoading());

@@ -8,7 +8,7 @@ import CommentBtn from './CommentBtn';
 function CommentItem({ data, onUpVote, onDownVote }) {
   return (
     <>
-      <CommentAccount createdAt={data.createdAt} />
+      <CommentAccount owner={data.owner} createdAt={data.createdAt} />
       <CommentBody body={data.content} />
       <CommentBtn
         totalDownVotes={data.downVotesBy.length}

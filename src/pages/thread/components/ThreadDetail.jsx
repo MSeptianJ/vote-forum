@@ -8,21 +8,25 @@ import ThreadTitle from '../../../components/Thread/ThreadTitle';
 import { threadDetailValidator } from '../../../utils/propValidator';
 
 function ThreadDetail({
-  data, onUpVote, onDownVote, onComment,
+  threadDetailData, onUpVote, onDownVote, onComment,
 }) {
   return (
     <div className="mb-10 flex w-full flex-col rounded-md bg-primary p-5 shadow-lg">
-      <ThreadAccount ownerId={data?.owner.id} createdAt={data.createdAt} />
+      <ThreadAccount user={threadDetailData.owner} createdAt={threadDetailData?.createdAt} />
 
-      <ThreadTitle category={data.category} title={data.title} id={data.id} />
+      <ThreadTitle
+        category={threadDetailData.category}
+        title={threadDetailData.title}
+        id={threadDetailData.id}
+      />
 
-      <ThreadBody body={data.body} />
+      <ThreadBody body={threadDetailData.body} />
 
       <ThreadBtn
-        id={data.id}
-        totalDownVotes={data.downVotesBy.length}
-        totalUpVotes={data.upVotesBy.length}
-        totalComments={data.comments.length}
+        id={threadDetailData.id}
+        totalDownVotes={threadDetailData.downVotesBy.length}
+        totalUpVotes={threadDetailData.upVotesBy.length}
+        totalComments={threadDetailData.comments.length}
         onUpVote={onUpVote}
         onDownVote={onDownVote}
       />
@@ -33,7 +37,7 @@ function ThreadDetail({
 }
 
 ThreadDetail.propTypes = {
-  data: PropTypes.shape(threadDetailValidator).isRequired,
+  threadDetailData: PropTypes.shape(threadDetailValidator).isRequired,
   onUpVote: PropTypes.func.isRequired,
   onDownVote: PropTypes.func.isRequired,
   onComment: PropTypes.func.isRequired,

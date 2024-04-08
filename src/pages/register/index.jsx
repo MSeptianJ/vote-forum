@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { asyncRegisterUser } from '../../store/auth-user/action';
@@ -7,11 +7,16 @@ import RegisterInput from './components/RegisterInput';
 function RegisterPage() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [errorText, setErrorText] = useState('');
 
-  const onRegister = async ({ name, email, password }) => {
-    dispatch(asyncRegisterUser({ name, email, password }));
-    navigate('/login');
-  };
+  const onRegister = useCallback(async ({ name, email, password }) => {
+    try {
+      await dispatch(asyncRegisterUser({ name, email, password }));
+      navigate('/login');
+    } catch (error) {
+      setErrorText(error);
+    }
+  }, [dispatch, navigate]);
 
   return (
     <div className="mt-8 w-full px-5">
@@ -26,6 +31,14 @@ function RegisterPage() {
         </div>
 
         <RegisterInput onRegister={onRegister} />
+
+        {
+          errorText && (
+          <div className=" w-full text-center p-3">
+            <p className=" text-red-600 text-xs">{errorText.message}</p>
+          </div>
+          )
+        }
 
         <div className=" mt-2 flex w-full gap-1 text-xs text-gray-300">
           <p>Sudah memiliki Akun?</p>

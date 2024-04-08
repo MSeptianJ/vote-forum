@@ -13,7 +13,7 @@ import { ownerValidator } from '../utils/propValidator';
 import AccountBtn from './AccountBtn';
 import BtnPrimary from './BtnPrimary';
 
-function TopBar({ authUser }) {
+function TopBar({ onLogOut, authUser }) {
   const location = useLocation();
 
   return (
@@ -55,7 +55,7 @@ function TopBar({ authUser }) {
         </nav>
 
         {authUser ? (
-          <AccountBtn userData={authUser} />
+          <AccountBtn userData={authUser} onLogOut={onLogOut} />
         ) : (
           <div className="h-full">
             <Link to="/login" className="h-full">
@@ -73,6 +73,7 @@ function TopBar({ authUser }) {
 
 TopBar.propTypes = {
   authUser: PropTypes.shape(ownerValidator),
+  onLogOut: PropTypes.func.isRequired,
 };
 
 TopBar.defaultProps = {

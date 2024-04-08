@@ -1,12 +1,13 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Outlet, useLocation } from 'react-router-dom';
+import { Outlet, ScrollRestoration, useLocation } from 'react-router-dom';
 import BottomBar from './components/BottomBar';
 import CategoryBox from './components/CategoryBox';
 import LoadingStrip from './components/LoadingStrip';
 import TopBar from './components/TopBar';
 import { asyncPreloadProcess } from './store/isPreload/action';
 import { asyncGetLeaderBoards } from './store/leaderboard/action';
+import { asyncLogoutUser } from './store/auth-user/action';
 
 function App() {
   const location = useLocation();
@@ -14,6 +15,10 @@ function App() {
   const isPreload = useSelector((states) => states.isPreload);
   const authUser = useSelector((states) => states.authUser);
   const boxState = useSelector((states) => states.categoryBox);
+
+  const onLogOut = () => {
+    dispatch(asyncLogoutUser());
+  };
 
   useEffect(() => {
     dispatch(asyncPreloadProcess());
@@ -26,7 +31,8 @@ function App() {
 
   return (
     <div className=" min-h-screen w-full">
-      <TopBar authUser={authUser} />
+      <ScrollRestoration />
+      <TopBar onLogOut={onLogOut} authUser={authUser} />
 
       <LoadingStrip />
 

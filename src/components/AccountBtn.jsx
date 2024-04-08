@@ -3,18 +3,16 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { FaTrophy } from 'react-icons/fa6';
 import { PiSignOutBold } from 'react-icons/pi';
-import { useDispatch, useSelector } from 'react-redux';
-import { asyncLogoutUser } from '../store/auth-user/action';
+import { useSelector } from 'react-redux';
 import { ownerValidator } from '../utils/propValidator';
 
-function AccountBtn({ userData }) {
-  const dispath = useDispatch();
+function AccountBtn({ onLogOut, userData }) {
   const leaderBoards = useSelector((states) => states.leaderBoards);
 
   const userScore = leaderBoards.find((data) => data.user.id === userData.id)?.score;
 
   const handleLogOut = () => {
-    dispath(asyncLogoutUser());
+    onLogOut();
   };
 
   return (
@@ -52,6 +50,7 @@ function AccountBtn({ userData }) {
 }
 
 AccountBtn.propTypes = {
+  onLogOut: PropTypes.func.isRequired,
   userData: PropTypes.shape(ownerValidator).isRequired,
 };
 

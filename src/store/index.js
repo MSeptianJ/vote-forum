@@ -1,6 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { loadingBarReducer } from 'react-redux-loading-bar';
 import authUserReducer from './auth-user/reducer';
+import categoryBoxReducer from './category-box/reducer';
 import commentsReducer from './comment/redux';
 import isPreloadReducer from './isPreload/reducer';
 import leaderBoardsReducer from './leaderboard/reducer';
@@ -18,6 +19,7 @@ const store = configureStore({
     comments: commentsReducer,
     leaderBoards: leaderBoardsReducer,
     loadingBar: loadingBarReducer,
+    categoryBox: categoryBoxReducer,
   },
 });
 

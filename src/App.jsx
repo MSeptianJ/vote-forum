@@ -13,6 +13,7 @@ function App() {
   const dispatch = useDispatch();
   const isPreload = useSelector((states) => states.isPreload);
   const authUser = useSelector((states) => states.authUser);
+  const boxState = useSelector((states) => states.categoryBox);
 
   useEffect(() => {
     dispatch(asyncPreloadProcess());
@@ -33,7 +34,7 @@ function App() {
         <Outlet />
       </div>
 
-      {location.pathname === '/' && <CategoryBox />}
+      {location.pathname === '/' && (boxState && <CategoryBox />)}
 
       <BottomBar />
     </div>

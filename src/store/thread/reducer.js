@@ -5,7 +5,7 @@ function threadsReducer(threads = [], action = {}) {
     case THREAD_ACTION_TYPE.RECEIVE:
       return action.payload.threads;
     case THREAD_ACTION_TYPE.ADD:
-      return [action.payload.threads, ...threads];
+      return [action.payload.thread, ...threads];
     case THREAD_ACTION_TYPE.UPVOTE:
       return threads.map((thread) => {
         const { threadId, userId } = action.payload;

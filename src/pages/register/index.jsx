@@ -32,15 +32,15 @@ function RegisterPage() {
           </p>
         </div>
 
-        <RegisterInput onRegister={onRegister} />
-
         {
           errorText && (
-          <div className=" w-full text-center p-3">
-            <p className=" text-red-600 text-xs">{errorText.message}</p>
+          <div className=" w-full text-center py-2 bg-red-600 rounded-[4px]">
+            <p className=" text-xs ">{errorText.message}</p>
           </div>
           )
         }
+
+        <RegisterInput onRegister={onRegister} />
 
         <div className=" mt-2 flex w-full gap-1 text-xs text-gray-300">
           <p>Sudah memiliki Akun?</p>

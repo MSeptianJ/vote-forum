@@ -34,6 +34,7 @@ export const asyncLoginUser = ({ email, password }) => async (dispatch) => {
   try {
     const token = await login({ email, password });
     putAccessToken(token);
+
     const authUser = await getOwnProfile();
     dispatch(setAuthUserAction(authUser));
   } catch (error) {

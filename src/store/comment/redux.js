@@ -1,6 +1,6 @@
 import { COMMENT_ACTION_TYPE } from './action';
 
-function commentsReducer(comments = {}, action = {}) {
+function commentsReducer(comments = [], action = {}) {
   switch (action.type) {
     case COMMENT_ACTION_TYPE.ADD:
       return [action.payload.comment, ...comments];

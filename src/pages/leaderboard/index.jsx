@@ -1,36 +1,15 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import UserList from './components/UserList';
+import { asyncGetLeaderBoards } from '../../store/leaderboard/action';
 
 function LeaderBoardPage() {
-  const leaderboards = [
-    {
-      user: {
-        id: 'test-1',
-        name: 'John Doe',
-        email: 'john@example.com',
-        avatar: 'https://ui-avatars.com/api/?name=random&background=random',
-      },
-      score: 10,
-    },
-    {
-      user: {
-        id: 'test-2',
-        name: 'Jane Doe',
-        email: 'jane@example.com',
-        avatar: 'https://ui-avatars.com/api/?name=Mamah&background=random',
-      },
-      score: 5,
-    },
-    {
-      user: {
-        id: 'test-3',
-        name: 'Jane Doe',
-        email: 'jane@example.com',
-        avatar: 'https://ui-avatars.com/api/?name=Kaka&background=random',
-      },
-      score: 5,
-    },
-  ];
+  const dispatch = useDispatch();
+  const leaderboards = useSelector((states) => states.leaderBoards);
+
+  useEffect(() => {
+    dispatch(asyncGetLeaderBoards());
+  }, [dispatch]);
 
   return (
     <div className="mt-8 w-full px-5">

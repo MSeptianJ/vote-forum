@@ -22,7 +22,6 @@ function LoginInput({ onLogin }) {
           id="emailLogin"
           value={email}
           onChange={onEmailChange}
-          required
           className="w-full rounded-[4px] border border-secondary bg-transparent"
         />
       </div>
@@ -36,7 +35,6 @@ function LoginInput({ onLogin }) {
           id="passLogin"
           value={password}
           onChange={onPassChange}
-          required
           className="w-full rounded-[4px] border border-secondary bg-transparent"
         />
       </div>

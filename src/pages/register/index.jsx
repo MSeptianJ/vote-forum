@@ -26,6 +26,8 @@ function RegisterPage() {
         <div className=" w-full text-sm text-gray-300">
           <p>
             Buat sebuah akun untuk berdiskusi dengan membuat
+            {' '}
+
             <span className=" font-bold text-white">Thread</span>
           </p>
         </div>

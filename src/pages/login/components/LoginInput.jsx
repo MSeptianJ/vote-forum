@@ -4,11 +4,11 @@ import useInput from '../../../hooks/useInput';
 
 function LoginInput({ onLogin }) {
   const [email, onEmailChange] = useInput('');
-  const [pass, onPassChange] = useInput('');
+  const [password, onPassChange] = useInput('');
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    onLogin({ email, pass });
+    onLogin({ email, password });
   };
 
   return (
@@ -22,6 +22,7 @@ function LoginInput({ onLogin }) {
           id="emailLogin"
           value={email}
           onChange={onEmailChange}
+          required
           className="w-full rounded-[4px] border border-secondary bg-transparent"
         />
       </div>
@@ -33,8 +34,9 @@ function LoginInput({ onLogin }) {
         <input
           type="password"
           id="passLogin"
-          value={pass}
+          value={password}
           onChange={onPassChange}
+          required
           className="w-full rounded-[4px] border border-secondary bg-transparent"
         />
       </div>

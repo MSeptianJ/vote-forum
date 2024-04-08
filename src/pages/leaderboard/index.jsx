@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import UserList from './components/UserList';
 import { asyncGetLeaderBoards } from '../../store/leaderboard/action';
+import UserList from './components/UserList';
 
 function LeaderBoardPage() {
   const dispatch = useDispatch();

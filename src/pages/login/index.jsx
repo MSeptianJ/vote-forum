@@ -1,10 +1,21 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { Link, useNavigate } from 'react-router-dom';
+import { asyncLoginUser } from '../../store/auth-user/action';
 import LoginInput from './components/LoginInput';
 
 function LoginPage() {
-  const onSubmit = ({ email, pass }) => {
-    console.log({ email, pass });
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const [errorText, setErrorText] = useState('');
+
+  const onLogin = ({ email, password }) => {
+    try {
+      dispatch(asyncLoginUser({ email, password }));
+      navigate('/');
+    } catch (error) {
+      setErrorText(error);
+    }
   };
 
   return (
@@ -19,7 +30,9 @@ function LoginPage() {
           </p>
         </div>
 
-        <LoginInput onLogin={onSubmit} />
+        <LoginInput onLogin={onLogin} />
+
+        { errorText && <p>{errorText}</p> }
 
         <div className=" mt-2 flex w-full gap-1 text-xs text-gray-300">
           <p>Tidak memiliki akun?</p>

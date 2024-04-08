@@ -3,12 +3,15 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { FaTrophy } from 'react-icons/fa6';
 import { PiSignOutBold } from 'react-icons/pi';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { asyncLogoutUser } from '../store/auth-user/action';
 import { ownerValidator } from '../utils/propValidator';
 
 function AccountBtn({ userData }) {
   const dispath = useDispatch();
+  const leaderBoards = useSelector((states) => states.leaderBoards);
+
+  const userScore = leaderBoards.find((data) => data.user.id === userData.id)?.score;
 
   const handleLogOut = () => {
     dispath(asyncLogoutUser());
@@ -35,7 +38,7 @@ function AccountBtn({ userData }) {
         icon={FaTrophy}
         className=" border-none text-white hover:text-black"
       >
-        Score 0
+        {`Score ${userScore || 0}`}
       </Dropdown.Item>
       <Dropdown.Item
         icon={PiSignOutBold}

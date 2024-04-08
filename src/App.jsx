@@ -6,6 +6,7 @@ import CategoryBox from './components/CategoryBox';
 import LoadingStrip from './components/LoadingStrip';
 import TopBar from './components/TopBar';
 import { asyncPreloadProcess } from './store/isPreload/action';
+import { asyncGetLeaderBoards } from './store/leaderboard/action';
 
 function App() {
   const location = useLocation();
@@ -15,6 +16,7 @@ function App() {
 
   useEffect(() => {
     dispatch(asyncPreloadProcess());
+    dispatch(asyncGetLeaderBoards());
   }, [dispatch]);
 
   if (isPreload) {
@@ -24,6 +26,7 @@ function App() {
   return (
     <div className=" min-h-screen w-full">
       <TopBar authUser={authUser} />
+
       <LoadingStrip />
 
       <div className=" m-auto min-h-screen w-full lg:max-w-screen-lg">

@@ -16,6 +16,7 @@ export const ownerValidator = {
   id: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   avatar: PropTypes.string.isRequired,
+  email: PropTypes.string,
 };
 
 export const commentValidator = {

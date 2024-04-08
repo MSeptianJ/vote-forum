@@ -1,32 +1,18 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import ThreadList from '../../components/Thread/ThreadList';
+import asyncGetUsersAndThreads from '../../store/shared/action';
 import HomeTopBar from './components/HomeTopBar';
 
 function HomePage() {
-  const ThreadDocs = [
-    {
-      id: 'thread-1',
-      title: 'Thread Pertama',
-      body: 'Ini adalah thread pertama',
-      category: 'General',
-      createdAt: '2021-06-21T07:00:00.000Z',
-      ownerId: 'users-1',
-      upVotesBy: [],
-      downVotesBy: [],
-      totalComments: 0,
-    },
-    {
-      id: 'thread-2',
-      title: 'Thread Kedua',
-      body: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Animi quisquam quasi nulla? Nesciunt amet ipsa atque! Hic error ex mollitia illum odit, provident maiores quod reprehenderit, velit aspernatur magni iusto!, Lorem ipsum dolor sit amet consectetur, adipisicing elit. Animi quisquam quasi nulla? Nesciunt amet ipsa atque! Hic error ex mollitia illum odit, provident maiores quod reprehenderit, velit aspernatur magni iusto!,Lorem ipsum dolor sit amet consectetur, adipisicing elit. Animi quisquam quasi nulla? Nesciunt amet ipsa atque! Hic error ex mollitia illum odit, provident maiores quod reprehenderit, velit aspernatur magni iusto!',
-      category: 'General',
-      createdAt: '2021-06-21T07:00:00.000Z',
-      ownerId: 'users-2',
-      upVotesBy: [],
-      downVotesBy: [],
-      totalComments: 0,
-    },
-  ];
+  const dispatch = useDispatch();
+  const users = useSelector((states) => states.users);
+  const threads = useSelector((states) => states.threads);
+
+  const threadList = threads.map((thread) => ({
+    ...thread,
+    user: users.find((user) => user.id === thread.ownerId),
+  }));
 
   const onUpVote = () => {
     console.log('upvote');
@@ -36,10 +22,14 @@ function HomePage() {
     console.log('downvote');
   };
 
+  useEffect(() => {
+    dispatch(asyncGetUsersAndThreads());
+  }, [dispatch]);
+
   return (
     <div className="mt-8 w-full">
       <HomeTopBar />
-      <ThreadList threadData={ThreadDocs} onUpVote={onUpVote} onDownVote={onDownVote} />
+      <ThreadList threadData={threadList} onUpVote={onUpVote} onDownVote={onDownVote} />
     </div>
   );
 }

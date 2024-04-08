@@ -9,7 +9,7 @@ import ThreadTitle from './ThreadTitle';
 function ThreadItem({ data, onUpVote, onDownVote }) {
   return (
     <>
-      <ThreadAccount ownerId={data.ownerId} createdAt={data.createdAt} />
+      <ThreadAccount user={data.user} createdAt={data.createdAt} />
 
       <ThreadTitle category={data.category} title={data.title} id={data.id} />
 

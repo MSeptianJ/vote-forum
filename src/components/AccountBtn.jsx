@@ -1,14 +1,17 @@
 import { Avatar, Dropdown } from 'flowbite-react';
+import PropTypes from 'prop-types';
 import React from 'react';
 import { FaTrophy } from 'react-icons/fa6';
 import { PiSignOutBold } from 'react-icons/pi';
+import { useDispatch } from 'react-redux';
+import { asyncLogoutUser } from '../store/auth-user/action';
+import { ownerValidator } from '../utils/propValidator';
 
-function AccountBtn() {
-  const data = {
-    id: 'john_doe',
-    name: 'John Doe',
-    email: 'john@example.com',
-    avatar: 'https://ui-avatars.com/api/?name=Kaka&background=random',
+function AccountBtn({ userData }) {
+  const dispath = useDispatch();
+
+  const handleLogOut = () => {
+    dispath(asyncLogoutUser());
   };
 
   return (
@@ -16,7 +19,7 @@ function AccountBtn() {
       label={(
         <Avatar
           rounded
-          img={data.avatar}
+          img={userData.avatar}
           className="p-2 transition-colors duration-300 hover:bg-secondary"
         />
       )}
@@ -25,8 +28,8 @@ function AccountBtn() {
       className=" border-none bg-primary text-white"
     >
       <Dropdown.Header className=" text-white">
-        <span className="block text-sm">{data.name}</span>
-        <span className="block text-sm">{data.email}</span>
+        <span className="block text-sm">{userData.name}</span>
+        <span className="block text-sm">{userData.email}</span>
       </Dropdown.Header>
       <Dropdown.Item
         icon={FaTrophy}
@@ -37,11 +40,16 @@ function AccountBtn() {
       <Dropdown.Item
         icon={PiSignOutBold}
         className=" border-none text-white hover:text-black"
+        onClick={handleLogOut}
       >
-        Log out
+        Log Out
       </Dropdown.Item>
     </Dropdown>
   );
 }
+
+AccountBtn.propTypes = {
+  userData: PropTypes.shape(ownerValidator).isRequired,
+};
 
 export default AccountBtn;

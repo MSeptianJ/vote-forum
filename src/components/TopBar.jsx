@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import LOGOTEXT from '../assets/imgs/logo_text.svg';
@@ -8,12 +9,12 @@ import {
   IconLeaderboardOutline,
   IconLogin,
 } from '../libs/icons';
+import { ownerValidator } from '../utils/propValidator';
 import AccountBtn from './AccountBtn';
 import BtnPrimary from './BtnPrimary';
 
-function TopBar() {
+function TopBar({ authUser }) {
   const location = useLocation();
-  const user = false;
 
   return (
     <div className=" flex w-full items-center justify-between bg-primary px-3 md:h-16">
@@ -53,8 +54,8 @@ function TopBar() {
           </Link>
         </nav>
 
-        {user ? (
-          <AccountBtn />
+        {authUser ? (
+          <AccountBtn userData={authUser} />
         ) : (
           <div className="h-full">
             <Link to="/login" className="h-full">
@@ -69,5 +70,13 @@ function TopBar() {
     </div>
   );
 }
+
+TopBar.propTypes = {
+  authUser: PropTypes.shape(ownerValidator),
+};
+
+TopBar.defaultProps = {
+  authUser: {},
+};
 
 export default TopBar;

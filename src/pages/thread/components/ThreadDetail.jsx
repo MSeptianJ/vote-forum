@@ -8,7 +8,7 @@ import ThreadTitle from '../../../components/Thread/ThreadTitle';
 import { threadDetailValidator } from '../../../utils/propValidator';
 
 function ThreadDetail({
-  threadDetailData, onUpVote, onDownVote, onComment,
+  threadDetailData, onUpVote, onDownVote, onComment, commentError,
 }) {
   return (
     <div className="mb-10 flex w-full flex-col rounded-md bg-primary p-5 shadow-lg">
@@ -32,6 +32,14 @@ function ThreadDetail({
       />
 
       <ThreadComment onComment={onComment} />
+
+      {
+        commentError.message && (
+        <div className=" w-full mt-3 text-center py-2 bg-red-600 rounded-[4px]">
+          <p className=" text-xs text-white">{commentError.message}</p>
+        </div>
+        )
+      }
     </div>
   );
 }
@@ -41,6 +49,11 @@ ThreadDetail.propTypes = {
   onUpVote: PropTypes.func.isRequired,
   onDownVote: PropTypes.func.isRequired,
   onComment: PropTypes.func.isRequired,
+  commentError: PropTypes.objectOf(PropTypes.string),
+};
+
+ThreadDetail.defaultProps = {
+  commentError: {},
 };
 
 export default ThreadDetail;

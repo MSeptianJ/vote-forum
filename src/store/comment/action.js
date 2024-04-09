@@ -36,7 +36,7 @@ export const asyncAddComment = (content) => async (dispatch, getState) => {
   const { threadDetail } = getState();
 
   try {
-    const comment = createComment(content);
+    const comment = await createComment({ threadId: threadDetail.id, content });
     dispatch(addCommentAction(comment));
 
     const newThreadDetail = await getThreadDetail(threadDetail.id);

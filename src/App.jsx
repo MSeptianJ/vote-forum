@@ -5,9 +5,12 @@ import BottomBar from './components/BottomBar';
 import CategoryBox from './components/CategoryBox';
 import LoadingStrip from './components/LoadingStrip';
 import TopBar from './components/TopBar';
+import { asyncLogoutUser } from './store/auth-user/action';
+import { asyncDownVoteComment, asyncUpVoteComment } from './store/comment/action';
 import { asyncPreloadProcess } from './store/isPreload/action';
 import { asyncGetLeaderBoards } from './store/leaderboard/action';
-import { asyncLogoutUser } from './store/auth-user/action';
+import { asyncDownVoteThread, asyncUpVoteThread } from './store/thread/action';
+import { asyncDownVoteThreadDetail, asyncUpVoteThreadDetail } from './store/threadDetail/action';
 
 function App() {
   const location = useLocation();
@@ -20,14 +23,34 @@ function App() {
     dispatch(asyncLogoutUser());
   };
 
+  const onUpVoteThread = (threadId) => {
+    dispatch(asyncUpVoteThread(threadId));
+  };
+
+  const onDownVoteThread = (threadId) => {
+    dispatch(asyncDownVoteThread(threadId));
+  };
+
+  const onUpVoteThreadDetail = (threadId) => {
+    dispatch(asyncUpVoteThreadDetail(threadId));
+  };
+
+  const onDownVoteThreadDetail = (threadId) => {
+    dispatch(asyncDownVoteThreadDetail(threadId));
+  };
+
+  const onUpVoteComment = (commendId) => {
+    dispatch(asyncUpVoteComment(commendId));
+  };
+
+  const onDownVoteComment = (commendId) => {
+    dispatch(asyncDownVoteComment(commendId));
+  };
+
   useEffect(() => {
     dispatch(asyncPreloadProcess());
     dispatch(asyncGetLeaderBoards());
   }, [dispatch]);
-
-  if (isPreload) {
-    return <p>preloading</p>;
-  }
 
   return (
     <div className=" min-h-screen w-full">
@@ -37,7 +60,17 @@ function App() {
       <LoadingStrip />
 
       <div className=" m-auto min-h-screen w-full lg:max-w-screen-lg">
-        <Outlet />
+        {!isPreload && (
+          <Outlet context={{
+            onUpVoteThread,
+            onDownVoteThread,
+            onUpVoteThreadDetail,
+            onDownVoteThreadDetail,
+            onUpVoteComment,
+            onDownVoteComment,
+          }}
+          />
+        )}
       </div>
 
       {location.pathname === '/' && (boxState && <CategoryBox />)}

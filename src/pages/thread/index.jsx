@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useOutletContext, useParams } from 'react-router-dom';
 import CommentList from '../../components/Comment/CommentList';
 import { asyncGetThreadDetail } from '../../store/threadDetail/action';
 import ThreadDetail from './components/ThreadDetail';
@@ -9,14 +9,9 @@ function ThreadPage() {
   const { id } = useParams();
   const dispatch = useDispatch();
   const threadDetail = useSelector((states) => states.threadDetail);
-
-  const onUpVote = () => {
-    console.log('upvote');
-  };
-
-  const onDownVote = () => {
-    console.log('downvote');
-  };
+  const {
+    onUpVoteThreadDetail, onDownVoteThreadDetail, onUpVoteComment, onDownVoteComment,
+  } = useOutletContext();
 
   const onComment = () => {
     console.log('Comments');
@@ -34,14 +29,14 @@ function ThreadPage() {
     <div className="mb-5 mt-8 w-full px-5">
       <ThreadDetail
         threadDetailData={threadDetail}
-        onUpVote={onUpVote}
-        onDownVote={onDownVote}
+        onUpVote={onUpVoteThreadDetail}
+        onDownVote={onDownVoteThreadDetail}
         onComment={onComment}
       />
       <CommentList
         commentData={threadDetail.comments}
-        onUpVote={onUpVote}
-        onDownVote={onDownVote}
+        onUpVote={onUpVoteComment}
+        onDownVote={onDownVoteComment}
       />
     </div>
   );

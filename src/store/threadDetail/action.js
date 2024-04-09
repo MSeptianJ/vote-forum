@@ -45,7 +45,7 @@ export const asyncGetThreadDetail = (threadId) => async (dispatch) => {
   }
 };
 
-export const upVoteThreadDetail = (threadId) => async (dispatch, getState) => {
+export const asyncUpVoteThreadDetail = (threadId) => async (dispatch, getState) => {
   const { authUser } = getState();
   dispatch(upVoteThreadDetailAction({ threadId, userId: authUser.id }));
 
@@ -56,7 +56,7 @@ export const upVoteThreadDetail = (threadId) => async (dispatch, getState) => {
   }
 };
 
-export const downVoteThreadDetail = (threadId) => async (dispatch, getState) => {
+export const asyncDownVoteThreadDetail = (threadId) => async (dispatch, getState) => {
   const { authUser } = getState();
   dispatch(downVoteThreadDetailAction({ threadId, userId: authUser.id }));
 

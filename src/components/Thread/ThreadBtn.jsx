@@ -17,11 +17,11 @@ function ThreadBtn({
   totalComments,
 }) {
   const handleUpVote = () => {
-    onUpVote();
+    onUpVote(id);
   };
 
   const handleDownVote = () => {
-    onDownVote();
+    onDownVote(id);
   };
 
   return (

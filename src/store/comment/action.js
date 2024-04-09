@@ -1,3 +1,4 @@
+import { hideLoading, showLoading } from 'react-redux-loading-bar';
 import {
   createComment, getThreadDetail, toggleDownVoteComment, toggleUpVoteComment,
 } from '../../utils/api';
@@ -33,6 +34,8 @@ export const downVoteCommentAction = ({ commentId, userId }) => ({
 });
 
 export const asyncAddComment = (content) => async (dispatch, getState) => {
+  dispatch(showLoading());
+
   const { threadDetail } = getState();
 
   try {
@@ -44,10 +47,13 @@ export const asyncAddComment = (content) => async (dispatch, getState) => {
   } catch (error) {
     throw new Error(error);
   }
+
+  dispatch(hideLoading());
 };
 
 export const asyncUpVoteComment = (commentId) => async (dispatch, getState) => {
   const { threadDetail, authUser } = getState();
+  dispatch(showLoading());
   dispatch(upVoteCommentAction({ commentId, userId: authUser.id }));
 
   try {
@@ -58,10 +64,13 @@ export const asyncUpVoteComment = (commentId) => async (dispatch, getState) => {
   } catch (error) {
     throw new Error(error);
   }
+
+  dispatch(hideLoading());
 };
 
 export const asyncDownVoteComment = (commentId) => async (dispatch, getState) => {
   const { threadDetail, authUser } = getState();
+  dispatch(showLoading());
   dispatch(downVoteCommentAction({ commentId, userId: authUser.id }));
 
   try {
@@ -72,4 +81,6 @@ export const asyncDownVoteComment = (commentId) => async (dispatch, getState) =>
   } catch (error) {
     throw new Error(error);
   }
+
+  dispatch(hideLoading());
 };

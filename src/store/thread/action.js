@@ -1,3 +1,4 @@
+import { hideLoading, showLoading } from 'react-redux-loading-bar';
 import {
   createThread, getAllThreads, toggleDownVoteThread,
   toggleUpVoteThread,
@@ -50,16 +51,21 @@ export const asyncGetThreads = () => async (dispatch) => {
 };
 
 export const asyncAddThread = ({ title, body, category = 'general' }) => async (dispatch) => {
+  dispatch(showLoading());
+
   try {
     const thread = await createThread({ title, body, category });
     dispatch(addThreadAction(thread));
   } catch (error) {
     throw new Error(error);
   }
+
+  dispatch(hideLoading());
 };
 
 export const asyncUpVoteThread = (threadId) => async (dispatch, getState) => {
   const { authUser } = getState();
+  dispatch(showLoading());
   dispatch(upVoteThreadAction({ threadId, userId: authUser.id }));
 
   try {
@@ -68,10 +74,13 @@ export const asyncUpVoteThread = (threadId) => async (dispatch, getState) => {
     await toggleUpVoteThread(threadId);
     throw new Error(error);
   }
+
+  dispatch(hideLoading());
 };
 
 export const asyncDownVoteThread = (threadId) => async (dispatch, getState) => {
   const { authUser } = getState();
+  dispatch(showLoading());
   dispatch(downVoteThreadAction({ threadId, userId: authUser.id }));
 
   try {
@@ -79,4 +88,6 @@ export const asyncDownVoteThread = (threadId) => async (dispatch, getState) => {
   } catch (error) {
     await toggleDownVoteThread(threadId);
   }
+
+  dispatch(hideLoading());
 };

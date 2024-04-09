@@ -3,7 +3,9 @@ import { LoadingBar } from 'react-redux-loading-bar';
 
 function LoadingStrip() {
   return (
-    <div className="w-full fixed top-0 z-20"><LoadingBar /></div>
+    <div className="w-full fixed top-0 z-20 ">
+      <LoadingBar style={{ height: '5px', background: '#36F760' }} />
+    </div>
   );
 }
 

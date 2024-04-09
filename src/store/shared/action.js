@@ -1,8 +1,11 @@
+import { hideLoading, showLoading } from 'react-redux-loading-bar';
 import { getAllThreads, getAllUsers } from '../../utils/api';
 import { receiveThreadsAction } from '../thread/action';
 import { receiveUsersAction } from '../user/action';
 
 const asyncGetUsersAndThreads = () => async (dispatch) => {
+  dispatch(showLoading());
+
   try {
     const users = await getAllUsers();
     const threads = await getAllThreads();
@@ -12,6 +15,8 @@ const asyncGetUsersAndThreads = () => async (dispatch) => {
   } catch (error) {
     throw new Error(error);
   }
+
+  dispatch(hideLoading());
 };
 
 export default asyncGetUsersAndThreads;

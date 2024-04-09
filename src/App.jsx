@@ -55,9 +55,8 @@ function App() {
   return (
     <div className=" min-h-screen w-full">
       <ScrollRestoration />
-      <TopBar onLogOut={onLogOut} authUser={authUser} />
-
       <LoadingStrip />
+      <TopBar onLogOut={onLogOut} authUser={authUser} />
 
       <div className=" m-auto min-h-screen w-full lg:max-w-screen-lg">
         {!isPreload && (

@@ -20,12 +20,16 @@ export const unsetAuthUserAction = () => ({
   payload: {},
 });
 
-export const asyncRegisterUser = ({ name, email, password }) => async () => {
+export const asyncRegisterUser = ({ name, email, password }) => async (dispatch) => {
+  dispatch(showLoading());
+
   try {
     await register({ name, email, password });
   } catch (error) {
     throw new Error(error);
   }
+
+  dispatch(hideLoading());
 };
 
 export const asyncLoginUser = ({ email, password }) => async (dispatch) => {

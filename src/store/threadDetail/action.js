@@ -1,3 +1,4 @@
+import { hideLoading, showLoading } from 'react-redux-loading-bar';
 import { getThreadDetail, toggleDownVoteThread, toggleUpVoteThread } from '../../utils/api';
 
 export const THREAD_DETAIL_ACTION_TYPE = {
@@ -35,6 +36,7 @@ export const downVoteThreadDetailAction = ({ threadId, userId }) => ({
 });
 
 export const asyncGetThreadDetail = (threadId) => async (dispatch) => {
+  dispatch(showLoading());
   dispatch(clearThreadDetailAction());
 
   try {
@@ -43,10 +45,13 @@ export const asyncGetThreadDetail = (threadId) => async (dispatch) => {
   } catch (error) {
     throw new Error(error);
   }
+
+  dispatch(hideLoading());
 };
 
 export const asyncUpVoteThreadDetail = (threadId) => async (dispatch, getState) => {
   const { authUser } = getState();
+  dispatch(showLoading());
   dispatch(upVoteThreadDetailAction({ threadId, userId: authUser.id }));
 
   try {
@@ -54,10 +59,13 @@ export const asyncUpVoteThreadDetail = (threadId) => async (dispatch, getState) 
   } catch (error) {
     throw new Error(error);
   }
+
+  dispatch(hideLoading());
 };
 
 export const asyncDownVoteThreadDetail = (threadId) => async (dispatch, getState) => {
   const { authUser } = getState();
+  dispatch(showLoading());
   dispatch(downVoteThreadDetailAction({ threadId, userId: authUser.id }));
 
   try {
@@ -65,4 +73,6 @@ export const asyncDownVoteThreadDetail = (threadId) => async (dispatch, getState
   } catch (error) {
     throw new Error(error);
   }
+
+  dispatch(hideLoading());
 };

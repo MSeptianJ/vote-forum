@@ -17,6 +17,9 @@ function ThreadItem({ data, onUpVote, onDownVote }) {
 
       <ThreadBtn
         id={data.id}
+        auth={data.auth}
+        upVotesBy={data.upVotesBy}
+        downVotesBy={data.downVotesBy}
         totalUpVotes={data.upVotesBy.length}
         totalDownVotes={data.downVotesBy.length}
         totalComments={data.totalComments}

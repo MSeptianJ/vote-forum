@@ -3,7 +3,9 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import {
   IconComment,
+  IconUnvote,
   IconUnvoteOutline,
+  IconVote,
   IconVoteOutline,
 } from '../../libs/icons';
 import BtnPrimary from '../BtnPrimary';
@@ -12,10 +14,15 @@ function ThreadBtn({
   onUpVote,
   onDownVote,
   id,
+  auth,
+  upVotesBy,
+  downVotesBy,
   totalUpVotes,
   totalDownVotes,
   totalComments,
 }) {
+  const isUpVoted = upVotesBy?.includes(auth);
+  const isDownVoted = downVotesBy?.includes(auth);
   const handleUpVote = () => {
     onUpVote(id);
   };
@@ -29,14 +36,14 @@ function ThreadBtn({
       <div className=" grid grid-cols-2 gap-4">
         <BtnPrimary
           btnText={String(totalUpVotes)}
-          btnIcon={<IconVoteOutline />}
+          btnIcon={isUpVoted ? <IconVote /> : <IconVoteOutline />}
           btnFunction={handleUpVote}
           btnStyles="flex items-center gap-3 justify-center border border-secondary text-lg py-1 px-4 rounded-md text-accent hover:bg-secondary"
         />
 
         <BtnPrimary
           btnText={String(totalDownVotes)}
-          btnIcon={<IconUnvoteOutline />}
+          btnIcon={isDownVoted ? <IconUnvote /> : <IconUnvoteOutline />}
           btnFunction={handleDownVote}
           btnStyles="flex items-center gap-3 justify-center border border-secondary text-lg py-1 px-4 rounded-md text-accent hover:bg-secondary"
         />
@@ -59,6 +66,9 @@ ThreadBtn.propTypes = {
   onUpVote: PropTypes.func.isRequired,
   onDownVote: PropTypes.func.isRequired,
   id: PropTypes.string.isRequired,
+  auth: PropTypes.string.isRequired,
+  upVotesBy: PropTypes.arrayOf(PropTypes.string).isRequired,
+  downVotesBy: PropTypes.arrayOf(PropTypes.string).isRequired,
   totalComments: PropTypes.number.isRequired,
   totalUpVotes: PropTypes.number.isRequired,
   totalDownVotes: PropTypes.number.isRequired,

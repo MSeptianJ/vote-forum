@@ -8,7 +8,12 @@ import ThreadTitle from '../../../components/Thread/ThreadTitle';
 import { threadDetailValidator } from '../../../utils/propValidator';
 
 function ThreadDetail({
-  threadDetailData, onUpVote, onDownVote, onComment, commentError,
+  auth,
+  threadDetailData,
+  onUpVote,
+  onDownVote,
+  onComment,
+  commentError,
 }) {
   return (
     <div className="mb-10 flex w-full flex-col rounded-md bg-primary p-5 shadow-lg">
@@ -24,6 +29,9 @@ function ThreadDetail({
 
       <ThreadBtn
         id={threadDetailData.id}
+        auth={auth}
+        upVotesBy={threadDetailData.upVotesBy}
+        downVotesBy={threadDetailData.downVotesBy}
         totalDownVotes={threadDetailData.downVotesBy.length}
         totalUpVotes={threadDetailData.upVotesBy.length}
         totalComments={threadDetailData.comments.length}
@@ -45,6 +53,7 @@ function ThreadDetail({
 }
 
 ThreadDetail.propTypes = {
+  auth: PropTypes.string.isRequired,
   threadDetailData: PropTypes.shape(threadDetailValidator).isRequired,
   onUpVote: PropTypes.func.isRequired,
   onDownVote: PropTypes.func.isRequired,

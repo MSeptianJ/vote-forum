@@ -8,11 +8,15 @@ import ThreadDetail from './components/ThreadDetail';
 
 function ThreadPage() {
   const { id } = useParams();
-  const [errorText, setErrorText] = useState({});
   const dispatch = useDispatch();
+  const [errorText, setErrorText] = useState({});
   const threadDetail = useSelector((states) => states.threadDetail);
+  const auth = useSelector((states) => states.authUser);
   const {
-    onUpVoteThreadDetail, onDownVoteThreadDetail, onUpVoteComment, onDownVoteComment,
+    onUpVoteThreadDetail,
+    onDownVoteThreadDetail,
+    onUpVoteComment,
+    onDownVoteComment,
   } = useOutletContext();
 
   const onComment = async (content) => {
@@ -36,6 +40,7 @@ function ThreadPage() {
   return (
     <div className="mb-5 mt-8 w-full px-5">
       <ThreadDetail
+        auth={auth.id}
         threadDetailData={threadDetail}
         onUpVote={onUpVoteThreadDetail}
         onDownVote={onDownVoteThreadDetail}

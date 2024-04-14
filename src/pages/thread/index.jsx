@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useOutletContext, useParams } from 'react-router-dom';
 import CommentList from '../../components/Comment/CommentList';
@@ -28,12 +28,31 @@ function ThreadPage() {
     }
   };
 
+  const getDetail = useCallback(async () => {
+    try {
+      await dispatch(asyncGetThreadDetail(id));
+    } catch (error) {
+      setErrorText(error);
+    }
+  }, [dispatch, id]);
+
   useEffect(() => {
-    dispatch(asyncGetThreadDetail(id));
-  }, [id, dispatch]);
+    getDetail();
+  }, [getDetail]);
 
   if (!threadDetail) {
-    return <LoadingIcon />;
+    return (
+      <div>
+        {
+          !errorText ?
+            <LoadingIcon /> : (
+              <div className="w-full text-center h-screen flex justify-center items-center">
+                <p className=" text-red-600">{errorText.message}</p>
+              </div>
+            )
+}
+      </div>
+    );
   }
 
   return (

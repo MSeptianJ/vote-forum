@@ -23,7 +23,6 @@ const router = createBrowserRouter(
       <Route path="/leaderboard" element={<LeaderBoardPage />} />
       <Route path="/submit" element={<SubmitPage />} />
       <Route path="/thread/:id" element={<ThreadPage />} />
-      {/* <Route path="/*" element={<ErrorPage />} /> */}
     </Route>,
   ),
 );

@@ -5,12 +5,21 @@ import CommentAccount from './CommentAccount';
 import CommentBody from './CommentBody';
 import CommentBtn from './CommentBtn';
 
-function CommentItem({ data, onUpVote, onDownVote }) {
+function CommentItem({
+  auth,
+  data,
+  onUpVote,
+  onDownVote,
+}) {
   return (
     <>
       <CommentAccount owner={data.owner} createdAt={data.createdAt} />
       <CommentBody body={data.content} />
       <CommentBtn
+        id={data.id}
+        auth={auth}
+        upVotesBy={data.upVotesBy}
+        downVotesBy={data.downVotesBy}
         totalDownVotes={data.downVotesBy.length}
         totalUpVotes={data.upVotesBy.length}
         onUpVote={onUpVote}
@@ -21,6 +30,7 @@ function CommentItem({ data, onUpVote, onDownVote }) {
 }
 
 CommentItem.propTypes = {
+  auth: PropTypes.string.isRequired,
   data: PropTypes.shape(commentValidator).isRequired,
   onUpVote: PropTypes.func.isRequired,
   onDownVote: PropTypes.func.isRequired,

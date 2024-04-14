@@ -57,7 +57,7 @@ export const asyncUpVoteComment = (commentId) => async (dispatch, getState) => {
   dispatch(upVoteCommentAction({ commentId, userId: authUser.id }));
 
   try {
-    await toggleUpVoteComment(commentId);
+    await toggleUpVoteComment(threadDetail.id, commentId);
 
     const newThreadDetail = await getThreadDetail(threadDetail.id);
     dispatch(receiveThreadDetailAction(newThreadDetail));
@@ -74,7 +74,7 @@ export const asyncDownVoteComment = (commentId) => async (dispatch, getState) =>
   dispatch(downVoteCommentAction({ commentId, userId: authUser.id }));
 
   try {
-    await toggleDownVoteComment(commentId);
+    await toggleDownVoteComment(threadDetail.id, commentId);
 
     const newThreadDetail = await getThreadDetail(threadDetail.id);
     dispatch(receiveThreadDetailAction(newThreadDetail));

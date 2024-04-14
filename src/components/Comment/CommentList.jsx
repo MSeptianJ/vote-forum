@@ -3,7 +3,12 @@ import React from 'react';
 import { commentValidator } from '../../utils/propValidator';
 import CommentItem from './CommentItem';
 
-function CommentList({ commentData, onUpVote, onDownVote }) {
+function CommentList({
+  auth,
+  commentData,
+  onUpVote,
+  onDownVote,
+}) {
   return (
     <>
       <h3 className=" mb-3 text-xl font-bold">
@@ -17,7 +22,12 @@ function CommentList({ commentData, onUpVote, onDownVote }) {
             key={comment.id}
             className="flex w-full flex-col rounded-md bg-primary p-5 shadow-lg"
           >
-            <CommentItem data={comment} onUpVote={onUpVote} onDownVote={onDownVote} />
+            <CommentItem
+              auth={auth}
+              data={comment}
+              onUpVote={onUpVote}
+              onDownVote={onDownVote}
+            />
           </div>
         ))}
       </div>
@@ -26,6 +36,7 @@ function CommentList({ commentData, onUpVote, onDownVote }) {
 }
 
 CommentList.propTypes = {
+  auth: PropTypes.string.isRequired,
   commentData: PropTypes.arrayOf(PropTypes.shape(commentValidator)).isRequired,
   onUpVote: PropTypes.func.isRequired,
   onDownVote: PropTypes.func.isRequired,

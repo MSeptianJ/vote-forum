@@ -48,6 +48,7 @@ function ThreadPage() {
         commentError={errorText}
       />
       <CommentList
+        auth={auth.id}
         commentData={threadDetail.comments}
         onUpVote={onUpVoteComment}
         onDownVote={onDownVoteComment}

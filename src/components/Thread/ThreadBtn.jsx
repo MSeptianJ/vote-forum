@@ -23,6 +23,7 @@ function ThreadBtn({
 }) {
   const isUpVoted = upVotesBy?.includes(auth);
   const isDownVoted = downVotesBy?.includes(auth);
+
   const handleUpVote = () => {
     onUpVote(id);
   };

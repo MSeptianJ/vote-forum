@@ -42,12 +42,17 @@ export const downVoteThreadAction = ({ threadId, userId }) => ({
 });
 
 export const asyncGetThreads = () => async (dispatch) => {
+  dispatch(showLoading());
+
   try {
     const threads = await getAllThreads();
     dispatch(receiveThreadsAction(threads));
   } catch (error) {
+    dispatch(hideLoading());
     throw new Error(error);
   }
+
+  dispatch(hideLoading());
 };
 
 export const asyncAddThread = ({ title, body, category = 'general' }) => async (dispatch) => {
@@ -57,6 +62,7 @@ export const asyncAddThread = ({ title, body, category = 'general' }) => async (
     const thread = await createThread({ title, body, category });
     dispatch(addThreadAction(thread));
   } catch (error) {
+    dispatch(hideLoading());
     throw new Error(error);
   }
 
@@ -71,7 +77,7 @@ export const asyncUpVoteThread = (threadId) => async (dispatch, getState) => {
   try {
     await toggleUpVoteThread(threadId);
   } catch (error) {
-    await toggleUpVoteThread(threadId);
+    dispatch(hideLoading());
     throw new Error(error);
   }
 
@@ -86,7 +92,8 @@ export const asyncDownVoteThread = (threadId) => async (dispatch, getState) => {
   try {
     await toggleDownVoteThread(threadId);
   } catch (error) {
-    await toggleDownVoteThread(threadId);
+    dispatch(hideLoading());
+    throw new Error(error);
   }
 
   dispatch(hideLoading());

@@ -45,6 +45,7 @@ export const asyncAddComment = (content) => async (dispatch, getState) => {
     const newThreadDetail = await getThreadDetail(threadDetail.id);
     dispatch(receiveThreadDetailAction(newThreadDetail));
   } catch (error) {
+    dispatch(hideLoading());
     throw new Error(error);
   }
 
@@ -62,6 +63,7 @@ export const asyncUpVoteComment = (commentId) => async (dispatch, getState) => {
     const newThreadDetail = await getThreadDetail(threadDetail.id);
     dispatch(receiveThreadDetailAction(newThreadDetail));
   } catch (error) {
+    dispatch(hideLoading());
     throw new Error(error);
   }
 
@@ -79,6 +81,7 @@ export const asyncDownVoteComment = (commentId) => async (dispatch, getState) =>
     const newThreadDetail = await getThreadDetail(threadDetail.id);
     dispatch(receiveThreadDetailAction(newThreadDetail));
   } catch (error) {
+    dispatch(hideLoading());
     throw new Error(error);
   }
 

@@ -13,6 +13,7 @@ const asyncGetUsersAndThreads = () => async (dispatch) => {
     dispatch(receiveUsersAction(users));
     dispatch(receiveThreadsAction(threads));
   } catch (error) {
+    dispatch(hideLoading());
     throw new Error(error);
   }
 

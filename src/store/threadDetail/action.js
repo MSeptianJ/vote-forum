@@ -43,6 +43,7 @@ export const asyncGetThreadDetail = (threadId) => async (dispatch) => {
     const threadDetail = await getThreadDetail(threadId);
     dispatch(receiveThreadDetailAction(threadDetail));
   } catch (error) {
+    dispatch(hideLoading());
     throw new Error(error);
   }
 
@@ -57,6 +58,7 @@ export const asyncUpVoteThreadDetail = (threadId) => async (dispatch, getState) 
   try {
     await toggleUpVoteThread(threadId);
   } catch (error) {
+    dispatch(hideLoading());
     throw new Error(error);
   }
 
@@ -71,6 +73,7 @@ export const asyncDownVoteThreadDetail = (threadId) => async (dispatch, getState
   try {
     await toggleDownVoteThread(threadId);
   } catch (error) {
+    dispatch(hideLoading());
     throw new Error(error);
   }
 

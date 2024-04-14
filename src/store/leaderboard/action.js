@@ -19,6 +19,7 @@ export const asyncGetLeaderBoards = () => async (dispatch) => {
     const leaderBoards = await getLeaderboards();
     dispatch(receiveLeaderBoardAction(leaderBoards));
   } catch (error) {
+    dispatch(hideLoading());
     throw new Error(error);
   }
 

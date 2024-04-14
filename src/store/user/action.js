@@ -1,3 +1,4 @@
+import { hideLoading, showLoading } from 'react-redux-loading-bar';
 import { getAllUsers } from '../../utils/api';
 
 export const USERS_ACTION_TYPE = {
@@ -12,10 +13,15 @@ export const receiveUsersAction = (users) => ({
 });
 
 export const asyncGetUsers = () => async (dispatch) => {
+  dispatch(showLoading());
+
   try {
     const users = await getAllUsers();
     dispatch(receiveUsersAction(users));
   } catch (error) {
+    dispatch(hideLoading());
     throw new Error(error);
   }
+
+  dispatch(hideLoading());
 };

@@ -26,6 +26,7 @@ export const asyncRegisterUser = ({ name, email, password }) => async (dispatch)
   try {
     await register({ name, email, password });
   } catch (error) {
+    dispatch(hideLoading());
     throw new Error(error);
   }
 
@@ -42,6 +43,7 @@ export const asyncLoginUser = ({ email, password }) => async (dispatch) => {
     const authUser = await getOwnProfile();
     dispatch(setAuthUserAction(authUser));
   } catch (error) {
+    dispatch(hideLoading());
     throw new Error(error);
   }
 
@@ -55,6 +57,7 @@ export const asyncLogoutUser = () => async (dispatch) => {
     dispatch(unsetAuthUserAction());
     putAccessToken('');
   } catch (error) {
+    dispatch(hideLoading());
     throw new Error(error);
   }
 

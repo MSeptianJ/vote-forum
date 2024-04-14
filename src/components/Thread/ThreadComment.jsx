@@ -35,8 +35,8 @@ function ThreadComment({ auth, onComment }) {
           </div>
         </div>
       ) : (
-        <div className="w-full text-center">
-          <p className="text-sm">Anda harus log in terlebih dahulu</p>
+        <div className="w-full text-center h-10 flex items-center justify-center">
+          <p className="text-xs text-secondary">Anda harus log in terlebih dahulu</p>
         </div>
       )}
     </div>

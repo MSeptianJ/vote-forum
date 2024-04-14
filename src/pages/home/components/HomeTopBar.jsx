@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { Link } from 'react-router-dom';
-import BtnPrimary from '../../../components/BtnPrimary';
+import BtnPrimary from '../../../components/Button/BtnPrimary';
 import CategoryItem from '../../../components/Category/CategoryItem';
 import { IconPlus } from '../../../libs/icons';
 

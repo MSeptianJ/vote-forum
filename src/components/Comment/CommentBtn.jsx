@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { IconUnvoteOutline, IconVote, IconVoteOutline } from '../../libs/icons';
-import BtnPrimary from '../BtnPrimary';
+import BtnPrimary from '../Button/BtnPrimary';
 
 function CommentBtn({
   id,

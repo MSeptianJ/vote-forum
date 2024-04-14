@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import LoadingIcon from '../../components/LoadingIcon';
+import LoadingIcon from '../../components/Other/LoadingIcon';
 import { asyncGetLeaderBoards } from '../../store/leaderboard/action';
 import UserList from './components/UserList';
 

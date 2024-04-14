@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useOutletContext } from 'react-router-dom';
-import LoadingIcon from '../../components/LoadingIcon';
+import LoadingIcon from '../../components/Other/LoadingIcon';
 import ThreadList from '../../components/Thread/ThreadList';
 import asyncGetUsersAndThreads from '../../store/shared/action';
 import HomeTopBar from './components/HomeTopBar';

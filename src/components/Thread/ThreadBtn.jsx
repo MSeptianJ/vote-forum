@@ -8,7 +8,7 @@ import {
   IconVote,
   IconVoteOutline,
 } from '../../libs/icons';
-import BtnPrimary from '../BtnPrimary';
+import BtnPrimary from '../Button/BtnPrimary';
 
 function ThreadBtn({
   onUpVote,

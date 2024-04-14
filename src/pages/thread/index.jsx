@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useOutletContext, useParams } from 'react-router-dom';
 import CommentList from '../../components/Comment/CommentList';
-import LoadingIcon from '../../components/LoadingIcon';
+import LoadingIcon from '../../components/Other/LoadingIcon';
 import { asyncAddComment } from '../../store/comment/action';
 import { asyncGetThreadDetail } from '../../store/threadDetail/action';
 import ThreadDetail from './components/ThreadDetail';

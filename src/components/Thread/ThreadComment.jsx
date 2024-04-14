@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React, { useState } from 'react';
-import BtnPrimary from '../BtnPrimary';
+import BtnPrimary from '../Button/BtnPrimary';
 
 function ThreadComment({ auth, onComment }) {
   const [content, setContent] = useState('');

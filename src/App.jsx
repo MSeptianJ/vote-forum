@@ -1,9 +1,121 @@
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  Outlet,
+  ScrollRestoration,
+  useLocation,
+  useSearchParams,
+} from 'react-router-dom';
+import BottomBar from './components/Bar/BottomBar';
+import TopBar from './components/Bar/TopBar';
+import CategoryBox from './components/Category/CategoryBox';
+import LoadingIcon from './components/Other/LoadingIcon';
+import LoadingStrip from './components/Other/LoadingStrip';
+import { asyncLogoutUser } from './store/auth-user/action';
+import {
+  asyncDownVoteComment,
+  asyncUpVoteComment,
+} from './store/comment/action';
+import { asyncPreloadProcess } from './store/isPreload/action';
+import { asyncGetLeaderBoards } from './store/leaderboard/action';
+import { asyncDownVoteThread, asyncUpVoteThread } from './store/thread/action';
+import {
+  asyncDownVoteThreadDetail,
+  asyncUpVoteThreadDetail,
+} from './store/threadDetail/action';
+
 function App() {
+  const location = useLocation();
+  const dispatch = useDispatch();
+  const isPreload = useSelector((states) => states.isPreload);
+  const authUser = useSelector((states) => states.authUser);
+  const boxState = useSelector((states) => states.categoryBox);
+  const threads = useSelector((states) => states.threads);
+  const [searchParam, setSearchParam] = useSearchParams();
+  const searchedCategory = searchParam.get('category');
+
+  const categories = [
+    ...(new Set(threads?.map((thread) => thread.category)) ?? []),
+  ];
+
+  const onSearchCategory = (category) => {
+    if (searchedCategory === category) {
+      setSearchParam('');
+    } else {
+      setSearchParam({ category });
+    }
+  };
+
+  const onLogOut = () => {
+    dispatch(asyncLogoutUser());
+  };
+
+  const onUpVoteThread = (threadId) => {
+    dispatch(asyncUpVoteThread(threadId));
+  };
+
+  const onDownVoteThread = (threadId) => {
+    dispatch(asyncDownVoteThread(threadId));
+  };
+
+  const onUpVoteThreadDetail = (threadId) => {
+    dispatch(asyncUpVoteThreadDetail(threadId));
+  };
+
+  const onDownVoteThreadDetail = (threadId) => {
+    dispatch(asyncDownVoteThreadDetail(threadId));
+  };
+
+  const onUpVoteComment = (commendId) => {
+    dispatch(asyncUpVoteComment(commendId));
+  };
+
+  const onDownVoteComment = (commendId) => {
+    dispatch(asyncDownVoteComment(commendId));
+  };
+
+  useEffect(() => {
+    dispatch(asyncPreloadProcess());
+    dispatch(asyncGetLeaderBoards());
+  }, [dispatch]);
+
+  if (isPreload) {
+    <LoadingIcon />;
+  }
+
   return (
-    <div className=" h-screen w-full bg-gray-600">
-      <h1 className=" m-auto text-center text-xl font-bold uppercase text-white">
-        Hello
-      </h1>
+    <div className=" min-h-screen w-full">
+      <ScrollRestoration />
+      <LoadingStrip />
+      <TopBar onLogOut={onLogOut} authUser={authUser} />
+
+      <div className=" m-auto min-h-screen w-full lg:max-w-screen-lg">
+        {!isPreload && (
+          <Outlet
+            context={{
+              categories,
+              searchedCategory,
+              onSearchCategory,
+              onUpVoteThread,
+              onDownVoteThread,
+              onUpVoteThreadDetail,
+              onDownVoteThreadDetail,
+              onUpVoteComment,
+              onDownVoteComment,
+            }}
+          />
+        )}
+      </div>
+
+      {location.pathname === '/' && boxState && (
+        <CategoryBox
+          categories={categories}
+          onSearch={onSearchCategory}
+          searched={searchedCategory}
+        />
+      )}
+
+      <BottomBar />
     </div>
   );
 }

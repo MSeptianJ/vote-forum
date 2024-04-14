@@ -6,11 +6,11 @@ import {
   useLocation,
   useSearchParams,
 } from 'react-router-dom';
-import BottomBar from './components/BottomBar';
+import BottomBar from './components/Bar/BottomBar';
+import TopBar from './components/Bar/TopBar';
 import CategoryBox from './components/Category/CategoryBox';
-import LoadingIcon from './components/LoadingIcon';
-import LoadingStrip from './components/LoadingStrip';
-import TopBar from './components/TopBar';
+import LoadingIcon from './components/Other/LoadingIcon';
+import LoadingStrip from './components/Other/LoadingStrip';
 import { asyncLogoutUser } from './store/auth-user/action';
 import {
   asyncDownVoteComment,

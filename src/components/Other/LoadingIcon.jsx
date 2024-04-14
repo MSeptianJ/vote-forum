@@ -1,5 +1,5 @@
 import React from 'react';
-import ICON from '../assets/imgs/load_gear.svg';
+import ICON from '../../assets/imgs/load_gear.svg';
 
 function LoadingIcon() {
   return (

@@ -1,17 +1,17 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import LOGOTEXT from '../assets/imgs/logo_text.svg';
+import LOGOTEXT from '../../assets/imgs/logo_text.svg';
 import {
   IconHome,
   IconHomeOutline,
   IconLeaderboard,
   IconLeaderboardOutline,
   IconLogin,
-} from '../libs/icons';
-import { ownerValidator } from '../utils/propValidator';
-import AccountBtn from './AccountBtn';
-import BtnPrimary from './BtnPrimary';
+} from '../../libs/icons';
+import { ownerValidator } from '../../utils/propValidator';
+import AccountBtn from '../Button/AccountBtn';
+import BtnPrimary from '../Button/BtnPrimary';
 
 function TopBar({ onLogOut, authUser }) {
   const location = useLocation();

@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import BtnPrimary from '../BtnPrimary';
+import BtnPrimary from '../Button/BtnPrimary';
 
 function CategoryItem({ category, onSearch, searched }) {
   const handleSerachCategory = () => {

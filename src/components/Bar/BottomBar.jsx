@@ -7,9 +7,9 @@ import {
   IconLeaderboard,
   IconLeaderboardOutline,
   IconSearch,
-} from '../libs/icons';
-import { toggleCategoryBoxAction } from '../store/category-box/action';
-import BtnPrimary from './BtnPrimary';
+} from '../../libs/icons';
+import { toggleCategoryBoxAction } from '../../store/category-box/action';
+import BtnPrimary from '../Button/BtnPrimary';
 
 function BottomBar() {
   const location = useLocation();

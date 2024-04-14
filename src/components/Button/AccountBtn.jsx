@@ -4,7 +4,7 @@ import React from 'react';
 import { FaTrophy } from 'react-icons/fa6';
 import { PiSignOutBold } from 'react-icons/pi';
 import { useSelector } from 'react-redux';
-import { ownerValidator } from '../utils/propValidator';
+import { ownerValidator } from '../../utils/propValidator';
 
 function AccountBtn({ onLogOut, userData }) {
   const leaderBoards = useSelector((states) => states.leaderBoards);

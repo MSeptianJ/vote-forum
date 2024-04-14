@@ -17,7 +17,7 @@ function BtnPrimary({
   return (
     <button
       type="button"
-      className={` block cursor-pointer font-bold transition-colors duration-300 ${btnStyles} disabled:cursor-not-allowed disabled:opacity-60`}
+      className={` block cursor-pointer font-bold transition-colors duration-300 disabled:cursor-not-allowed disabled:opacity-60 ${btnStyles}`}
       onClick={handleBtnClick}
       title={btnText}
       disabled={btnDisabled}

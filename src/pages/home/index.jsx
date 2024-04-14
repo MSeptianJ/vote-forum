@@ -11,28 +11,44 @@ function HomePage() {
   const users = useSelector((states) => states.users);
   const threads = useSelector((states) => states.threads);
   const auth = useSelector((states) => states.authUser);
-  const { onUpVoteThread, onDownVoteThread } = useOutletContext();
+  const {
+    onUpVoteThread,
+    onDownVoteThread,
+    categories,
+    searchedCategory,
+    onSearchCategory,
+  } = useOutletContext();
 
-  const threadList = threads.map((thread) => ({
+  const moddedThread = threads.map((thread) => ({
     ...thread,
     user: users.find((user) => user.id === thread.ownerId),
     auth: auth?.id,
   }));
 
+  // eslint-disable-next-line arrow-body-style
+  const searchedThreads = moddedThread.filter((thread) => {
+    return thread.category.includes(searchedCategory);
+  });
+
   useEffect(() => {
     dispatch(asyncGetUsersAndThreads());
   }, [dispatch]);
 
-  if (!threadList) {
+  if (!moddedThread) {
     <LoadingIcon />;
   }
 
   return (
     <div className="mt-8 w-full">
-      <HomeTopBar auth={auth?.id} />
+      <HomeTopBar
+        categories={categories}
+        auth={auth?.id}
+        onSearch={onSearchCategory}
+        searched={searchedCategory}
+      />
 
       <ThreadList
-        threadData={threadList}
+        threadData={searchedCategory ? searchedThreads : moddedThread}
         onUpVote={onUpVoteThread}
         onDownVote={onDownVoteThread}
       />

@@ -1,8 +1,10 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Outlet, ScrollRestoration, useLocation } from 'react-router-dom';
+import {
+  Outlet, ScrollRestoration, useLocation, useSearchParams,
+} from 'react-router-dom';
 import BottomBar from './components/BottomBar';
-import CategoryBox from './components/CategoryBox';
+import CategoryBox from './components/Category/CategoryBox';
 import LoadingIcon from './components/LoadingIcon';
 import LoadingStrip from './components/LoadingStrip';
 import TopBar from './components/TopBar';
@@ -19,6 +21,19 @@ function App() {
   const isPreload = useSelector((states) => states.isPreload);
   const authUser = useSelector((states) => states.authUser);
   const boxState = useSelector((states) => states.categoryBox);
+  const threads = useSelector((states) => states.threads);
+  const [searchParam, setSearchParam] = useSearchParams();
+  const searchedCategory = searchParam.get('category');
+
+  const categories = [...(new Set(threads?.map((thread) => thread.category)) ?? [])];
+
+  const onSearchCategory = (category) => {
+    if (searchedCategory === category) {
+      setSearchParam('');
+    } else {
+      setSearchParam({ category });
+    }
+  };
 
   const onLogOut = () => {
     dispatch(asyncLogoutUser());
@@ -66,6 +81,9 @@ function App() {
       <div className=" m-auto min-h-screen w-full lg:max-w-screen-lg">
         {!isPreload && (
           <Outlet context={{
+            categories,
+            searchedCategory,
+            onSearchCategory,
             onUpVoteThread,
             onDownVoteThread,
             onUpVoteThreadDetail,
@@ -77,7 +95,14 @@ function App() {
         )}
       </div>
 
-      {location.pathname === '/' && (boxState && <CategoryBox />)}
+      {location.pathname === '/' && (
+        boxState && (
+          <CategoryBox
+            categories={categories}
+            onSearch={onSearchCategory}
+            searched={searchedCategory}
+          />
+        ))}
 
       <BottomBar />
     </div>

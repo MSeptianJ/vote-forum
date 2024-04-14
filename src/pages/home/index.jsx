@@ -16,7 +16,7 @@ function HomePage() {
   const threadList = threads.map((thread) => ({
     ...thread,
     user: users.find((user) => user.id === thread.ownerId),
-    auth: auth.id,
+    auth: auth?.id,
   }));
 
   useEffect(() => {
@@ -29,7 +29,7 @@ function HomePage() {
 
   return (
     <div className="mt-8 w-full">
-      <HomeTopBar />
+      <HomeTopBar auth={auth?.id} />
 
       <ThreadList
         threadData={threadList}

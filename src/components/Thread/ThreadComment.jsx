@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 import BtnPrimary from '../BtnPrimary';
 
-function ThreadComment({ onComment }) {
+function ThreadComment({ auth, onComment }) {
   const [content, setContent] = useState('');
 
   const contentHandler = (e) => {
@@ -17,26 +17,39 @@ function ThreadComment({ onComment }) {
     <div className=" mt-6 flex flex-col text-white">
       <h4 className=" font-bold">Make a Comment</h4>
 
-      <p className="w-full mt-3 text-sm text-gray-300">Comment Content</p>
-      <div
-        onInput={contentHandler}
-        contentEditable
-        className=" min-h-20 mt-2 rounded-md border border-secondary p-3"
-      />
+      {auth ? (
+        <div>
+          <p className="w-full mt-3 text-sm text-gray-300">Comment Content</p>
+          <div
+            onInput={contentHandler}
+            contentEditable
+            className=" min-h-20 mt-2 rounded-md border border-secondary p-3"
+          />
 
-      <div className="flex justify-end">
-        <BtnPrimary
-          btnText="Reply"
-          btnFunction={handleComment}
-          btnStyles="font-bold py-1 px-4 bg-secondary mt-3 rounded-md hover:bg-primary border border-secondary "
-        />
-      </div>
+          <div className="flex justify-end">
+            <BtnPrimary
+              btnText="Reply"
+              btnFunction={handleComment}
+              btnStyles="font-bold py-1 px-4 bg-secondary mt-3 rounded-md hover:bg-primary border border-secondary "
+            />
+          </div>
+        </div>
+      ) : (
+        <div className="w-full text-center">
+          <p className="text-sm">Anda harus log in terlebih dahulu</p>
+        </div>
+      )}
     </div>
   );
 }
 
 ThreadComment.propTypes = {
+  auth: PropTypes.string,
   onComment: PropTypes.func.isRequired,
+};
+
+ThreadComment.defaultProps = {
+  auth: undefined,
 };
 
 export default ThreadComment;

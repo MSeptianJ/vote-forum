@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 import useInput from '../../../hooks/useInput';
 
-function SubmitInput({ onSubmitThread }) {
+function SubmitInput({ auth, onSubmitThread }) {
   const [title, onTitleChange] = useInput('');
   const [category, onCategoryChange] = useInput('');
   const [body, setBody] = useState('');
@@ -63,7 +63,8 @@ function SubmitInput({ onSubmitThread }) {
         <input
           type="submit"
           value="Submit"
-          className=" w-1/2 max-w-52 rounded-md border border-secondary bg-secondary py-1 text-sm font-bold hover:bg-primary"
+          disabled={!auth}
+          className=" w-1/2 max-w-52 cursor-pointer disabled:cursor-not-allowed disabled:opacity-60 rounded-md border border-secondary bg-secondary py-1 text-sm font-bold hover:bg-primary"
         />
       </div>
     </form>
@@ -71,7 +72,12 @@ function SubmitInput({ onSubmitThread }) {
 }
 
 SubmitInput.propTypes = {
+  auth: PropTypes.string,
   onSubmitThread: PropTypes.func.isRequired,
+};
+
+SubmitInput.defaultProps = {
+  auth: undefined,
 };
 
 export default SubmitInput;

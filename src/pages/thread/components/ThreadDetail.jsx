@@ -39,7 +39,7 @@ function ThreadDetail({
         onDownVote={onDownVote}
       />
 
-      <ThreadComment onComment={onComment} />
+      <ThreadComment auth={auth} onComment={onComment} />
 
       {
         commentError.message && (
@@ -53,7 +53,7 @@ function ThreadDetail({
 }
 
 ThreadDetail.propTypes = {
-  auth: PropTypes.string.isRequired,
+  auth: PropTypes.string,
   threadDetailData: PropTypes.shape(threadDetailValidator).isRequired,
   onUpVote: PropTypes.func.isRequired,
   onDownVote: PropTypes.func.isRequired,
@@ -62,6 +62,7 @@ ThreadDetail.propTypes = {
 };
 
 ThreadDetail.defaultProps = {
+  auth: undefined,
   commentError: {},
 };
 

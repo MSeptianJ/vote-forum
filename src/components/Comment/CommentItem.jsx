@@ -30,10 +30,14 @@ function CommentItem({
 }
 
 CommentItem.propTypes = {
-  auth: PropTypes.string.isRequired,
+  auth: PropTypes.string,
   data: PropTypes.shape(commentValidator).isRequired,
   onUpVote: PropTypes.func.isRequired,
   onDownVote: PropTypes.func.isRequired,
+};
+
+CommentItem.defaultProps = {
+  auth: undefined,
 };
 
 export default CommentItem;

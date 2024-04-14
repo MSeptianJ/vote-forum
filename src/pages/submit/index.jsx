@@ -1,5 +1,5 @@
 import React, { useCallback, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { asyncAddThread } from '../../store/thread/action';
 import SubmitInput from './components/SubmitInput';
@@ -7,6 +7,7 @@ import SubmitInput from './components/SubmitInput';
 function SubmitPage() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const auth = useSelector((states) => states.authUser);
   const [errorText, setErrorText] = useState('');
 
   const onSubmitThread = useCallback(async ({ title, category, body }) => {
@@ -39,7 +40,7 @@ function SubmitPage() {
           )
         }
 
-        <SubmitInput onSubmitThread={onSubmitThread} />
+        <SubmitInput auth={auth?.id} onSubmitThread={onSubmitThread} />
       </div>
     </div>
   );

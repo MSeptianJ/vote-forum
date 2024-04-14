@@ -36,10 +36,14 @@ function CommentList({
 }
 
 CommentList.propTypes = {
-  auth: PropTypes.string.isRequired,
+  auth: PropTypes.string,
   commentData: PropTypes.arrayOf(PropTypes.shape(commentValidator)).isRequired,
   onUpVote: PropTypes.func.isRequired,
   onDownVote: PropTypes.func.isRequired,
+};
+
+CommentList.defaultProps = {
+  auth: undefined,
 };
 
 export default CommentList;

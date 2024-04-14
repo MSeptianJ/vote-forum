@@ -39,6 +39,7 @@ function ThreadBtn({
           btnText={String(totalUpVotes)}
           btnIcon={isUpVoted ? <IconVote /> : <IconVoteOutline />}
           btnFunction={handleUpVote}
+          btnDisabled={!auth}
           btnStyles="flex items-center gap-3 justify-center border border-secondary text-lg py-1 px-4 rounded-md text-accent hover:bg-secondary"
         />
 
@@ -46,6 +47,7 @@ function ThreadBtn({
           btnText={String(totalDownVotes)}
           btnIcon={isDownVoted ? <IconUnvote /> : <IconUnvoteOutline />}
           btnFunction={handleDownVote}
+          btnDisabled={!auth}
           btnStyles="flex items-center gap-3 justify-center border border-secondary text-lg py-1 px-4 rounded-md text-accent hover:bg-secondary"
         />
       </div>
@@ -55,6 +57,7 @@ function ThreadBtn({
           <BtnPrimary
             btnText={String(totalComments)}
             btnIcon={<IconComment />}
+            btnDisabled={!auth}
             btnStyles="flex items-center gap-3 justify-center border border-secondary text-lg py-1 px-4 rounded-md text-accent hover:bg-secondary"
           />
         </Link>
@@ -67,12 +70,16 @@ ThreadBtn.propTypes = {
   onUpVote: PropTypes.func.isRequired,
   onDownVote: PropTypes.func.isRequired,
   id: PropTypes.string.isRequired,
-  auth: PropTypes.string.isRequired,
+  auth: PropTypes.string,
   upVotesBy: PropTypes.arrayOf(PropTypes.string).isRequired,
   downVotesBy: PropTypes.arrayOf(PropTypes.string).isRequired,
   totalComments: PropTypes.number.isRequired,
   totalUpVotes: PropTypes.number.isRequired,
   totalDownVotes: PropTypes.number.isRequired,
+};
+
+ThreadBtn.defaultProps = {
+  auth: undefined,
 };
 
 export default ThreadBtn;

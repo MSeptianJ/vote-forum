@@ -1,9 +1,10 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import BtnPrimary from '../../../components/BtnPrimary';
 import { IconPlus } from '../../../libs/icons';
 
-function HomeTopBar() {
+function HomeTopBar({ auth }) {
   return (
     <div className="md flex w-full items-center justify-center gap-5 px-5 text-white">
       <div className=" m-auto hidden w-10/12 rounded-md bg-primary p-4 text-white shadow-lg md:block">
@@ -32,6 +33,7 @@ function HomeTopBar() {
           <BtnPrimary
             btnStyles="w-full md:mb-1 md:mt-1 flex text-xl justify-center items-center gap-3"
             btnText="New Thread"
+            btnDisabled={!auth}
             btnIcon={<IconPlus />}
           />
         </Link>
@@ -40,6 +42,12 @@ function HomeTopBar() {
   );
 }
 
-HomeTopBar.propTypes = {};
+HomeTopBar.propTypes = {
+  auth: PropTypes.string,
+};
+
+HomeTopBar.defaultProps = {
+  auth: undefined,
+};
 
 export default HomeTopBar;

@@ -31,6 +31,7 @@ function CommentBtn({
           btnText={String(totalUpVotes)}
           btnIcon={isUpVoted ? <IconVote /> : <IconVoteOutline />}
           btnFunction={handleUpVote}
+          btnDisabled={!auth}
           btnStyles="flex items-center gap-3 justify-center border border-secondary text-lg py-1 px-4 rounded-md text-accent hover:bg-secondary"
         />
 
@@ -38,6 +39,7 @@ function CommentBtn({
           btnText={String(totalDownVotes)}
           btnIcon={isDownVoted ? <IconVote /> : <IconUnvoteOutline />}
           btnFunction={handleDownVote}
+          btnDisabled={!auth}
           btnStyles="flex items-center gap-3 justify-center border border-secondary text-lg py-1 px-4 rounded-md text-accent hover:bg-secondary"
         />
       </div>
@@ -47,13 +49,17 @@ function CommentBtn({
 
 CommentBtn.propTypes = {
   id: PropTypes.string.isRequired,
-  auth: PropTypes.string.isRequired,
+  auth: PropTypes.string,
   onUpVote: PropTypes.func.isRequired,
   onDownVote: PropTypes.func.isRequired,
   totalUpVotes: PropTypes.number.isRequired,
   totalDownVotes: PropTypes.number.isRequired,
   upVotesBy: PropTypes.arrayOf(PropTypes.string).isRequired,
   downVotesBy: PropTypes.arrayOf(PropTypes.string).isRequired,
+};
+
+CommentBtn.defaultProps = {
+  auth: undefined,
 };
 
 export default CommentBtn;

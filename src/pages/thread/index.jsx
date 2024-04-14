@@ -40,7 +40,7 @@ function ThreadPage() {
   return (
     <div className="mb-5 mt-8 w-full px-5">
       <ThreadDetail
-        auth={auth.id}
+        auth={auth?.id}
         threadDetailData={threadDetail}
         onUpVote={onUpVoteThreadDetail}
         onDownVote={onDownVoteThreadDetail}
@@ -48,7 +48,7 @@ function ThreadPage() {
         commentError={errorText}
       />
       <CommentList
-        auth={auth.id}
+        auth={auth?.id}
         commentData={threadDetail.comments}
         onUpVote={onUpVoteComment}
         onDownVote={onDownVoteComment}

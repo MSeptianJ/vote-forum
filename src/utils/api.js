@@ -173,15 +173,18 @@ async function getThreadDetail(threadId) {
 }
 
 async function createComment({ threadId, content }) {
-  const response = await fetchWithAuth(`${BASE_URL}/threads/${threadId}/comments`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
+  const response = await fetchWithAuth(
+    `${BASE_URL}/threads/${threadId}/comments`,
+    {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        content,
+      }),
     },
-    body: JSON.stringify({
-      content,
-    }),
-  });
+  );
 
   const responseJson = await response.json();
 
@@ -199,12 +202,15 @@ async function createComment({ threadId, content }) {
 }
 
 async function toggleUpVoteThread(threadId) {
-  const response = await fetchWithAuth(`${BASE_URL}/threads/${threadId}/up-vote`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
+  const response = await fetchWithAuth(
+    `${BASE_URL}/threads/${threadId}/up-vote`,
+    {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
     },
-  });
+  );
 
   const responseJson = await response.json();
 
@@ -222,12 +228,15 @@ async function toggleUpVoteThread(threadId) {
 }
 
 async function toggleDownVoteThread(threadId) {
-  const response = await fetchWithAuth(`${BASE_URL}/threads/${threadId}/down-vote`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
+  const response = await fetchWithAuth(
+    `${BASE_URL}/threads/${threadId}/down-vote`,
+    {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
     },
-  });
+  );
 
   const responseJson = await response.json();
 
@@ -245,12 +254,15 @@ async function toggleDownVoteThread(threadId) {
 }
 
 async function toggleNeutralVoteThread(threadId) {
-  const response = await fetchWithAuth(`${BASE_URL}/threads/${threadId}/neutral-vote`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
+  const response = await fetchWithAuth(
+    `${BASE_URL}/threads/${threadId}/neutral-vote`,
+    {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
     },
-  });
+  );
 
   const responseJson = await response.json();
 
@@ -268,12 +280,15 @@ async function toggleNeutralVoteThread(threadId) {
 }
 
 async function toggleUpVoteComment(threadId, commentId) {
-  const response = await fetchWithAuth(`${BASE_URL}/threads/${threadId}/comments/${commentId}/up-vote`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
+  const response = await fetchWithAuth(
+    `${BASE_URL}/threads/${threadId}/comments/${commentId}/up-vote`,
+    {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
     },
-  });
+  );
 
   const responseJson = await response.json();
 
@@ -291,12 +306,15 @@ async function toggleUpVoteComment(threadId, commentId) {
 }
 
 async function toggleDownVoteComment(threadId, commentId) {
-  const response = await fetchWithAuth(`${BASE_URL}/threads/${threadId}/comments/${commentId}/down-vote`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
+  const response = await fetchWithAuth(
+    `${BASE_URL}/threads/${threadId}/comments/${commentId}/down-vote`,
+    {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
     },
-  });
+  );
 
   const responseJson = await response.json();
 
@@ -314,12 +332,15 @@ async function toggleDownVoteComment(threadId, commentId) {
 }
 
 async function toggleNeutralVoteComment(threadId, commentId) {
-  const response = await fetchWithAuth(`${BASE_URL}/threads/${threadId}/comments/${commentId}/neutral-vote`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
+  const response = await fetchWithAuth(
+    `${BASE_URL}/threads/${threadId}/comments/${commentId}/neutral-vote`,
+    {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
     },
-  });
+  );
 
   const responseJson = await response.json();
 

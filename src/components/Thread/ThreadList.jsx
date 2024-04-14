@@ -11,7 +11,11 @@ function ThreadList({ threadData, onUpVote, onDownVote }) {
           key={thread.id}
           className="flex w-full flex-col rounded-md bg-primary p-5 shadow-lg"
         >
-          <ThreadItem data={thread} onUpVote={onUpVote} onDownVote={onDownVote} />
+          <ThreadItem
+            data={thread}
+            onUpVote={onUpVote}
+            onDownVote={onDownVote}
+          />
         </div>
       ))}
     </div>

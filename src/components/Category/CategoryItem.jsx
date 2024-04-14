@@ -1,5 +1,5 @@
-import React from 'react';
 import PropTypes from 'prop-types';
+import React from 'react';
 import BtnPrimary from '../BtnPrimary';
 
 function CategoryItem({ category, onSearch, searched }) {
@@ -10,9 +10,7 @@ function CategoryItem({ category, onSearch, searched }) {
   return (
     <BtnPrimary
       btnText={category}
-      btnStyles={
-        `text-center text-sm h-full border border-secondary p-1 px-3 rounded-md hover:bg-secondary ${searched === category ? 'bg-secondary' : ''}`
-      }
+      btnStyles={`text-center text-sm h-full border border-secondary p-1 px-3 rounded-md hover:bg-secondary ${searched === category ? 'bg-secondary' : ''}`}
       btnFunction={handleSerachCategory}
     />
   );

@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import LoadingIcon from '../../components/LoadingIcon';
 import { asyncGetLeaderBoards } from '../../store/leaderboard/action';
 import UserList from './components/UserList';
-import LoadingIcon from '../../components/LoadingIcon';
 
 function LeaderBoardPage() {
   const dispatch = useDispatch();
@@ -13,9 +13,7 @@ function LeaderBoardPage() {
   }, [dispatch]);
 
   if (!leaderboards) {
-    return (
-      <LoadingIcon />
-    );
+    return <LoadingIcon />;
   }
 
   return (

@@ -2,10 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useOutletContext, useParams } from 'react-router-dom';
 import CommentList from '../../components/Comment/CommentList';
+import LoadingIcon from '../../components/LoadingIcon';
 import { asyncAddComment } from '../../store/comment/action';
 import { asyncGetThreadDetail } from '../../store/threadDetail/action';
 import ThreadDetail from './components/ThreadDetail';
-import LoadingIcon from '../../components/LoadingIcon';
 
 function ThreadPage() {
   const { id } = useParams();
@@ -33,9 +33,7 @@ function ThreadPage() {
   }, [id, dispatch]);
 
   if (!threadDetail) {
-    return (
-      <LoadingIcon />
-    );
+    return <LoadingIcon />;
   }
 
   return (

@@ -1,7 +1,10 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
-  Outlet, ScrollRestoration, useLocation, useSearchParams,
+  Outlet,
+  ScrollRestoration,
+  useLocation,
+  useSearchParams,
 } from 'react-router-dom';
 import BottomBar from './components/BottomBar';
 import CategoryBox from './components/Category/CategoryBox';
@@ -9,11 +12,17 @@ import LoadingIcon from './components/LoadingIcon';
 import LoadingStrip from './components/LoadingStrip';
 import TopBar from './components/TopBar';
 import { asyncLogoutUser } from './store/auth-user/action';
-import { asyncDownVoteComment, asyncUpVoteComment } from './store/comment/action';
+import {
+  asyncDownVoteComment,
+  asyncUpVoteComment,
+} from './store/comment/action';
 import { asyncPreloadProcess } from './store/isPreload/action';
 import { asyncGetLeaderBoards } from './store/leaderboard/action';
 import { asyncDownVoteThread, asyncUpVoteThread } from './store/thread/action';
-import { asyncDownVoteThreadDetail, asyncUpVoteThreadDetail } from './store/threadDetail/action';
+import {
+  asyncDownVoteThreadDetail,
+  asyncUpVoteThreadDetail,
+} from './store/threadDetail/action';
 
 function App() {
   const location = useLocation();
@@ -25,7 +34,9 @@ function App() {
   const [searchParam, setSearchParam] = useSearchParams();
   const searchedCategory = searchParam.get('category');
 
-  const categories = [...(new Set(threads?.map((thread) => thread.category)) ?? [])];
+  const categories = [
+    ...(new Set(threads?.map((thread) => thread.category)) ?? []),
+  ];
 
   const onSearchCategory = (category) => {
     if (searchedCategory === category) {
@@ -80,29 +91,29 @@ function App() {
 
       <div className=" m-auto min-h-screen w-full lg:max-w-screen-lg">
         {!isPreload && (
-          <Outlet context={{
-            categories,
-            searchedCategory,
-            onSearchCategory,
-            onUpVoteThread,
-            onDownVoteThread,
-            onUpVoteThreadDetail,
-            onDownVoteThreadDetail,
-            onUpVoteComment,
-            onDownVoteComment,
-          }}
+          <Outlet
+            context={{
+              categories,
+              searchedCategory,
+              onSearchCategory,
+              onUpVoteThread,
+              onDownVoteThread,
+              onUpVoteThreadDetail,
+              onDownVoteThreadDetail,
+              onUpVoteComment,
+              onDownVoteComment,
+            }}
           />
         )}
       </div>
 
-      {location.pathname === '/' && (
-        boxState && (
-          <CategoryBox
-            categories={categories}
-            onSearch={onSearchCategory}
-            searched={searchedCategory}
-          />
-        ))}
+      {location.pathname === '/' && boxState && (
+        <CategoryBox
+          categories={categories}
+          onSearch={onSearchCategory}
+          searched={searchedCategory}
+        />
+      )}
 
       <BottomBar />
     </div>

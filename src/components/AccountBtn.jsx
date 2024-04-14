@@ -9,7 +9,9 @@ import { ownerValidator } from '../utils/propValidator';
 function AccountBtn({ onLogOut, userData }) {
   const leaderBoards = useSelector((states) => states.leaderBoards);
 
-  const userScore = leaderBoards.find((data) => data.user.id === userData.id)?.score;
+  const userScore = leaderBoards.find(
+    (data) => data.user.id === userData.id,
+  )?.score;
 
   const handleLogOut = () => {
     onLogOut();

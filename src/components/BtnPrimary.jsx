@@ -2,11 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 function BtnPrimary({
-  btnDisabled,
-  btnStyles,
-  btnFunction,
-  btnIcon,
-  btnText,
+  btnDisabled, btnStyles, btnFunction, btnIcon, btnText,
 }) {
   const handleBtnClick = () => {
     if (btnFunction) {

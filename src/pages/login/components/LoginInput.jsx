@@ -43,7 +43,7 @@ function LoginInput({ onLogin }) {
         <input
           type="submit"
           value="Submit"
-          className=" w-1/2 max-w-52 rounded-md border border-secondary bg-secondary py-1 text-sm font-bold hover:bg-primary"
+          className=" w-1/2 max-w-52 cursor-pointer rounded-md border border-secondary bg-secondary py-1 text-sm font-bold hover:bg-primary"
         />
       </div>
     </form>

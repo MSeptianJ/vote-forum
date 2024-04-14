@@ -6,10 +6,7 @@ import CommentBody from './CommentBody';
 import CommentBtn from './CommentBtn';
 
 function CommentItem({
-  auth,
-  data,
-  onUpVote,
-  onDownVote,
+  auth, data, onUpVote, onDownVote,
 }) {
   return (
     <>

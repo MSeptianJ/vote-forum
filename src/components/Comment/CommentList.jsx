@@ -4,10 +4,7 @@ import { commentValidator } from '../../utils/propValidator';
 import CommentItem from './CommentItem';
 
 function CommentList({
-  auth,
-  commentData,
-  onUpVote,
-  onDownVote,
+  auth, commentData, onUpVote, onDownVote,
 }) {
   return (
     <>

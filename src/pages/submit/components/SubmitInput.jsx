@@ -17,7 +17,10 @@ function SubmitInput({ auth, onSubmitThread }) {
   };
 
   return (
-    <form className="mt-3 flex w-full flex-col gap-4" onSubmit={handleSubmitThread}>
+    <form
+      className="mt-3 flex w-full flex-col gap-4"
+      onSubmit={handleSubmitThread}
+    >
       <div className="grid w-full space-y-1">
         <p htmlFor="titleThread" className="w-full text-sm text-gray-300">
           Title
@@ -32,10 +35,7 @@ function SubmitInput({ auth, onSubmitThread }) {
       </div>
 
       <div className="grid w-full space-y-1">
-        <p
-          htmlFor="categoryThread"
-          className="w-full text-sm text-gray-300"
-        >
+        <p htmlFor="categoryThread" className="w-full text-sm text-gray-300">
           Category
         </p>
         <input
@@ -48,9 +48,7 @@ function SubmitInput({ auth, onSubmitThread }) {
       </div>
 
       <div className="grid w-full space-y-1">
-        <p className="w-full text-sm text-gray-300">
-          Body Text
-        </p>
+        <p className="w-full text-sm text-gray-300">Body Text</p>
         <div
           id="bodyThread"
           contentEditable
@@ -64,7 +62,7 @@ function SubmitInput({ auth, onSubmitThread }) {
           type="submit"
           value="Submit"
           disabled={!auth}
-          className=" w-1/2 max-w-52 cursor-pointer disabled:cursor-not-allowed disabled:opacity-60 rounded-md border border-secondary bg-secondary py-1 text-sm font-bold hover:bg-primary"
+          className=" w-1/2 max-w-52 cursor-pointer rounded-md border border-secondary bg-secondary py-1 text-sm font-bold hover:bg-primary disabled:cursor-not-allowed disabled:opacity-60"
         />
       </div>
     </form>

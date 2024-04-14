@@ -9,14 +9,17 @@ function RegisterPage() {
   const navigate = useNavigate();
   const [errorText, setErrorText] = useState('');
 
-  const onRegister = useCallback(async ({ name, email, password }) => {
-    try {
-      await dispatch(asyncRegisterUser({ name, email, password }));
-      navigate('/login');
-    } catch (error) {
-      setErrorText(error);
-    }
-  }, [dispatch, navigate]);
+  const onRegister = useCallback(
+    async ({ name, email, password }) => {
+      try {
+        await dispatch(asyncRegisterUser({ name, email, password }));
+        navigate('/login');
+      } catch (error) {
+        setErrorText(error);
+      }
+    },
+    [dispatch, navigate],
+  );
 
   return (
     <div className="mt-8 w-full px-5">
@@ -27,18 +30,15 @@ function RegisterPage() {
           <p>
             Buat sebuah akun untuk berdiskusi dengan membuat
             {' '}
-
             <span className=" font-bold text-white">Thread</span>
           </p>
         </div>
 
-        {
-          errorText && (
-          <div className=" w-full text-center py-2 bg-red-600 rounded-[4px]">
+        {errorText && (
+          <div className=" w-full rounded-[4px] bg-red-600 py-2 text-center">
             <p className=" text-xs ">{errorText.message}</p>
           </div>
-          )
-        }
+        )}
 
         <RegisterInput onRegister={onRegister} />
 
@@ -49,7 +49,6 @@ function RegisterPage() {
           </Link>
         </div>
       </div>
-
     </div>
   );
 }

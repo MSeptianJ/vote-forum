@@ -10,14 +10,17 @@ function SubmitPage() {
   const auth = useSelector((states) => states.authUser);
   const [errorText, setErrorText] = useState('');
 
-  const onSubmitThread = useCallback(async ({ title, category, body }) => {
-    try {
-      await dispatch(asyncAddThread({ title, category, body }));
-      navigate('/');
-    } catch (error) {
-      setErrorText(error);
-    }
-  }, [dispatch, navigate]);
+  const onSubmitThread = useCallback(
+    async ({ title, category, body }) => {
+      try {
+        await dispatch(asyncAddThread({ title, category, body }));
+        navigate('/');
+      } catch (error) {
+        setErrorText(error);
+      }
+    },
+    [dispatch, navigate],
+  );
 
   return (
     <div className="mt-8 w-full px-5">
@@ -32,13 +35,11 @@ function SubmitPage() {
           </p>
         </div>
 
-        {
-          errorText && (
-          <div className=" w-full text-center py-2 bg-red-600 rounded-[4px]">
+        {errorText && (
+          <div className=" w-full rounded-[4px] bg-red-600 py-2 text-center">
             <p className=" text-xs ">{errorText.message}</p>
           </div>
-          )
-        }
+        )}
 
         <SubmitInput auth={auth?.id} onSubmitThread={onSubmitThread} />
       </div>

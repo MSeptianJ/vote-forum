@@ -9,14 +9,17 @@ function LoginPage() {
   const navigate = useNavigate();
   const [errorText, setErrorText] = useState('');
 
-  const onLogin = useCallback(async ({ email, password }) => {
-    try {
-      await dispatch(asyncLoginUser({ email, password }));
-      navigate('/');
-    } catch (error) {
-      setErrorText(error);
-    }
-  }, [dispatch, navigate]);
+  const onLogin = useCallback(
+    async ({ email, password }) => {
+      try {
+        await dispatch(asyncLoginUser({ email, password }));
+        navigate('/');
+      } catch (error) {
+        setErrorText(error);
+      }
+    },
+    [dispatch, navigate],
+  );
 
   return (
     <div className="mt-8 w-full px-5">
@@ -27,18 +30,15 @@ function LoginPage() {
           <p>
             Anda harus melakukan login untuk membuat
             {' '}
-
             <span className=" font-bold text-white">Thread</span>
           </p>
         </div>
 
-        {
-          errorText && (
-          <div className=" w-full text-center py-2 bg-red-600 rounded-[4px]">
+        {errorText && (
+          <div className=" w-full rounded-[4px] bg-red-600 py-2 text-center">
             <p className=" text-xs ">{errorText.message}</p>
           </div>
-          )
-        }
+        )}
 
         <LoginInput onLogin={onLogin} />
 

@@ -28,10 +28,7 @@ function RegisterInput({ onRegister }) {
       </div>
 
       <div className="grid w-full space-y-1">
-        <p
-          htmlFor="categoryThread"
-          className="w-full text-sm text-gray-300"
-        >
+        <p htmlFor="categoryThread" className="w-full text-sm text-gray-300">
           Email
         </p>
         <input
@@ -44,10 +41,7 @@ function RegisterInput({ onRegister }) {
       </div>
 
       <div className="grid w-full space-y-1">
-        <p
-          htmlFor="categoryThread"
-          className="w-full text-sm text-gray-300"
-        >
+        <p htmlFor="categoryThread" className="w-full text-sm text-gray-300">
           Password
         </p>
         <input
@@ -63,7 +57,7 @@ function RegisterInput({ onRegister }) {
         <input
           type="submit"
           value="Submit"
-          className=" w-1/2 max-w-52 rounded-md border border-secondary bg-secondary py-1 text-sm font-bold hover:bg-primary"
+          className=" w-1/2 max-w-52 cursor-pointer rounded-md border border-secondary bg-secondary py-1 text-sm font-bold hover:bg-primary"
         />
       </div>
     </form>

@@ -17,7 +17,10 @@ function ThreadDetail({
 }) {
   return (
     <div className="mb-10 flex w-full flex-col rounded-md bg-primary p-5 shadow-lg">
-      <ThreadAccount user={threadDetailData.owner} createdAt={threadDetailData?.createdAt} />
+      <ThreadAccount
+        user={threadDetailData.owner}
+        createdAt={threadDetailData?.createdAt}
+      />
 
       <ThreadTitle
         category={threadDetailData.category}
@@ -41,13 +44,11 @@ function ThreadDetail({
 
       <ThreadComment auth={auth} onComment={onComment} />
 
-      {
-        commentError.message && (
-        <div className=" w-full mt-3 text-center py-2 bg-red-600 rounded-[4px]">
+      {commentError.message && (
+        <div className=" mt-3 w-full rounded-[4px] bg-red-600 py-2 text-center">
           <p className=" text-xs text-white">{commentError.message}</p>
         </div>
-        )
-      }
+      )}
     </div>
   );
 }

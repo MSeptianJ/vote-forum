@@ -19,11 +19,11 @@ function ThreadComment({ auth, onComment }) {
 
       {auth ? (
         <div>
-          <p className="w-full mt-3 text-sm text-gray-300">Comment Content</p>
+          <p className="mt-3 w-full text-sm text-gray-300">Comment Content</p>
           <div
             onInput={contentHandler}
             contentEditable
-            className=" min-h-20 mt-2 rounded-md border border-secondary p-3"
+            className=" mt-2 min-h-20 rounded-md border border-secondary p-3"
           />
 
           <div className="flex justify-end">

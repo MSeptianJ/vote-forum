@@ -5,6 +5,7 @@ import CommentList from '../../components/Comment/CommentList';
 import { asyncAddComment } from '../../store/comment/action';
 import { asyncGetThreadDetail } from '../../store/threadDetail/action';
 import ThreadDetail from './components/ThreadDetail';
+import LoadingIcon from '../../components/LoadingIcon';
 
 function ThreadPage() {
   const { id } = useParams();
@@ -33,7 +34,7 @@ function ThreadPage() {
 
   if (!threadDetail) {
     return (
-      <p>No Thread Found</p>
+      <LoadingIcon />
     );
   }
 

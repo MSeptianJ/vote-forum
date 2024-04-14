@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Outlet, ScrollRestoration, useLocation } from 'react-router-dom';
 import BottomBar from './components/BottomBar';
 import CategoryBox from './components/CategoryBox';
+import LoadingIcon from './components/LoadingIcon';
 import LoadingStrip from './components/LoadingStrip';
 import TopBar from './components/TopBar';
 import { asyncLogoutUser } from './store/auth-user/action';
@@ -51,6 +52,10 @@ function App() {
     dispatch(asyncPreloadProcess());
     dispatch(asyncGetLeaderBoards());
   }, [dispatch]);
+
+  if (isPreload) {
+    <LoadingIcon />;
+  }
 
   return (
     <div className=" min-h-screen w-full">

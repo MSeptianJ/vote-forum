@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { asyncGetLeaderBoards } from '../../store/leaderboard/action';
 import UserList from './components/UserList';
+import LoadingIcon from '../../components/LoadingIcon';
 
 function LeaderBoardPage() {
   const dispatch = useDispatch();
@@ -10,6 +11,12 @@ function LeaderBoardPage() {
   useEffect(() => {
     dispatch(asyncGetLeaderBoards());
   }, [dispatch]);
+
+  if (!leaderboards) {
+    return (
+      <LoadingIcon />
+    );
+  }
 
   return (
     <div className="mt-8 w-full px-5">

@@ -6,7 +6,9 @@ import ThreadBody from './ThreadBody';
 import ThreadBtn from './ThreadBtn';
 import ThreadTitle from './ThreadTitle';
 
-function ThreadItem({ data, onUpVote, onDownVote }) {
+function ThreadItem({
+  data, onUpVote, onDownVote, onNeutralVote,
+}) {
   return (
     <>
       <ThreadAccount user={data.user} createdAt={data.createdAt} />
@@ -25,6 +27,7 @@ function ThreadItem({ data, onUpVote, onDownVote }) {
         totalComments={data.totalComments}
         onUpVote={onUpVote}
         onDownVote={onDownVote}
+        onNeutralVote={onNeutralVote}
       />
     </>
   );
@@ -34,6 +37,7 @@ ThreadItem.propTypes = {
   data: PropTypes.shape(threadValidator).isRequired,
   onUpVote: PropTypes.func.isRequired,
   onDownVote: PropTypes.func.isRequired,
+  onNeutralVote: PropTypes.func.isRequired,
 };
 
 export default ThreadItem;

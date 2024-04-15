@@ -11,8 +11,6 @@ import {
 import BtnPrimary from '../Button/BtnPrimary';
 
 function ThreadBtn({
-  onUpVote,
-  onDownVote,
   id,
   auth,
   upVotesBy,
@@ -20,16 +18,27 @@ function ThreadBtn({
   totalUpVotes,
   totalDownVotes,
   totalComments,
+  onUpVote,
+  onDownVote,
+  onNeutralVote,
 }) {
   const isUpVoted = upVotesBy?.includes(auth);
   const isDownVoted = downVotesBy?.includes(auth);
 
   const handleUpVote = () => {
-    onUpVote(id);
+    if (upVotesBy.includes(auth)) {
+      onNeutralVote(id);
+    } else {
+      onUpVote(id);
+    }
   };
 
   const handleDownVote = () => {
-    onDownVote(id);
+    if (downVotesBy.includes(auth)) {
+      onNeutralVote(id);
+    } else {
+      onDownVote(id);
+    }
   };
 
   return (
@@ -67,8 +76,6 @@ function ThreadBtn({
 }
 
 ThreadBtn.propTypes = {
-  onUpVote: PropTypes.func.isRequired,
-  onDownVote: PropTypes.func.isRequired,
   id: PropTypes.string.isRequired,
   auth: PropTypes.string,
   upVotesBy: PropTypes.arrayOf(PropTypes.string).isRequired,
@@ -76,6 +83,9 @@ ThreadBtn.propTypes = {
   totalComments: PropTypes.number.isRequired,
   totalUpVotes: PropTypes.number.isRequired,
   totalDownVotes: PropTypes.number.isRequired,
+  onUpVote: PropTypes.func.isRequired,
+  onDownVote: PropTypes.func.isRequired,
+  onNeutralVote: PropTypes.func.isRequired,
 };
 
 ThreadBtn.defaultProps = {

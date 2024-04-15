@@ -3,7 +3,9 @@ import React from 'react';
 import { threadValidator } from '../../utils/propValidator';
 import ThreadItem from './ThreadItem';
 
-function ThreadList({ threadData, onUpVote, onDownVote }) {
+function ThreadList({
+  threadData, onUpVote, onDownVote, onNeutralVote,
+}) {
   return (
     <div className="flex w-full flex-col gap-5 p-5">
       {threadData.map((thread) => (
@@ -15,6 +17,7 @@ function ThreadList({ threadData, onUpVote, onDownVote }) {
             data={thread}
             onUpVote={onUpVote}
             onDownVote={onDownVote}
+            onNeutralVote={onNeutralVote}
           />
         </div>
       ))}
@@ -26,6 +29,7 @@ ThreadList.propTypes = {
   threadData: PropTypes.arrayOf(PropTypes.shape(threadValidator)).isRequired,
   onUpVote: PropTypes.func.isRequired,
   onDownVote: PropTypes.func.isRequired,
+  onNeutralVote: PropTypes.func.isRequired,
 };
 
 export default ThreadList;

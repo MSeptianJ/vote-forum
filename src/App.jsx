@@ -18,7 +18,11 @@ import {
 } from './store/comment/action';
 import { asyncPreloadProcess } from './store/isPreload/action';
 import { asyncGetLeaderBoards } from './store/leaderboard/action';
-import { asyncDownVoteThread, asyncUpVoteThread } from './store/thread/action';
+import {
+  asyncDownVoteThread,
+  asyncNeutralVoteThread,
+  asyncUpVoteThread,
+} from './store/thread/action';
 import {
   asyncDownVoteThreadDetail,
   asyncUpVoteThreadDetail,
@@ -56,6 +60,10 @@ function App() {
 
   const onDownVoteThread = (threadId) => {
     dispatch(asyncDownVoteThread(threadId));
+  };
+
+  const onNeutralVoteThread = (threadId) => {
+    dispatch(asyncNeutralVoteThread(threadId));
   };
 
   const onUpVoteThreadDetail = (threadId) => {
@@ -98,6 +106,7 @@ function App() {
               onSearchCategory,
               onUpVoteThread,
               onDownVoteThread,
+              onNeutralVoteThread,
               onUpVoteThreadDetail,
               onDownVoteThreadDetail,
               onUpVoteComment,

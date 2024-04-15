@@ -2,7 +2,7 @@ import { hideLoading, showLoading } from 'react-redux-loading-bar';
 import { getLeaderboards } from '../../utils/api';
 
 export const LEADERBOARD_ACTION_TYPE = {
-  RECEIVE: 'RECEIVE_LEADERBOARD',
+  RECEIVE: 'leaderboard/RECEIVE',
 };
 
 export const receiveLeaderBoardAction = (leaderBoards) => ({

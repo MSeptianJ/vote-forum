@@ -14,6 +14,7 @@ function HomePage() {
   const {
     onUpVoteThread,
     onDownVoteThread,
+    onNeutralVoteThread,
     categories,
     searchedCategory,
     onSearchCategory,
@@ -51,6 +52,7 @@ function HomePage() {
         threadData={searchedCategory ? searchedThreads : moddedThread}
         onUpVote={onUpVoteThread}
         onDownVote={onDownVoteThread}
+        onNeutralVote={onNeutralVoteThread}
       />
     </div>
   );

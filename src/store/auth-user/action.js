@@ -4,8 +4,8 @@ import {
 } from '../../utils/api';
 
 export const AUTH_USER_ACTION_TYPE = {
-  SET: 'SET_AUTH_USER',
-  UNSET: 'UNSET_AUTH_USER',
+  SET: 'auth-user/SET',
+  UNSET: 'auth-user/UNSET',
 };
 
 export const setAuthUserAction = (authUser) => ({

@@ -4,7 +4,11 @@ import { commentValidator } from '../../utils/propValidator';
 import CommentItem from './CommentItem';
 
 function CommentList({
-  auth, commentData, onUpVote, onDownVote,
+  auth,
+  commentData,
+  onUpVote,
+  onDownVote,
+  onNeutralVote,
 }) {
   return (
     <>
@@ -24,6 +28,7 @@ function CommentList({
               data={comment}
               onUpVote={onUpVote}
               onDownVote={onDownVote}
+              onNeutralVote={onNeutralVote}
             />
           </div>
         ))}
@@ -37,6 +42,7 @@ CommentList.propTypes = {
   commentData: PropTypes.arrayOf(PropTypes.shape(commentValidator)).isRequired,
   onUpVote: PropTypes.func.isRequired,
   onDownVote: PropTypes.func.isRequired,
+  onNeutralVote: PropTypes.func.isRequired,
 };
 
 CommentList.defaultProps = {

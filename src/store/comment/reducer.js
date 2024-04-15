@@ -40,6 +40,24 @@ function commentsReducer(comments = [], action = {}) {
 
         return comment;
       });
+    case COMMENT_ACTION_TYPE.NEUTRALVOTE:
+      return comments.map((comment) => {
+        const { commentId, userId } = action.payload;
+
+        if (comment.id === commentId) {
+          return {
+            ...comment,
+            upVotesBy: comment.upVotesBy.includes(userId)
+              ? comment.upVotesBy.filter((id) => id !== userId)
+              : comment.upVotesBy,
+            downVotesBy: comment.downVotesBy.includes(userId)
+              ? comment.downVotesBy.filter((id) => id !== userId)
+              : comment.downVotesBy,
+          };
+        }
+
+        return comment;
+      });
     default:
       return comments;
   }

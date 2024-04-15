@@ -42,6 +42,24 @@ function threadsReducer(threads = [], action = {}) {
 
         return thread;
       });
+    case THREAD_ACTION_TYPE.NEUTRALVOTE:
+      return threads.map((thread) => {
+        const { threadId, userId } = action.payload;
+
+        if (thread.id === threadId) {
+          return {
+            ...thread,
+            upVotesBy: thread.upVotesBy.includes(userId)
+              ? thread.upVotesBy.filter((id) => id !== userId)
+              : thread.upVotesBy,
+            downVotesBy: thread.downVotesBy.includes(userId)
+              ? thread.downVotesBy.filter((id) => id !== userId)
+              : thread.downVotesBy,
+          };
+        }
+
+        return thread;
+      });
     default:
       return threads;
   }

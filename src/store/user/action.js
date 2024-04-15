@@ -1,12 +1,12 @@
 import { hideLoading, showLoading } from 'react-redux-loading-bar';
 import { getAllUsers } from '../../utils/api';
 
-export const USERS_ACTION_TYPE = {
-  RECEIVE: 'RECEIVE_USERS',
+export const USER_ACTION_TYPE = {
+  RECEIVE: 'user/RECEIVE',
 };
 
 export const receiveUsersAction = (users) => ({
-  type: USERS_ACTION_TYPE.RECEIVE,
+  type: USER_ACTION_TYPE.RECEIVE,
   payload: {
     users,
   },

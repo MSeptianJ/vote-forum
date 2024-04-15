@@ -16,8 +16,10 @@ function ThreadPage() {
   const {
     onUpVoteThreadDetail,
     onDownVoteThreadDetail,
+    onNeutralVoteThreadDetail,
     onUpVoteComment,
     onDownVoteComment,
+    onNeutralVoteComment,
   } = useOutletContext();
 
   const onComment = async (content) => {
@@ -62,6 +64,7 @@ function ThreadPage() {
         threadDetailData={threadDetail}
         onUpVote={onUpVoteThreadDetail}
         onDownVote={onDownVoteThreadDetail}
+        onNeutralVote={onNeutralVoteThreadDetail}
         onComment={onComment}
         commentError={errorText}
       />
@@ -70,6 +73,7 @@ function ThreadPage() {
         commentData={threadDetail.comments}
         onUpVote={onUpVoteComment}
         onDownVote={onDownVoteComment}
+        onNeutralVote={onNeutralVoteComment}
       />
     </div>
   );

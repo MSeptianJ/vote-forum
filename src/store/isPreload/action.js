@@ -3,7 +3,7 @@ import { getOwnProfile } from '../../utils/api';
 import { setAuthUserAction } from '../auth-user/action';
 
 export const IS_PRELOAD_ACTION_TYPE = {
-  SET: 'SET_IS_PRELOAD',
+  SET: 'preload/SET',
 };
 
 export const setIsPreloadActionCreator = (isPreload) => ({

@@ -1,11 +1,17 @@
 import { hideLoading, showLoading } from 'react-redux-loading-bar';
-import { getThreadDetail, toggleDownVoteThread, toggleUpVoteThread } from '../../utils/api';
+import {
+  getThreadDetail,
+  toggleDownVoteThread,
+  toggleNeutralVoteThread,
+  toggleUpVoteThread,
+} from '../../utils/api';
 
 export const THREAD_DETAIL_ACTION_TYPE = {
-  RECEIVE: 'RECEIVE_THREAD_DETAIL',
-  CLEAR: 'CLEAR_THREAD_DETAIL',
-  UPVOTE: 'UPVOTE_THREAD_DETAIL',
-  DOWNVOTE: 'DOWNVOTE_THREAD_DETAIL',
+  RECEIVE: 'thread-detail/RECEIVE',
+  CLEAR: 'thread-detail/CLEAR',
+  UPVOTE: 'thread-detail/UPVOTE',
+  DOWNVOTE: 'thread-detail/DOWNVOTE',
+  NEUTRALVOTE: 'thread-detail/NEUTRAL',
 };
 
 export const receiveThreadDetailAction = (threadDetail) => ({
@@ -29,6 +35,14 @@ export const upVoteThreadDetailAction = ({ threadId, userId }) => ({
 
 export const downVoteThreadDetailAction = ({ threadId, userId }) => ({
   type: THREAD_DETAIL_ACTION_TYPE.DOWNVOTE,
+  payload: {
+    threadId,
+    userId,
+  },
+});
+
+export const neutralVoteThreadDetailAction = ({ threadId, userId }) => ({
+  type: THREAD_DETAIL_ACTION_TYPE.NEUTRALVOTE,
   payload: {
     threadId,
     userId,
@@ -72,6 +86,21 @@ export const asyncDownVoteThreadDetail = (threadId) => async (dispatch, getState
 
   try {
     await toggleDownVoteThread(threadId);
+  } catch (error) {
+    dispatch(hideLoading());
+    throw new Error(error);
+  }
+
+  dispatch(hideLoading());
+};
+
+export const asyncNeutralVoteThreadDetail = (threadId) => async (dispatch, getState) => {
+  const { authUser } = getState();
+  dispatch(showLoading());
+  dispatch(neutralVoteThreadDetailAction({ threadId, userId: authUser.id }));
+
+  try {
+    await toggleNeutralVoteThread(threadId);
   } catch (error) {
     dispatch(hideLoading());
     throw new Error(error);

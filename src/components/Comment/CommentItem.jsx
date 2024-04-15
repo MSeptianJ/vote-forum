@@ -6,7 +6,11 @@ import CommentBody from './CommentBody';
 import CommentBtn from './CommentBtn';
 
 function CommentItem({
-  auth, data, onUpVote, onDownVote,
+  auth,
+  data,
+  onUpVote,
+  onDownVote,
+  onNeutralVote,
 }) {
   return (
     <>
@@ -21,6 +25,7 @@ function CommentItem({
         totalUpVotes={data.upVotesBy.length}
         onUpVote={onUpVote}
         onDownVote={onDownVote}
+        onNeutralVote={onNeutralVote}
       />
     </>
   );
@@ -31,6 +36,7 @@ CommentItem.propTypes = {
   data: PropTypes.shape(commentValidator).isRequired,
   onUpVote: PropTypes.func.isRequired,
   onDownVote: PropTypes.func.isRequired,
+  onNeutralVote: PropTypes.func.isRequired,
 };
 
 CommentItem.defaultProps = {

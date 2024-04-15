@@ -8,6 +8,7 @@ function CommentBtn({
   auth,
   onUpVote,
   onDownVote,
+  onNeutralVote,
   totalUpVotes,
   totalDownVotes,
   upVotesBy,
@@ -17,11 +18,19 @@ function CommentBtn({
   const isDownVoted = downVotesBy?.includes(auth);
 
   const handleUpVote = () => {
-    onUpVote(id);
+    if (upVotesBy.includes(auth)) {
+      onNeutralVote(id);
+    } else {
+      onUpVote(id);
+    }
   };
 
   const handleDownVote = () => {
-    onDownVote(id);
+    if (downVotesBy.includes(auth)) {
+      onNeutralVote(id);
+    } else {
+      onDownVote(id);
+    }
   };
 
   return (
@@ -52,6 +61,7 @@ CommentBtn.propTypes = {
   auth: PropTypes.string,
   onUpVote: PropTypes.func.isRequired,
   onDownVote: PropTypes.func.isRequired,
+  onNeutralVote: PropTypes.func.isRequired,
   totalUpVotes: PropTypes.number.isRequired,
   totalDownVotes: PropTypes.number.isRequired,
   upVotesBy: PropTypes.arrayOf(PropTypes.string).isRequired,

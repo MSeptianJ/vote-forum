@@ -1,6 +1,10 @@
 import { hideLoading, showLoading } from 'react-redux-loading-bar';
 import {
-  createComment, getThreadDetail, toggleDownVoteComment, toggleUpVoteComment,
+  createComment,
+  getThreadDetail,
+  toggleDownVoteComment,
+  toggleNeutralVoteComment,
+  toggleUpVoteComment,
 } from '../../utils/api';
 import { receiveThreadDetailAction } from '../threadDetail/action';
 
@@ -8,6 +12,7 @@ export const COMMENT_ACTION_TYPE = {
   ADD: 'comment/ADD',
   UPVOTE: 'comment/UPVOTE',
   DOWNVOTE: 'comment/DOWNVOTE',
+  NEUTRALVOTE: 'comment/NEUTRAL',
 };
 
 export const addCommentAction = (comment) => ({
@@ -27,6 +32,14 @@ export const upVoteCommentAction = ({ commentId, userId }) => ({
 
 export const downVoteCommentAction = ({ commentId, userId }) => ({
   type: COMMENT_ACTION_TYPE.DOWNVOTE,
+  payload: {
+    commentId,
+    userId,
+  },
+});
+
+export const neutralVoteCommentAction = ({ commentId, userId }) => ({
+  type: COMMENT_ACTION_TYPE.NEUTRALVOTE,
   payload: {
     commentId,
     userId,
@@ -77,6 +90,24 @@ export const asyncDownVoteComment = (commentId) => async (dispatch, getState) =>
 
   try {
     await toggleDownVoteComment(threadDetail.id, commentId);
+
+    const newThreadDetail = await getThreadDetail(threadDetail.id);
+    dispatch(receiveThreadDetailAction(newThreadDetail));
+  } catch (error) {
+    dispatch(hideLoading());
+    throw new Error(error);
+  }
+
+  dispatch(hideLoading());
+};
+
+export const asyncNeutralVoteComment = (commentId) => async (dispatch, getState) => {
+  const { threadDetail, authUser } = getState();
+  dispatch(showLoading());
+  dispatch(neutralVoteCommentAction({ commentId, userId: authUser.id }));
+
+  try {
+    await toggleNeutralVoteComment(threadDetail.id, commentId);
 
     const newThreadDetail = await getThreadDetail(threadDetail.id);
     dispatch(receiveThreadDetailAction(newThreadDetail));

@@ -14,6 +14,7 @@ import LoadingStrip from './components/Other/LoadingStrip';
 import { asyncLogoutUser } from './store/auth-user/action';
 import {
   asyncDownVoteComment,
+  asyncNeutralVoteComment,
   asyncUpVoteComment,
 } from './store/comment/action';
 import { asyncPreloadProcess } from './store/isPreload/action';
@@ -25,6 +26,7 @@ import {
 } from './store/thread/action';
 import {
   asyncDownVoteThreadDetail,
+  asyncNeutralVoteThreadDetail,
   asyncUpVoteThreadDetail,
 } from './store/threadDetail/action';
 
@@ -74,12 +76,20 @@ function App() {
     dispatch(asyncDownVoteThreadDetail(threadId));
   };
 
+  const onNeutralVoteThreadDetail = (threadId) => {
+    dispatch(asyncNeutralVoteThreadDetail(threadId));
+  };
+
   const onUpVoteComment = (commendId) => {
     dispatch(asyncUpVoteComment(commendId));
   };
 
   const onDownVoteComment = (commendId) => {
     dispatch(asyncDownVoteComment(commendId));
+  };
+
+  const onNeutralVoteComment = (commendId) => {
+    dispatch(asyncNeutralVoteComment(commendId));
   };
 
   useEffect(() => {
@@ -109,8 +119,10 @@ function App() {
               onNeutralVoteThread,
               onUpVoteThreadDetail,
               onDownVoteThreadDetail,
+              onNeutralVoteThreadDetail,
               onUpVoteComment,
               onDownVoteComment,
+              onNeutralVoteComment,
             }}
           />
         )}

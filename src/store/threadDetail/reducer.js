@@ -26,6 +26,16 @@ function threadDetailReducer(threadDetail = null, action = {}) {
           ? threadDetail.downVotesBy
           : threadDetail.downVotesBy.concat(action.payload.userId),
       };
+    case THREAD_DETAIL_ACTION_TYPE.NEUTRALVOTE:
+      return {
+        ...threadDetail,
+        upVotesBy: threadDetail.upVotesBy.includes(action.payload.userId)
+          ? threadDetail.upVotesBy.filter((id) => id !== action.payload.userId)
+          : threadDetail.upVotesBy,
+        downVotesBy: threadDetail.downVotesBy.includes(action.payload.userId)
+          ? threadDetail.downVotesBy.filter((id) => id !== action.payload.userId)
+          : threadDetail.downVotesBy,
+      };
     default:
       return threadDetail;
   }

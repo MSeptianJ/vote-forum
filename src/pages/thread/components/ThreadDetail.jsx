@@ -12,6 +12,7 @@ function ThreadDetail({
   threadDetailData,
   onUpVote,
   onDownVote,
+  onNeutralVote,
   onComment,
   commentError,
 }) {
@@ -40,6 +41,7 @@ function ThreadDetail({
         totalComments={threadDetailData.comments.length}
         onUpVote={onUpVote}
         onDownVote={onDownVote}
+        onNeutralVote={onNeutralVote}
       />
 
       <ThreadComment auth={auth} onComment={onComment} />
@@ -58,6 +60,7 @@ ThreadDetail.propTypes = {
   threadDetailData: PropTypes.shape(threadDetailValidator).isRequired,
   onUpVote: PropTypes.func.isRequired,
   onDownVote: PropTypes.func.isRequired,
+  onNeutralVote: PropTypes.func.isRequired,
   onComment: PropTypes.func.isRequired,
   commentError: PropTypes.objectOf(PropTypes.string),
 };

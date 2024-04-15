@@ -2,10 +2,10 @@ import { hideLoading, showLoading } from 'react-redux-loading-bar';
 import { getThreadDetail, toggleDownVoteThread, toggleUpVoteThread } from '../../utils/api';
 
 export const THREAD_DETAIL_ACTION_TYPE = {
-  RECEIVE: 'RECEIVE_THREAD_DETAIL',
-  CLEAR: 'CLEAR_THREAD_DETAIL',
-  UPVOTE: 'UPVOTE_THREAD_DETAIL',
-  DOWNVOTE: 'DOWNVOTE_THREAD_DETAIL',
+  RECEIVE: 'thread-detail/RECEIVE',
+  CLEAR: 'thread-detail/CLEAR',
+  UPVOTE: 'thread-detail/UPVOTE',
+  DOWNVOTE: 'thread-detail/DOWNVOTE',
 };
 
 export const receiveThreadDetailAction = (threadDetail) => ({

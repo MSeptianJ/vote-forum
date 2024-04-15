@@ -5,10 +5,10 @@ import {
 } from '../../utils/api';
 
 export const THREAD_ACTION_TYPE = {
-  RECEIVE: 'RECEIVE_THREADS',
-  ADD: 'ADD_THREAD',
-  UPVOTE: 'UPVOTE_THREAD',
-  DOWNVOTE: 'DOWNVOTE_THREAD',
+  RECEIVE: 'thread/RECEIVE',
+  ADD: 'thread/ADD',
+  UPVOTE: 'thread/UPVOTE',
+  DOWNVOTE: 'thread/DOWNVOTE',
 };
 
 export const receiveThreadsAction = (threads) => ({

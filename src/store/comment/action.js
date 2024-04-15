@@ -5,9 +5,9 @@ import {
 import { receiveThreadDetailAction } from '../threadDetail/action';
 
 export const COMMENT_ACTION_TYPE = {
-  ADD: 'ADD_COMMENT',
-  UPVOTE: 'UPVOTE_COMMENT',
-  DOWNVOTE: 'DOWNVOTE_COMMENT',
+  ADD: 'comment/ADD',
+  UPVOTE: 'comment/UPVOTE',
+  DOWNVOTE: 'comment/DOWNVOTE',
 };
 
 export const addCommentAction = (comment) => ({

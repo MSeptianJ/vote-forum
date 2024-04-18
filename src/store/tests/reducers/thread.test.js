@@ -1,4 +1,5 @@
 import { describe, expect, it } from 'vitest';
+import { THREAD_ACTION_TYPE } from '../../thread/action';
 import threadsReducer from '../../thread/reducer';
 
 // Test Threads Reducer
@@ -22,7 +23,7 @@ describe('REDUCER: Thread', () => {
   it('TYPE RECEIVE: Should return threads', () => {
     const initialState = [];
     const action = {
-      type: 'thread/RECEIVE',
+      type: THREAD_ACTION_TYPE.RECEIVE,
       payload: {
         threads: [
           {
@@ -92,7 +93,7 @@ describe('REDUCER: Thread', () => {
       },
     ];
     const action = {
-      type: 'thread/ADD',
+      type: THREAD_ACTION_TYPE.ADD,
       payload: {
         thread: {
           id: 'thread-knvaorbreove',
@@ -130,7 +131,7 @@ describe('REDUCER: Thread', () => {
       },
     ];
     const action = {
-      type: 'thread/UPVOTE',
+      type: THREAD_ACTION_TYPE.UPVOTE,
       payload: {
         threadId: 'thread-1',
         userId: 'users-2',
@@ -162,7 +163,7 @@ describe('REDUCER: Thread', () => {
       },
     ];
     const action = {
-      type: 'thread/DOWNVOTE',
+      type: THREAD_ACTION_TYPE.DOWNVOTE,
       payload: {
         threadId: 'thread-1',
         userId: 'users-2',
@@ -205,14 +206,14 @@ describe('REDUCER: Thread', () => {
       },
     ];
     const actionA = {
-      type: 'thread/NEUTRAL',
+      type: THREAD_ACTION_TYPE.NEUTRALVOTE,
       payload: {
         threadId: 'thread-1',
         userId: 'users-2',
       },
     };
     const actionB = {
-      type: 'thread/NEUTRAL',
+      type: THREAD_ACTION_TYPE.NEUTRALVOTE,
       payload: {
         threadId: 'thread-2',
         userId: 'users-2',

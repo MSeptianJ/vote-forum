@@ -3,12 +3,12 @@ import { THREAD_ACTION_TYPE } from '../../thread/action';
 import threadsReducer from '../../thread/reducer';
 
 // Test Threads Reducer
-// - Should return initial state when given unknown action type
-// - Should return threads when given "thread/RECEIVE" action type
-// - Should return threads with new thread when given "thread/ADD" action type
-// - Should return threads with new thread when given "thread/UPVOTE" action type
-// - Should return threads with new thread when given "thread/DOWNVOTE" action type
-// - Should return threads with new thread when given "thread/NEUTRALVOTE" action type
+// - TYPE UNKNOWN: Should return initial state
+// - TYPE RECEIVE: Should return threads
+// - TYPE ADD: Should return threads with new thread
+// - TYPE UPVOTE: Should return threads with new userId in upVotesBy
+// - TYPE DOWNVOTE: Should return threads with new userId in downVotesBy
+// - TYPE NEUTRALVOTE: Should return threads with userId erased in upVotesBy or downVotesBy
 
 describe('REDUCER: Thread', () => {
   it('TYPE UNKNOWN: Should return initial state', () => {

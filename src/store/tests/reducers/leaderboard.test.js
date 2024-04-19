@@ -7,7 +7,7 @@ import leaderBoardsReducer from '../../leaderboard/reducer';
 // - TYPE RECEIVE: Should return Leaderboards
 
 describe('REDUCER: Leaderboard', () => {
-  it('TYPE UNKNOWN: Should return intial state', () => {
+  it('TYPE UNKNOWN: Should return initial state', () => {
     const initialState = [];
     const action = {
       type: 'UNKNOWN',

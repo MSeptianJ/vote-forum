@@ -21,6 +21,7 @@ function RegisterInput({ onRegister }) {
         <input
           type="text"
           id="nameRegister"
+          title="Register Name"
           value={name}
           onChange={onNameChange}
           className="w-full rounded-[4px] border border-secondary bg-transparent"
@@ -34,6 +35,7 @@ function RegisterInput({ onRegister }) {
         <input
           type="email"
           id="emailRegister"
+          title="Register Email"
           value={email}
           onChange={onEmailChange}
           className="w-full rounded-[4px] border border-secondary bg-transparent"
@@ -47,6 +49,7 @@ function RegisterInput({ onRegister }) {
         <input
           type="password"
           id="passwordRegister"
+          title="Register Password"
           value={password}
           onChange={onPassChange}
           className="w-full rounded-[4px] border border-secondary bg-transparent"

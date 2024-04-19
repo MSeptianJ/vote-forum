@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest';
 import { THREAD_DETAIL_ACTION_TYPE } from '../../threadDetail/action';
 import threadDetailReducer from '../../threadDetail/reducer';
 
-// Test Threads Reducer
+// Test Thread Detail Reducer
 // - TYPE UNKNOWN: Should return initial state
 // - TYPE RECEIVE: Should return single thread information
 // - TYPE CLEAR: Should return null

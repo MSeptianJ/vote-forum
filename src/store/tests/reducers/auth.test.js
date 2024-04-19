@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest';
 import { AUTH_USER_ACTION_TYPE } from '../../auth-user/action';
 import authUserReducer from '../../auth-user/reducer';
 
-// Test Threads Reducer
+// Test Auth Reducer
 // - TYPE UNKNOWN: Should return initial state
 // - TYPE SET: Should set new Auth User
 // - TYPE UNSET: SShould unset Auth User

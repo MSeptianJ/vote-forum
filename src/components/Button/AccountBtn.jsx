@@ -28,6 +28,7 @@ function AccountBtn({ onLogOut, userData }) {
       )}
       arrowIcon={false}
       inline
+      title="Account"
       className=" border-none bg-primary text-white"
     >
       <Dropdown.Header className=" text-white">

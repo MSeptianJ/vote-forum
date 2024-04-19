@@ -20,6 +20,7 @@ function LoginInput({ onLogin }) {
         <input
           type="text"
           id="emailLogin"
+          title="Login Email"
           value={email}
           onChange={onEmailChange}
           className="w-full rounded-[4px] border border-secondary bg-transparent"
@@ -33,6 +34,7 @@ function LoginInput({ onLogin }) {
         <input
           type="password"
           id="passLogin"
+          title="Login Password"
           value={password}
           onChange={onPassChange}
           className="w-full rounded-[4px] border border-secondary bg-transparent"

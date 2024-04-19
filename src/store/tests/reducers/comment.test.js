@@ -1,13 +1,13 @@
 import { describe, expect, it } from 'vitest';
-import commentsReducer from '../../comment/reducer';
 import { COMMENT_ACTION_TYPE } from '../../comment/action';
+import commentsReducer from '../../comment/reducer';
 
 // Test Comment Reducer
 // - TYPE UNKNOWN: Should return initial state
-// - TYPE ADD: Should return threads with new thread
-// - TYPE UPVOTE: Should return thread with new userId in upVotesBy
-// - TYPE DOWNVOTE: Should return thread with new userId in downVotesBy
-// - TYPE NEUTRALVOTE: Should return thread with userId erased in upVotesBy or downVotesBy
+// - TYPE ADD: Should return comments with new comment
+// - TYPE UPVOTE: Should return comment with new userId in upVotesBy
+// - TYPE DOWNVOTE: Should return comment with new userId in downVotesBy
+// - TYPE NEUTRALVOTE: Should return comment with userId erased in upVotesBy or downVotesBy
 
 describe('REDUCER: Comment', () => {
   it('TYPE UNKNOWN: Should return initial state', () => {
@@ -21,7 +21,7 @@ describe('REDUCER: Comment', () => {
     expect(nextState).toEqual(initialState);
   });
 
-  it('TYPE ADD: Should return threads with new thread', () => {
+  it('TYPE ADD: Should return comments with new comment', () => {
     const initialState = [];
     const action = {
       type: COMMENT_ACTION_TYPE.ADD,
@@ -46,7 +46,7 @@ describe('REDUCER: Comment', () => {
     expect(nextState).toEqual([...initialState, action.payload.comment]);
   });
 
-  it('TYPE UPVOTE: Should return thread with new userId in upVotesBy', () => {
+  it('TYPE UPVOTE: Should return comment with new userId in upVotesBy', () => {
     const initialState = [
       {
         id: 'comment-1',
@@ -80,7 +80,7 @@ describe('REDUCER: Comment', () => {
     ]);
   });
 
-  it('TYPE DOWNVOTE: Should return thread with new userId in downVotesBy', () => {
+  it('TYPE DOWNVOTE: Should return comment with new userId in downVotesBy', () => {
     const initialState = [
       {
         id: 'comment-1',
@@ -114,7 +114,7 @@ describe('REDUCER: Comment', () => {
     ]);
   });
 
-  it('TYPE NEUTRALVOTE: Should return thread with userId erased in upVotesBy or downVotesBy', () => {
+  it('TYPE NEUTRALVOTE: Should return comment with userId erased in upVotesBy or downVotesBy', () => {
     const initialState = [
       {
         id: 'comment-1',

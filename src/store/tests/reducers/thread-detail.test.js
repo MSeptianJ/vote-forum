@@ -6,9 +6,9 @@ import threadDetailReducer from '../../threadDetail/reducer';
 // - TYPE UNKNOWN: Should return initial state
 // - TYPE RECEIVE: Should return single thread information
 // - TYPE CLEAR: Should return null
-// - TYPE UPVOTE: Should return thread with new userId in upVotesBy
-// - TYPE DOWNVOTE: Should return thread with new userId in downVotesBy
-// - TYPE NEUTRALVOTE: Should return thread with userId erased in upVotesBy or downVotesBy
+// - TYPE UPVOTE: Should return thread-detail with new userId in upVotesBy
+// - TYPE DOWNVOTE: Should return thread-detail with new userId in downVotesBy
+// - TYPE NEUTRALVOTE: Should return thread-detail with userId erased in upVotesBy or downVotesBy
 
 describe('REDUCER: Thread Detail', () => {
   it('TYPE UNKNOWN: Should return initial state', () => {

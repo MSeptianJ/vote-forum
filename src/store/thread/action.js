@@ -6,6 +6,7 @@ import {
   toggleNeutralVoteThread,
   toggleUpVoteThread,
 } from '../../utils/api';
+import { asyncGetLeaderBoards } from '../leaderboard/action';
 
 export const THREAD_ACTION_TYPE = {
   RECEIVE: 'thread/RECEIVE',
@@ -88,6 +89,7 @@ export const asyncUpVoteThread = (threadId) => async (dispatch, getState) => {
 
   try {
     await toggleUpVoteThread(threadId);
+    dispatch(asyncGetLeaderBoards());
   } catch (error) {
     dispatch(hideLoading());
     throw new Error(error);
@@ -103,6 +105,7 @@ export const asyncDownVoteThread = (threadId) => async (dispatch, getState) => {
 
   try {
     await toggleDownVoteThread(threadId);
+    dispatch(asyncGetLeaderBoards());
   } catch (error) {
     dispatch(hideLoading());
     throw new Error(error);
@@ -118,6 +121,7 @@ export const asyncNeutralVoteThread = (threadId) => async (dispatch, getState) =
 
   try {
     await toggleNeutralVoteThread(threadId);
+    dispatch(asyncGetLeaderBoards());
   } catch (error) {
     dispatch(hideLoading());
     throw new Error(error);

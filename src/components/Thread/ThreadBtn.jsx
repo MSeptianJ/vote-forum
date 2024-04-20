@@ -43,7 +43,7 @@ function ThreadBtn({
 
   return (
     <div className=" flex items-center justify-between gap-3 border-t border-secondary pt-4">
-      <div className=" grid grid-cols-2 gap-4">
+      <div className=" grid grid-cols-2 gap-4" title="Vote Buttons">
         <BtnPrimary
           btnText={String(totalUpVotes)}
           btnIcon={isUpVoted ? <IconVote /> : <IconVoteOutline />}
@@ -62,7 +62,7 @@ function ThreadBtn({
       </div>
 
       <div>
-        <Link to={`/thread/${id}`}>
+        <Link to={`/thread/${id}`} title="Comment Button">
           <BtnPrimary
             btnText={String(totalComments)}
             btnIcon={<IconComment />}

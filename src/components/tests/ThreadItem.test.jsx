@@ -228,7 +228,7 @@ describe('COMPONENT : ThreadItem', () => {
     expect(onNeutralVote).toBeCalledWith(fakeItemUpVoted.id);
   });
 
-  it.skip('Should call neutral function when user already downvoted', async () => {
+  it('Should call neutral function when user already downvoted', async () => {
     const onDownVote = vi.fn();
     const onNeutralVote = vi.fn();
 

@@ -10,18 +10,39 @@ import {
 import TopBar from '../Bar/TopBar';
 
 // TopBar Testing
-// - should handle page navigation to leaderboard page
-// - should handle page navigation to home page
 // - Should Display Login Button when not Authenticated
+// - Should Display Account Button when not Authenticated
+// - Should call Log Out Function when log out button clicked
+// - Should handle page navigation to leaderboard page
+// - Should handle page navigation to home page
 
-vi.mock('react-redux', async (importOriginal) => {
-  const actual = await importOriginal();
-  return {
-    ...actual,
-    useSelector: vi.fn(),
-    useDispatch: vi.fn(),
-  };
-});
+const fakeLeaderBoards = [
+  {
+    user: {
+      id: 'users-1',
+      name: 'John Doe',
+      email: 'john@example.com',
+      avatar: 'https://generated-image-url.jpg',
+    },
+    score: 10,
+  },
+  {
+    user: {
+      id: 'users-2',
+      name: 'Jane Doe',
+      email: 'jane@example.com',
+      avatar: 'https://generated-image-url.jpg',
+    },
+    score: 5,
+  },
+];
+
+const fakeAuthUser = {
+  id: 'john_doe',
+  name: 'John Doe',
+  email: 'john@example.com',
+  avatar: 'https://generated-image-url.jpg',
+};
 
 describe('COMPONENT: TopBar', () => {
   afterEach(() => {
@@ -31,25 +52,50 @@ describe('COMPONENT: TopBar', () => {
   it('Should Display Login Button when not Authenticated', async () => {
     render(
       <BrowserRouter>
-        <TopBar authUser={null} onLogOut={() => {}} />
+        <TopBar authUser={null} onLogOut={() => {}} leaderBoards={fakeLeaderBoards} />
       </BrowserRouter>,
     );
 
-    const logoElement = await screen.getByAltText('Logo Votrum');
-    const homeBtn = await screen.getByTitle('Home');
-    const leaderboardBtn = await screen.getByTitle('Leaderboard');
     const loginBtn = await screen.getByTitle('Login');
 
-    expect(logoElement).toBeVisible();
-    expect(homeBtn).toBeVisible();
-    expect(leaderboardBtn).toBeVisible();
     expect(loginBtn).toBeVisible();
+  });
+
+  it('Should Display Account Button when Authenticated', async () => {
+    render(
+      <BrowserRouter>
+        <TopBar authUser={fakeAuthUser} onLogOut={() => {}} leaderBoards={fakeLeaderBoards} />
+      </BrowserRouter>,
+    );
+
+    const accountBtn = await screen.getByTitle('Account');
+
+    expect(accountBtn).toBeVisible();
+  });
+
+  it('Should Call Logout Function when log out button clicked', async () => {
+    const onLogOut = vi.fn();
+    render(
+      <BrowserRouter>
+        <TopBar authUser={fakeAuthUser} onLogOut={onLogOut} leaderBoards={fakeLeaderBoards} />
+      </BrowserRouter>,
+    );
+
+    const accountBtn = await screen.getByTitle('Account');
+    expect(accountBtn).toBeVisible();
+
+    await userEvent.click(accountBtn);
+    const logOutBtn = await screen.getByTitle('Log Out');
+
+    await userEvent.click(logOutBtn);
+
+    expect(onLogOut).toBeCalled();
   });
 
   it('Should handle page navigation to leaderboard page', async () => {
     render(
       <MemoryRouter initialEntries={['/']}>
-        <TopBar authUser={null} onLogOut={() => {}} />
+        <TopBar authUser={null} onLogOut={() => {}} leaderBoards={fakeLeaderBoards} />
       </MemoryRouter>,
     );
 
@@ -72,7 +118,7 @@ describe('COMPONENT: TopBar', () => {
   it('Should handle page navigation to home page', async () => {
     render(
       <MemoryRouter initialEntries={['/leaderboard']}>
-        <TopBar authUser={null} onLogOut={() => {}} />
+        <TopBar authUser={null} onLogOut={() => {}} leaderBoards={fakeLeaderBoards} />
       </MemoryRouter>,
     );
 

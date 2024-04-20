@@ -19,13 +19,13 @@ function AccountBtn({ onLogOut, userData, leaderBoards }) {
       label={(
         <Avatar
           rounded
+          title="Account"
           img={userData.avatar}
           className="p-2 transition-colors duration-300 hover:bg-secondary"
         />
       )}
       arrowIcon={false}
       inline
-      title="Account"
       className=" border-none bg-primary text-white"
     >
       <Dropdown.Header className=" text-white">
@@ -42,6 +42,7 @@ function AccountBtn({ onLogOut, userData, leaderBoards }) {
         icon={PiSignOutBold}
         className=" border-none text-white hover:text-black"
         onClick={handleLogOut}
+        title="Log Out"
       >
         Log Out
       </Dropdown.Item>

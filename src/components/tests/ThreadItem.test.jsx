@@ -6,8 +6,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { MemoryRouter } from 'react-router-dom';
 import {
-  afterEach, describe, expect, it,
-  vi,
+  afterEach, describe, expect, it, vi,
 } from 'vitest';
 import ThreadItem from '../Thread/ThreadItem';
 

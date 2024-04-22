@@ -43,6 +43,7 @@ function LoginInput({ onLogin }) {
 
       <div className="mt-3 flex w-full justify-center">
         <input
+          id="submitLogin"
           type="submit"
           value="Submit"
           className=" w-1/2 max-w-52 cursor-pointer rounded-md border border-secondary bg-secondary py-1 text-sm font-bold hover:bg-primary"

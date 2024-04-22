@@ -58,7 +58,7 @@ function TopBar({ onLogOut, authUser, leaderBoards }) {
           <AccountBtn userData={authUser} onLogOut={onLogOut} leaderBoards={leaderBoards} />
         ) : (
           <div className="h-full">
-            <Link to="/login" className="h-full" title="Login">
+            <Link to="/login" className="h-full" title="Login" id="login-link">
               <BtnPrimary
                 btnStyles="text-xl h-full p-2 md:text-base transition-colors duration-300 hover:bg-secondary"
                 btnIcon={<IconLogin />}

@@ -41,6 +41,7 @@ function HomePage() {
 
   return (
     <div className="mt-8 w-full">
+      <h2 className=" text-xl font-bold px-5 pb-3">Welcome to Voterum</h2>
       <HomeTopBar
         categories={categories}
         auth={auth?.id}

@@ -7,9 +7,9 @@ import { receiveThreadsAction } from '../../thread/action';
 import { receiveUsersAction } from '../../user/action';
 import { getAllThreads, getAllUsers } from '../../../utils/api';
 
-// Test asyncGetUsersAndThreads
-// - should dispatch action correctly when data fetching success
-// - should dispatch action and call alert correctly when data fetching failed
+// Test Shared user and Thread
+// - THUNK: asyncGetUsersAndThreads, SUCCESS
+// - THUNK: asyncGetUsersAndThreads, FAILED
 
 const fakeThreads = [
   {
@@ -43,7 +43,7 @@ describe('ACTION: Shared user and Thread', () => {
     vi.resetAllMocks();
   });
 
-  it('Should dispatch action correctly when data fetching success', async () => {
+  it('THUNK: asyncGetUsersAndThreads, SUCCESS', async () => {
     getAllUsers.mockResolvedValue(fakeUsers);
     getAllThreads.mockResolvedValue(fakeThreads);
 
@@ -66,7 +66,7 @@ describe('ACTION: Shared user and Thread', () => {
     expect(dispatch).toHaveBeenCalledWith(hideLoading());
   });
 
-  it('should dispatch action correctly when data fetching failed', async () => {
+  it('THUNK: asyncGetUsersAndThreads, FAILED', async () => {
     getAllUsers.mockRejectedValue(fakeUsers);
     getAllThreads.mockRejectedValue(fakeThreads);
     // mock dispatch

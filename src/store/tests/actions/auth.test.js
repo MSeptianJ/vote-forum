@@ -1,6 +1,6 @@
 import { hideLoading, showLoading } from 'react-redux-loading-bar';
 import {
-  describe, expect, it, vi,
+  afterEach, describe, expect, it, vi,
 } from 'vitest';
 import {
   getOwnProfile, login, putAccessToken, register,
@@ -13,7 +13,7 @@ import {
   unsetAuthUserAction,
 } from '../../auth-user/action';
 
-// Test asyncLoginUser
+// ACTION: Auth User
 // - THUNK: asyncLoginUser, SUCCESS
 // - THUNK: asyncLoginUser, FAILED
 // - THUNK: asyncRegisterUser, SUCCESS
@@ -38,6 +38,10 @@ const fakeToken = {
 vi.mock('../../../utils/api.js');
 
 describe('ACTION: Auth user', () => {
+  afterEach(() => {
+    vi.resetAllMocks();
+  });
+
   it('THUNK: asyncLoginUser, SUCCESS', async () => {
     // mock;
     getOwnProfile.mockResolvedValue(fakeAuth);

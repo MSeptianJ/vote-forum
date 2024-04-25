@@ -5,9 +5,9 @@ import {
 import { getLeaderboards } from '../../../utils/api';
 import { asyncGetLeaderBoards, receiveLeaderBoardAction } from '../../leaderboard/action';
 
-// Test asyncGetLeaderBoards
-// - should dispatch action correctly when data fetching success
-// - should dispatch action and call alert correctly when data fetching failed
+// ACTION: Leaderboard
+// - THUNK: asyncGetLeaderBoards, SUCCESS
+// - THUNK: asyncGetLeaderBoards, FAILED
 
 const fakeLeaderboards = [
   {
@@ -34,12 +34,12 @@ const fakeError = new Error('Ups, something went wrong');
 
 vi.mock('../../../utils/api.js');
 
-describe('ACTION: Shared user and Thread', () => {
+describe('ACTION: Leaderboards', () => {
   afterEach(() => {
     vi.resetAllMocks();
   });
 
-  it('Should dispatch action correctly when data fetching success', async () => {
+  it('THUNK: asyncGetLeaderBoards, SUCCESS', async () => {
     // mock;
     getLeaderboards.mockResolvedValue(fakeLeaderboards);
     const dispatch = vi.fn();
@@ -55,7 +55,7 @@ describe('ACTION: Shared user and Thread', () => {
     expect(dispatch).toHaveBeenCalledWith(hideLoading());
   });
 
-  it('Should dispatch action correctly when data fetching failed', async () => {
+  it('THUNK: asyncGetLeaderBoards, FAILED', async () => {
     // mock;
     getLeaderboards.mockRejectedValue(fakeError);
     const dispatch = vi.fn();

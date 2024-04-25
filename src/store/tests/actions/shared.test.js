@@ -7,7 +7,7 @@ import { receiveThreadsAction } from '../../thread/action';
 import { receiveUsersAction } from '../../user/action';
 import { getAllThreads, getAllUsers } from '../../../utils/api';
 
-// Test Shared user and Thread
+// ACTION: Shared user and Thread
 // - THUNK: asyncGetUsersAndThreads, SUCCESS
 // - THUNK: asyncGetUsersAndThreads, FAILED
 
@@ -34,7 +34,7 @@ const fakeUsers = [
   },
 ];
 
-// const fakeError = new Error('Ups, something went wrong');
+const fakeError = new Error('Ups, something went wrong');
 
 vi.mock('../../../utils/api.js');
 
@@ -67,8 +67,8 @@ describe('ACTION: Shared user and Thread', () => {
   });
 
   it('THUNK: asyncGetUsersAndThreads, FAILED', async () => {
-    getAllUsers.mockRejectedValue(fakeUsers);
-    getAllThreads.mockRejectedValue(fakeThreads);
+    getAllUsers.mockRejectedValue(fakeError);
+    getAllThreads.mockRejectedValue(fakeError);
     // mock dispatch
     const dispatch = vi.fn();
 

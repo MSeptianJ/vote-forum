@@ -5,6 +5,10 @@ import {
 import { getAllUsers } from '../../../utils/api';
 import { asyncGetUsers, receiveUsersAction } from '../../user/action';
 
+// ACTION: User
+// - THUNK: asyncGetUsers, SUCCESS
+// - THUNK: asyncGetUsers, FAILED
+
 const fakeUsers = [
   {
     id: 'john_doe',

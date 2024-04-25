@@ -3,12 +3,9 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { FaTrophy } from 'react-icons/fa6';
 import { PiSignOutBold } from 'react-icons/pi';
-import { useSelector } from 'react-redux';
-import { ownerValidator } from '../../utils/propValidator';
+import { leaderBoardValidator, ownerValidator } from '../../utils/propValidator';
 
-function AccountBtn({ onLogOut, userData }) {
-  const leaderBoards = useSelector((states) => states.leaderBoards);
-
+function AccountBtn({ onLogOut, userData, leaderBoards }) {
   const userScore = leaderBoards.find(
     (data) => data.user.id === userData.id,
   )?.score;
@@ -22,6 +19,7 @@ function AccountBtn({ onLogOut, userData }) {
       label={(
         <Avatar
           rounded
+          title="Account"
           img={userData.avatar}
           className="p-2 transition-colors duration-300 hover:bg-secondary"
         />
@@ -44,6 +42,7 @@ function AccountBtn({ onLogOut, userData }) {
         icon={PiSignOutBold}
         className=" border-none text-white hover:text-black"
         onClick={handleLogOut}
+        title="Log Out"
       >
         Log Out
       </Dropdown.Item>
@@ -54,6 +53,7 @@ function AccountBtn({ onLogOut, userData }) {
 AccountBtn.propTypes = {
   onLogOut: PropTypes.func.isRequired,
   userData: PropTypes.shape(ownerValidator).isRequired,
+  leaderBoards: PropTypes.arrayOf(PropTypes.shape(leaderBoardValidator)).isRequired,
 };
 
 export default AccountBtn;

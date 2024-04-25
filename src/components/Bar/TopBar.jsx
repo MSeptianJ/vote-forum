@@ -9,11 +9,11 @@ import {
   IconLeaderboardOutline,
   IconLogin,
 } from '../../libs/icons';
-import { ownerValidator } from '../../utils/propValidator';
+import { leaderBoardValidator, ownerValidator } from '../../utils/propValidator';
 import AccountBtn from '../Button/AccountBtn';
 import BtnPrimary from '../Button/BtnPrimary';
 
-function TopBar({ onLogOut, authUser }) {
+function TopBar({ onLogOut, authUser, leaderBoards }) {
   const location = useLocation();
 
   return (
@@ -55,10 +55,10 @@ function TopBar({ onLogOut, authUser }) {
         </nav>
 
         {authUser ? (
-          <AccountBtn userData={authUser} onLogOut={onLogOut} />
+          <AccountBtn userData={authUser} onLogOut={onLogOut} leaderBoards={leaderBoards} />
         ) : (
           <div className="h-full">
-            <Link to="/login" className="h-full">
+            <Link to="/login" className="h-full" title="Login" id="login-link">
               <BtnPrimary
                 btnStyles="text-xl h-full p-2 md:text-base transition-colors duration-300 hover:bg-secondary"
                 btnIcon={<IconLogin />}
@@ -74,6 +74,7 @@ function TopBar({ onLogOut, authUser }) {
 TopBar.propTypes = {
   authUser: PropTypes.shape(ownerValidator),
   onLogOut: PropTypes.func.isRequired,
+  leaderBoards: PropTypes.arrayOf(PropTypes.shape(leaderBoardValidator)).isRequired,
 };
 
 TopBar.defaultProps = {

@@ -37,6 +37,7 @@ function App() {
   const authUser = useSelector((states) => states.authUser);
   const boxState = useSelector((states) => states.categoryBox);
   const threads = useSelector((states) => states.threads);
+  const leaderBoards = useSelector((states) => states.leaderBoards);
   const [searchParam, setSearchParam] = useSearchParams();
   const searchedCategory = searchParam.get('category');
 
@@ -105,7 +106,7 @@ function App() {
     <div className=" min-h-screen w-full">
       <ScrollRestoration />
       <LoadingStrip />
-      <TopBar onLogOut={onLogOut} authUser={authUser} />
+      <TopBar onLogOut={onLogOut} authUser={authUser} leaderBoards={leaderBoards} />
 
       <div className=" m-auto min-h-screen w-full lg:max-w-screen-lg">
         {!isPreload && (

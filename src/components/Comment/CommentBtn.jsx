@@ -35,7 +35,7 @@ function CommentBtn({
 
   return (
     <div className=" flex items-center justify-between gap-3 border-t border-secondary pt-4">
-      <div className=" grid grid-cols-2 gap-4">
+      <div className=" grid grid-cols-2 gap-4" title="Comment Vote Buttons">
         <BtnPrimary
           btnText={String(totalUpVotes)}
           btnIcon={isUpVoted ? <IconVote /> : <IconVoteOutline />}

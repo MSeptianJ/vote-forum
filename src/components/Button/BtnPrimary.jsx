@@ -25,11 +25,16 @@ function BtnPrimary({
 }
 
 BtnPrimary.propTypes = {
-  btnStyles: PropTypes.string,
+  /**  The Text inside button */
   btnText: PropTypes.string,
-  btnFunction: PropTypes.func,
-  btnDisabled: PropTypes.bool,
+  /** The Icon inside button, will be on the left side of text. Fill with React Icon Elements */
   btnIcon: PropTypes.node,
+  /** The button's style such as bg color or border and other, need to be assign here  */
+  btnStyles: PropTypes.string,
+  /** The On Click function of Button */
+  btnFunction: PropTypes.func,
+  /** when true button will be disabled */
+  btnDisabled: PropTypes.bool,
 };
 
 BtnPrimary.defaultProps = {

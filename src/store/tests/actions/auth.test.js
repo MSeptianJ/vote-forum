@@ -2,12 +2,23 @@ import { hideLoading, showLoading } from 'react-redux-loading-bar';
 import {
   describe, expect, it, vi,
 } from 'vitest';
-import { getOwnProfile, login } from '../../../utils/api';
-import { asyncLoginUser, setAuthUserAction } from '../../auth-user/action';
+import {
+  getOwnProfile, login, putAccessToken, register,
+} from '../../../utils/api';
+import {
+  asyncLoginUser,
+  asyncLogoutUser,
+  asyncRegisterUser,
+  setAuthUserAction,
+  unsetAuthUserAction,
+} from '../../auth-user/action';
 
 // Test asyncLoginUser
-// - should dispatch action correctly when data fetching success
-// - should dispatch action and call alert correctly when data fetching failed
+// - THUNK: asyncLoginUser, SUCCESS
+// - THUNK: asyncLoginUser, FAILED
+// - THUNK: asyncRegisterUser, SUCCESS
+// - THUNK: asyncRegisterUser, FAILED
+// - THUNK: asyncLogoutUser, SUCCESS
 
 const fakeAuth = {
   id: 'john_doe',
@@ -27,7 +38,7 @@ const fakeToken = {
 vi.mock('../../../utils/api.js');
 
 describe('ACTION: Auth user', () => {
-  it('Should dispatch action correctly when data fetching success', async () => {
+  it('THUNK: asyncLoginUser, SUCCESS', async () => {
     // mock;
     getOwnProfile.mockResolvedValue(fakeAuth);
     login.mockResolvedValue(fakeToken);
@@ -47,7 +58,7 @@ describe('ACTION: Auth user', () => {
     expect(dispatch).toHaveBeenCalledWith(hideLoading());
   });
 
-  it('Should dispatch action correctly when data fetching failed', async () => {
+  it('THUNK: asyncLoginUser, FAILED', async () => {
     // mock;
     getOwnProfile.mockRejectedValue(fakeAuth);
     login.mockRejectedValue(fakeToken);
@@ -66,6 +77,56 @@ describe('ACTION: Auth user', () => {
       .toHaveBeenCalledWith(
         setAuthUserAction(fakeAuth),
       );
+    expect(dispatch).toHaveBeenCalledWith(hideLoading());
+  });
+
+  it('THUNK: asyncRegisterUser, SUCCESS', async () => {
+    // mock;
+    register.mockResolvedValue(fakeAuth);
+    const dispatch = vi.fn();
+
+    // action
+    await asyncRegisterUser({
+      name: 'Jael',
+      email: 'jael@gmail.com',
+      password: 'jvaoinbe',
+    })(dispatch);
+
+    // assert
+    expect(dispatch).toHaveBeenCalledWith(showLoading());
+    expect(dispatch).toHaveBeenCalledWith(hideLoading());
+  });
+
+  it('THUNK: asyncRegisterUser, FAILED', async () => {
+    // mock;
+    register.mockRejectedValue(fakeAuth);
+    const dispatch = vi.fn();
+
+    // action
+    await asyncRegisterUser({
+      name: 'Jael',
+      email: 'jael@gmail.com',
+      password: 'jvaoinbe',
+    })(dispatch).catch(() => null);
+
+    // assert
+    expect(dispatch).toHaveBeenCalledWith(showLoading());
+    expect(dispatch).toHaveBeenCalledWith(hideLoading());
+  });
+
+  it('THUNK: asyncLogoutUser, SUCCESS', async () => {
+    // mock;
+    putAccessToken.mockResolvedValue(fakeToken);
+    const dispatch = vi.fn();
+
+    // action
+    await asyncLogoutUser()(dispatch);
+
+    // assert
+    expect(dispatch).toHaveBeenCalledWith(showLoading());
+    expect(dispatch).toHaveBeenCalledWith(
+      unsetAuthUserAction(),
+    );
     expect(dispatch).toHaveBeenCalledWith(hideLoading());
   });
 });
